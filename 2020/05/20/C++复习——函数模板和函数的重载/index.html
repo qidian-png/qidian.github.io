@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">C++复习 | 奇点的小屋！</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.png">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!-- 球形标签 -->
+<link rel="stylesheet" href="/css/tag-bubble.css">
+
+<!-- 心形分类页面 -->
+<link rel="stylesheet" href="/css/categories-love.css">
+
+
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "奇点的小屋！小白";
+  mashiro_option.author_name = "小白";
+  mashiro_option.site_url = "https://qidian-png.github.io";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "/images/cover/(1).jpg.webp,/images/cover/(2).jpg.webp,/images/cover/(3).jpg.webp,/images/cover/(4).jpg.webp,/images/cover/(5).jpg.webp,/images/cover/(6).jpg.webp,/images/cover/(7).jpg.webp,/images/cover/(8).jpg.webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+
+<!-- 点击出现社会主义彩色文字 --><script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js"></script>
+
+
+
+
+
+<!-- 点击出现爱心 --><script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/love.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop ">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="">
+          <img src="images/logo2.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>温山软水万千，不及你眉眼半分！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/qidian-png" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/76eb8fed95d35934d392515210b0c353" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">奇点的小屋！</span>
+            <span class="shironeko">小白</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://pics.images.ac.cn/image/5ece063c787c7.html);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://pics.images.ac.cn/image/5ece063c787c7.html">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      C++复习</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href=""></a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-5-20<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>﻿前言：慢慢复习路！！！</p>
+<p>目录：<br>0×01：函数的重载<br>0×02：函数的模板<br>0×03：有默认参数的函数<br>0×04：变量的引用<br>0×05：将引用作为函数参数<br>0×06：内置函数<br>0×07：作用域运算符<br>0×08：字符串变量<br>0×09：动态分配/撤销内存的运算符new和delete</p>
+<p><strong>0×01：函数的重载</strong><br>          定义：C++允许在同一个域中用一个函数名定义多个函数，这些函数的参数个数、参数类型不相同。用一个函数名实现不同的功能，就是函数的重载。</p>
+<p>例一：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int max(int a,int b,int c)           &#x2F;&#x2F;求3个整数中的最大者</span><br><span class="line">&#123; if (b&gt;a) a&#x3D;b;</span><br><span class="line">if (c&gt;a) a&#x3D;c;</span><br><span class="line">return a; </span><br><span class="line">&#125; </span><br><span class="line">float max(float a,float b, float c)  &#x2F;&#x2F;求3个实数中的最大者</span><br><span class="line">&#123;if (b&gt;a) a&#x3D;b;</span><br><span class="line"> if (c&gt;a) a&#x3D;c;</span><br><span class="line"> return a; </span><br><span class="line">&#125; </span><br><span class="line">long max(long a,long b,long c)  &#x2F;&#x2F;求3个长整数中的最大者</span><br><span class="line">&#123;if (b&gt;a) a&#x3D;b;</span><br><span class="line"> if (c&gt;a) a&#x3D;c;</span><br><span class="line"> return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例二：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int main( )</span><br><span class="line">&#123;int a,b,c;  float d,e,f;  long g,h,i;</span><br><span class="line">cin&gt;&gt;a&gt;&gt;b&gt;&gt;c; </span><br><span class="line">cin&gt;&gt;d&gt;&gt;e&gt;&gt;f;</span><br><span class="line">cin&gt;&gt;g&gt;&gt;h&gt;&gt;i;</span><br><span class="line">int m;</span><br><span class="line">m&#x3D; max(a,b,c);                        &#x2F;&#x2F;函数值为整型</span><br><span class="line">cout &lt;&lt;&quot;max_i&#x3D;&quot;&lt;&lt;m&lt;&lt;endl;</span><br><span class="line">float n;</span><br><span class="line">n&#x3D;max(d,e,f);                          &#x2F;&#x2F;函数值为实型</span><br><span class="line">cout&lt;&lt;&quot;max_f&#x3D;&quot;&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">long int p;</span><br><span class="line">p&#x3D;max(g,h,i);                          &#x2F;&#x2F;函数值为长整型</span><br><span class="line">cout&lt;&lt;&quot;max_l&#x3D;&quot;&lt;&lt;p&lt;&lt;endl;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例三：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">下面的例子说明用函数重载设计参数个数不同的函数，用一个函数名求两个整数或三个整数中的最大数。</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int max(int a,int b,int c)     &#x2F;&#x2F;求3个整数中的最大者</span><br><span class="line">&#123;if (b&gt;a) a&#x3D;b;</span><br><span class="line"> if (c&gt;a) a&#x3D;c;</span><br><span class="line"> return a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：<code>不允许函数参数个数、参数类型都相同，只是函数返回值不同。因为系统无法从调用形式上判断调用与哪个函数相匹配。</code></p>
+<p><strong>0×02：函数的模板</strong></p>
+<p>定义：如果两个函数的参数个数相同，函数的行为相同（做同样的事），只是函数和参数的数据类型不同，如果用函数重载的话，编写的函数代码是相同的，为了节省时间，C++提供了函数模板功能。(C++比C语言方便多了，小声bb)</p>
+<p>格式：<br>    template typename 标识符[, typename 标识符, … … ]<br>    函数定义（函数的类型和参数的类型用声明的标识符表示）<br>template    是关键字，含义是模板<br>    typename  是关键字，表示其后的标识符代表类型参数，调用时根据实参的类型确定形参的类型。<br>    所谓函数模板，是建立一个通用函数，不指定函数类型和参数类型，而用一个虚拟的类型表示。在调用函数时，用实参的类型取代模板中的虚拟类型。</p>
+<p>例1  为计算两个数中的大数定义函数模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">template &lt;typename T&gt;</span><br><span class="line">T max(T a,T b,T c)  &#x2F;&#x2F;用虚拟类型T表示类型</span><br><span class="line">&#123;if(b&gt;a) a&#x3D;b;</span><br><span class="line"> if(c&gt;a) a&#x3D;c;</span><br><span class="line"> return a;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;int i1&#x3D;8,i2&#x3D;5,i3&#x3D;6,i;</span><br><span class="line"> double d1&#x3D;56.9,d2&#x3D;90.765,d3&#x3D;43.1,d;</span><br><span class="line"> long g1&#x3D;67843,g2&#x3D;-456,g3&#x3D;78123,g;</span><br><span class="line"> i&#x3D;max(i1,i2,i3);</span><br><span class="line"> d&#x3D;max(d1,d2,d3);</span><br><span class="line"> g&#x3D;max(g1,g2,g3);</span><br><span class="line"> cout&lt;&lt;&quot;i_max&#x3D;&quot;&lt;&lt;i&lt;&lt;endl;</span><br><span class="line"> cout&lt;&lt;&quot;d_max&#x3D;&quot;&lt;&lt;d&lt;&lt;endl;</span><br><span class="line">cout&lt;&lt;&quot;g_max&#x3D;&quot;&lt;&lt;g&lt;&lt;endl;</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：<code>从程序中看到，此问题用函数模板比用函数重载更方便。注意，函数模板只适用于函数参数的个数相同而类型不同，并且函数体相同的情况，如果函数的参数个数不同，则不能用函数模板。</code><br><strong>0×03：有默认参数的函数</strong></p>
+<p>C++允许为函数的参数设置默认值，这时调用函数时，如果没有实参，就以默认值作为实参值。<br>    格式：<br>    形参类型  形参变量名 = 常数<br>    功能：调用函数时，如果没有实参，就以常数作为该形参的值;如果有实参，仍以实参的值作为该形参的值。<br>    注意：<code>有默认值的形参必须放在形参表的右边，不允许无默认参数值和有默认参数值的形参交错排列。</code></p>
+<p>字面意思不好理解，例子奉上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">编写计算圆柱体体积函数</span><br><span class="line">	float  volume ( float h, float r &#x3D; 12.5)</span><br><span class="line"></span><br><span class="line">	调用可以采用以下任何一种形式：</span><br><span class="line">	volume( 45.6);</span><br><span class="line">	volume( 32.5, 10.5);</span><br><span class="line">	函数参数结合从左到右，用第一种方式调用时，只有一个实参，圆半径的值取默认值12.5，用第二种方式调用时，有两个实参，圆半径的值取实参的值10.5。</span><br></pre></td></tr></table></figure>
+<p>注意：<code>一、如果用函数原型声明，只要在函数原型声明中定义形参的默认值即可。
+二、一个函数名不能同时用于重载函数和带默认形参值的函数。当调用函数时，如少写一个参数，系统无法判断是利用重载函数还是利用带默认参数值的函数，出现二义性。</code></p>
+<p><strong>0×04：变量的引用</strong></p>
+<p>C++提供了为变量取别名的功能，这就是变量的引用。<br>格式： 类型   &amp;变量1 = 变量2<br>变量2是在此之前已经定义过的变量，且与变量1的类型相同。这里为变量2定义一个别名变量1，在程序里变量1和变量2 就是同一个变量。<br>注意：两个变量不能用同一个别名。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">例：int a &#x3D; 3 ,b &#x3D;4;</span><br><span class="line">	       int &amp;c &#x3D; a;  &#x2F;&#x2F;   c是a 的别名</span><br><span class="line">	       int &amp;c &#x3D; b;  &#x2F;&#x2F;   错误的用法</span><br><span class="line">	一个变量可以有多个别名</span><br><span class="line">	例：int a &#x3D; 3;</span><br><span class="line">		  int &amp; b&#x3D; a;</span><br><span class="line">		  int &amp; c&#x3D; b;</span><br><span class="line">	变量a 有两个别名b和c。</span><br></pre></td></tr></table></figure>
+<p>又来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main( )</span><br><span class="line">&#123;int a&#x3D;10;</span><br><span class="line"> int &amp;b&#x3D;a;    &#x2F;&#x2F;声明b是a的引用</span><br><span class="line"> a&#x3D;a*a;       &#x2F;&#x2F;a的值变化了，b的值也应一起变化</span><br><span class="line"> cout&lt;&lt;a&lt;&lt;&quot;  &quot;&lt;&lt;b&lt;&lt;endl;   </span><br><span class="line"> b&#x3D;b&#x2F;5;        &#x2F;&#x2F;b的值变化了，a的值也应一起变化</span><br><span class="line"> cout&lt;&lt;b&lt;&lt;&quot;  &quot;&lt;&lt;a&lt;&lt;endl;</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>0×05：将引用作为函数参数</strong></p>
+<p>C++除了可以用普通变量、指针变量做形参外，还可以用引用变量做形参。<br>    （1）用普通变量做形参<br>    这时传递的是实参的值，在函数内形参与实参是两个不同的内存单元，对形参的修改不会影响实参的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">例：无法实现两个变量的值互换的程序</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void swap(int a,int b)</span><br><span class="line">&#123; int temp;</span><br><span class="line"> temp&#x3D;a;</span><br><span class="line"> a&#x3D;b;</span><br><span class="line"> b&#x3D;temp;                &#x2F;&#x2F;  实现a和b的值互换</span><br><span class="line">&#125;</span><br><span class="line">int main( )</span><br><span class="line">&#123;int i&#x3D;3,j&#x3D;5;</span><br><span class="line"> swap(i,j);</span><br><span class="line"> cout&lt;&lt;i&lt;&lt;&quot;,&quot;&lt;&lt;j&lt;&lt;endl;   &#x2F;&#x2F;  i和j的值未互换</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）用指针变量做形参</p>
+<p>C语言还允许用指针变量做形参，这时传递的是实参变量的地址（指针），在函数内利用这个指针访问实参变量。<br>    例1.11用指针变量做形参，实现两个变量值的交换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void swap(int *p1,int *p2)</span><br><span class="line">&#123;int temp;</span><br><span class="line"> temp&#x3D;*p1;</span><br><span class="line"> *p1&#x3D; *p2;</span><br><span class="line"> *p2&#x3D;temp;</span><br><span class="line">&#125;</span><br><span class="line">int main( )</span><br><span class="line">&#123;int i&#x3D;3,j&#x3D;5;</span><br><span class="line"> swap(&amp;i,&amp;j);</span><br><span class="line"> cout&lt;&lt;i&lt;&lt;&quot;,&quot;&lt;&lt;j&lt;&lt;endl;</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3）用引用变量做形参</p>
+<p>用指针变量做形参，它将实参变量的地址传递给形参，在函数内用“*指针变量”的方式访问实参变量。我们知道引用变量是变量的别名，在调用函数时，用引用变量做的形参就成了实参变量的别名，在函数中用的形参名就是实参的别名，这样比用指针变量更直观、更方便。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">例：利用引用变量实现两个变量值的交换</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">void swap(int &amp;a,int &amp;b)</span><br><span class="line">&#123;int temp;</span><br><span class="line"> temp&#x3D;a;</span><br><span class="line"> a&#x3D;b;</span><br><span class="line"> b&#x3D;temp;</span><br><span class="line">&#125;</span><br><span class="line">int main( )</span><br><span class="line">&#123;int i&#x3D;3,j&#x3D;5;</span><br><span class="line"> swap(i,j);</span><br><span class="line"> cout&lt;&lt;&quot;i&#x3D;&quot;&lt;&lt;i&lt;&lt;&quot;   &quot;&lt;&lt;&quot;j&#x3D;&quot;&lt;&lt;j&lt;&lt;endl;</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><em>对引用的进一步说明</em></strong><br>（1）引用变量都具有非void类型<br>（2）不能建立引用的数组<br>（3）可以建立常引用变量，不允许修改常引用变量的值<br>例： int i ;<br>        const  int &amp;a = i;<br>        a = 3;   //    错误的用法<br>        i  = 8;   //    i 不是常变量，可以修改<br>        （4）可以建立指针变量的引用变量<br>例：int i;<br>       int  *p = &amp; i;<br>       int * &amp;pt = p; // pt是p的别名变量，同时<br>                            // 也是指针变量</p>
+<p><strong>0×06：内置函数</strong></p>
+<p>C++ 提供了一种机制，在编译时，将所调用的函数的代码嵌入到调用函数代码中，在执行函数时省去了调用环节，提高了函数的执行速度。这种机制称为内置函数，有的书称内联函数。<br>    格式：<br>    inline 函数类型 函数名(形参表)<br>    {    函数体    }<br>      inline 是C++的关键字，在编译时，编译程序会把这个函数嵌入到调用函数的函数体中<br>    调用格式：   函数名（实参表）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">例：计算三个整数中的大数</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">inline int max(int a,int b,int c)   &#x2F;&#x2F; 这是一个内置函数，</span><br><span class="line">                                                 &#x2F;&#x2F; 求3个整数中的最大者</span><br><span class="line">&#123;if (b&gt;a) a&#x3D;b;</span><br><span class="line"> if (c&gt;a) a&#x3D;c;</span><br><span class="line"> return a;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">int main( )</span><br><span class="line">&#123;int i&#x3D;7,j&#x3D;10,k&#x3D;25,m;</span><br><span class="line"> m&#x3D;max(i,j,k);</span><br><span class="line"> cout&lt;&lt;&quot;max&#x3D;&quot;&lt;&lt;m&lt;&lt;endl;</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于在定义函数时指定它是内置函数，因此编译系统在遇到函数调用max( i,j,k ) 时就用max函数体的代码代替max( i,j,k ) ，同时用实参代替形参。调用语句m= max( i,j,k ) 就被置换成：<br>    {  a=i ; b = j ; c= k;<br>    if ( b&gt;a) a=b;<br>    if ( c&gt;a) a=c;<br>    m=a;<br>     }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">例:用内置函数计算平方根</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">inline int power(int x)       &#x2F;&#x2F;定义内置函数</span><br><span class="line">&#123;return x*x;&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;cout&lt;&lt;power(2)&lt;&lt;endl;</span><br><span class="line"> cout&lt;&lt;power(1+1)&lt;&lt;endl;</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编译程序遇见内置函数power时，先求出函数的实参值（1+1=2），然后用power函数体代替函数调用，调用语句变成：<br>    {  cout&lt;&lt;2<em>2&lt;&lt;endl;<br>       cout&lt;&lt;2</em>2&lt;&lt;endl;<br>    }<br>    运行结果是<br>    4<br>    4 </p>
+<p>优缺点：<code>使用内置函数可以节省程序的运行时间，但增加了目标程序的长度。所以在使用时要衡量时间和空间的得失。</code></p>
+<p><strong>0×07：作用域运算符</strong><br>直接看例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">局部变量和全局变量同名</span><br><span class="line">	#include &lt;iostream&gt;</span><br><span class="line">	using namespace std;</span><br><span class="line">	float a&#x3D;13.5;</span><br><span class="line">	int main( )</span><br><span class="line">	&#123;    int a&#x3D;5;</span><br><span class="line">	     cout&lt;&lt;a&lt;&lt;endl;</span><br><span class="line">	     return 0;    &#125;</span><br></pre></td></tr></table></figure>
+<p>程序中有两个变量a，一个是全局变量，另一个是main函数的局部变量，根据局部变量会屏蔽同名的全局变量规则，在函数中出现的变量a是局部变量，因此输出的值是5，而不是13.5，为了在函数中访问全局变量C++提供了作用域运算符 :: ，可以用来指定要访问的作用域，可以把main函数改写成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">	using namespace std;</span><br><span class="line">	float a&#x3D;13.5;</span><br><span class="line">	int main( )</span><br><span class="line">	&#123;int a&#x3D;5;</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;::a&lt;&lt;endl;</span><br><span class="line">	 return 0;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>::a表示全局变量a。注意不能用::访问局部变量。</p>
+<p><strong>0×08：字符串变量</strong></p>
+<p>C++提供了字符串类类型string，实际上它不是C++的基本类型，它是在C++标准库中声明的一个字符串类，程序可以用它定义对象。<br>    1.定义字符串变量<br>    格式：  string 变量名表;<br>    可以在定义变量时用字符串常量为变量赋初值：<br>            string   变量名 = 字符串常量<br>    <strong>注意</strong>：<code>如用字符串变量，在程序开始要用包含语句把C++标准库的string头文件包含进来。</code></p>
+<p>2.对字符串操作<br>① 对字符串变量赋值<br>     字符串变量= 字符串表达式<br>例： string  st1,st2;<br>        st1 = “王点点“;<br>        st2 = st1;</p>
+<p> ②  访问字符串中的字符<br>C++允许把字符串作为字符数组，第一个字符的下标是0，第二个字符的下标是1，以此类推。<br>例：string  w = “ then”;<br>       w[2] = ‘e’;<br>结果字符串w变成 than</p>
+<p>③输入输出字符串<br>格式：cin &gt;&gt; 字符串变量<br>           cout &lt;&lt; 字符串变量</p>
+<p>④字符串连接运算<br>格式：字符串1 + 字符串2<br>功能：把连接运算符两端的字符连接成一个字符串。表达式中可以用字符串常量也可以用字符串变量。<br>例：string  st1=“C++”;<br>       string  st2=“Language”;<br>       st1 = st1 + st2 ;<br>结果是 C++Language</p>
+<p>⑤字符串的比较运算<br>    可以用关系运算符&gt;、&gt;=、==、!=、&lt;、&lt;=对两个字符串同一位置的字符进行比较，根据ASCII码值判定字符的大小。<br>    例：”china” &gt; “chinese”<br>    运算结果是假。</p>
+<p><strong>0×09：动态分配/撤销内存的运算符new和delete</strong> </p>
+<p>分配内存运算<br>new  类型 [ （初值）]<br>类型是决定分配空间尺寸的关键元素，如果运算结果正确，它的值是分配内存空间的起始地址，否则返回NULL。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">例：int  *a &#x3D;new int ;</span><br><span class="line"> 	  int  *b &#x3D;new int( 100);</span><br><span class="line"> 	  char *ch &#x3D; new char[10];</span><br><span class="line"> 	  int * q &#x3D; new int [5][4];</span><br><span class="line">  	  float  * p &#x3D; new float(3.14159);</span><br></pre></td></tr></table></figure>
+<p>归还动态内存运算<br>delete[] 指针变量<br>[] 代表数组，如果不是数组可以省略[]。<br>运算功能：撤销指针变量所指的动态内存空间，指针变量的数据类型决定了空间尺寸的大小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">例：char *p&#x3D;new char[10];</span><br><span class="line">        … …</span><br><span class="line"> 	 delete [ ] p;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">例1.18用动态内存存放结构体变量</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">struct student </span><br><span class="line">&#123;char name [10];</span><br><span class="line"> int num;</span><br><span class="line"> char sex;</span><br><span class="line">&#125;;</span><br><span class="line">int main ( )</span><br><span class="line">&#123;student *p;</span><br><span class="line"> p&#x3D;new student;</span><br><span class="line"> strcpy(p-&gt;name,&quot;Wang Fun&quot;);</span><br><span class="line"> p-&gt;num&#x3D;10123;</span><br><span class="line"> p-&gt;sex&#x3D;&#39;M&#39;;</span><br><span class="line"> cout&lt;&lt;p-&gt;name&lt;&lt;&quot;  &quot;&lt;&lt;p-&gt;num&lt;&lt;&quot;  &quot;&lt;&lt;p-&gt;sex&lt;&lt;endl;</span><br><span class="line"> delete p;</span><br><span class="line"> return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>先声明了一个结构体类型student，定义一个指向它的指针变量p，用new开辟一个空间存放一个student类型变量。<br>如果无法正常分配内存，运算会返回一个空指针NULL，程序可以设计判断结构，根据判断结果决定怎样操作。<br>注意不要混合使用new、delete、malloc、free。要正确搭配，不要用new分配内存后，又用free释放内存。</p>
+<p>明天继续复习！！！</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="< /images/donate/AliPayQR.jpg>"></li>
+              <li class="wechat-code"><img src="</images/donate/WeChanQR.jpg>"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/06/03/%E9%B8%A1%E6%B1%A4%20%20%E2%80%94%E2%80%94%E8%87%B4%E5%90%9B/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ae01.alicdn.com/kf/H3343d675d24a4340b9c1360c4cf861422.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://ae01.alicdn.com/kf/H3343d675d24a4340b9c1360c4cf861422.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                鸡汤</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/05/15/php%E5%AD%A6%E4%B9%A0--%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%94%EF%BC%89/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://pics.images.ac.cn/image/5ec7b37a4124c.html" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pics.images.ac.cn/image/5ec7b37a4124c.html">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                php学习--函数（五）</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 奇点<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+</script>
+<!--浏览器搞笑标题-->
+	<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+<!-- // 文字 -->
+	<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+ 
+//我的修改版
+//修改内容：调整大小，去除了纸飞机游戏和info按钮
+ 
+<script src="https://cdn.jsdelivr.net/gh/Natsuki-Kaede/Blog-Resources@master/live2d/autoload.js"></script>
+
+});
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/images/logo2.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">奇点的小屋！小白</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+        <a href="" class="fa " target="_blank" style="color: #; margin-left:20px"></a>
+      
+        <a href="" class="fa " target="_blank" style="color: #; margin-left:20px"></a>
+      
+        <a href="" class="fa " target="_blank" style="color: #; margin-left:20px"></a>
+      
+        <a href="" class="fa " target="_blank" style="color: #; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="3054186002"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
+
+<!--单击显示文字-->
+<script type="text/javascript" src="/js/shehuizhuyi.js"></script>

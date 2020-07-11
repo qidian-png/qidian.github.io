@@ -1,0 +1,84 @@
+home: 首页
+archives: 文章归档
+about: 关于作者
+categories: 分类
+series: 系列文章
+search: 搜索
+searchPlaceHolder: 请输入关键字
+tags: 标签
+tagcloud: 标签云
+video: 视频资源
+help: 关于本站
+links: 友情链接
+photo: 图集
+book: 悦读
+music: 音乐
+cloud: 资源
+prev: <i class="iconfont icon-back"></i>
+next: <i class="iconfont icon-right"></i>
+comment: 留言
+page: 第 %d 页
+recent_posts: 最新文章
+newer: 上一篇
+older: 下一篇
+share: 分享
+theme_by: Theme by
+rss_feed: RSS Feed
+category: Category
+tag: Tag
+connect: '联系我们'
+post_total_count: 嗯，目前共计%d篇文章
+read_more: '阅读全文'
+contents: 文章目录
+
+none: 无
+insight:
+    hint: '请输入关键词...'
+    posts: '文章'
+    pages: '页面'
+    categories: '分类'
+    tags: '标签'
+    untitled: '(无标题)'
+
+#category
+技术:
+    zh: 技术
+    en: technology
+    img: https://pics.images.ac.cn/image/5eba90be8356c.html
+生活:
+    zh: 生活
+    en: live
+    img: https://pics.images.ac.cn/image/5eba90b96c3fe.html
+
+
+#tag
+
+zip学习：
+    zh: zip学习 
+    en: zip learning
+    img: https://pics.images.ac.cn/image/5eba90b0ccb4c.html
+web:
+    zh: web
+    en: web
+    img: https://pics.images.ac.cn/image/5eba90b15e370.html
+php学习：
+    zh: php学习 
+    en: php learning
+    img: https://pics.images.ac.cn/image/5eba90b0ccb4c.html
+c++学习：
+    zh: c++学习 
+    en: c++ learning
+    img: https://pics.images.ac.cn/image/5eba90b0ccb4c.html
+无线网络安全：
+    zh: 无线网络安全
+    en: Wireless network security
+    img: https://pics.images.ac.cn/image/5eba90b0ccb4c.html
+python学习：
+    zh: python学习
+    en: python learning
+    img: https://pics.images.ac.cn/image/5eba90b0ccb4c.html
+
+CTF：
+    zh: CTF
+    en: CTF
+    img: https://pics.images.ac.cn/image/5ec7b0b95fc1e.html

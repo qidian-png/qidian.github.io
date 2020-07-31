@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">鸡汤 | 奇点的小屋！</title>
+  <title itemprop="name">PHP学习(六)--数组基础 | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -298,11 +298,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ae01.alicdn.com/kf/H3343d675d24a4340b9c1360c4cf861422.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ae01.alicdn.com/kf/H3343d675d24a4340b9c1360c4cf861422.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://pics.images.ac.cn/image/5ec7b398888d6.html);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://pics.images.ac.cn/image/5ec7b398888d6.html">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      鸡汤</h1>
+      PHP学习(六)--数组基础</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -314,7 +314,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-6-3<span class="bull">
+        2020-7-21<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -328,32 +328,65 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>﻿## 星辰和大海都需要门票，诗和远方的路费也都很贵。 </p>
-<p><img src="https://img-blog.csdnimg.cn/2020060316583458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>星辰大海需要门票，</p>
-<p>诗和远方路费很贵。</p>
-<p>就像我们不努力的话，</p>
-<p>情怀都养不起。</p>
-<p>大海星辰皆不得，</p>
-<p>梦想远方不可及。</p>
-<p>人生有时候很苦逼，</p>
-<p>如果不努力，</p>
-<p>你拥有的一切，</p>
-<p>都有可能失去；</p>
-<p>即使努力了，</p>
-<p>也会有很多东西得不到。</p>
-<p>世间万物皆有属，</p>
-<p>有付出才有可能收获。</p>
-<p>世界上所有的美好都是给配得上的人，</p>
-<p>所有的东西，都是很贵，</p>
-<p>所以，我们有的时候只能努力。</p>
-<p>因为所谓的大海星辰，</p>
-<p>都是要靠我们自己来得到。</p>
-<p>诗和远方都是我们所追求的，</p>
-<p>但是，所谓的追求，只不过是我们的努力罢了。</p>
-<p>我们总要追求我们的未来，</p>
-<p>所以，我们现在一定要努力，</p>
-<p>尽力配得上我们的情怀。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200603165908493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+          <hr>
+<p>学习ing！<br><strong>目录：<br>0×01 数组的分类<br>0×02 数组的创建<br>0×03 遍历数组<br>0×04 预定义超全局数组</strong></p>
+<p><strong>0×01 数组的分类</strong></p>
+<p>分为两种数组索引数组和关联数组</p>
+<p>数组的名称为整形时是索引数组，为字符串类型时是关联数组。</p>
+<p><strong>0×02 数组的创建</strong></p>
+<p>php定义数组时，不需要提前声明，不需要定义大小，直接创建，使用array()创建。<br>数组输出需要使用print_r()函数，或者var_dump()函数。</p>
+<p>方法一：直接为数组元素赋值即可创建。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$stduent[0]&#x3D;12</span><br><span class="line">$student[1]&#x3D;&#39;hello&#39;</span><br><span class="line">$student[2]&#x3D;&#39;false&#39;</span><br></pre></td></tr></table></figure>
+<p>当然索引值可以是整数也可以是字符串，也可以不写，不写索引值默认是 索引数组，从0开始</p>
+<p>方法二：</p>
+<p>变量名称=array(数据,数据，。。。);<br>不写索引值默认是 索引数组，从0开始，自动分配。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$student&#x3D;array(10,&quot;你好&quot;，66.66，true)；</span><br></pre></td></tr></table></figure>
+
+
+
+<p>方法三：<br>变量名称=array(<br>            索引值=&gt;数据,<br>            ……….<br>        );</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;$student&#x3D;array(索引值&#x3D;&gt;具体的值,.......);</span><br><span class="line">$student&#x3D;array(10,&#39;孙胜利&#39;,true,60.5);&#x2F;&#x2F;一维数组</span><br><span class="line">var_dump($student);</span><br><span class="line">$student1&#x3D;array(</span><br><span class="line">		0&#x3D;&gt;10,</span><br><span class="line">		1&#x3D;&gt;&#39;你好&#39;,</span><br><span class="line">		2&#x3D;&gt;true,</span><br><span class="line">		3&#x3D;&gt;60.5</span><br><span class="line">);</span><br><span class="line">var_dump($student1);</span><br><span class="line">$student2&#x3D;array(</span><br><span class="line">		&#39;num&#39;&#x3D;&gt;11,</span><br><span class="line">		&#39;name&#39;&#x3D;&gt;&#39;你好&#39;,</span><br><span class="line">		&#39;sex&#39;&#x3D;&gt;true,</span><br><span class="line">		&#39;grade&#39;&#x3D;&gt;80.5,</span><br><span class="line">		10&#x3D;&gt;&#39;dqwdwqdwq&#39;</span><br><span class="line">);</span><br><span class="line">var_dump($student2);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>需要调用数组里的某一个值的方法：<code>echo  数组变量名称[索引值]</code></p>
+<p>数据里面还可放数组类型的数据，同一个数组中存储任何类型的数据（类似于C语言的二维数组）</p>
+<p>多维数组：<br>        访问数值的方法<br>        变量名称[索引值][索引值]….</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">&#x2F;&#x2F;二维数组,多维数组</span><br><span class="line">$students&#x3D;array(</span><br><span class="line">	0&#x3D;&gt;array(1,&#39;你&#39;,true,60.5),</span><br><span class="line">	1&#x3D;&gt;array(2,&#39;好&#39;,true,80.5),</span><br><span class="line">	2&#x3D;&gt;array(3,&#39;啊&#39;,false,85.5)</span><br><span class="line">);</span><br><span class="line">&#x2F;*</span><br><span class="line">$students&#x3D;array(</span><br><span class="line">		array(1,&#39;你&#39;,true,60.5),</span><br><span class="line">		array(2,&#39;好&#39;,true,80.5),</span><br><span class="line">		array(3,&#39;啊&#39;,false,85.5)</span><br><span class="line">);</span><br><span class="line">*&#x2F;</span><br><span class="line"></span><br><span class="line">var_dump($students);</span><br><span class="line">echo $students[0][1];</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>0×03 遍历数组</strong></p>
+<p>类似于其他语言的循环。</p>
+<p>注意：<code>count(数组[,1])返回数组里面数据的个数,还可以获取多维数组的个数 ,当然一般我们只传一个数组进去就可以了</code></p>
+<p>①用for语句来遍历数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$arr&#x3D;array(</span><br><span class="line">	&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;,&#39;f&#39;</span><br><span class="line">);</span><br><span class="line">for($i&#x3D;0;$i&lt;count($arr);$i++)&#123;</span><br><span class="line">	echo $arr[$i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>数组元素数量为6 ，输出结果是abcdef。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$arr1&#x3D;array(</span><br><span class="line">		array(1,2,3),</span><br><span class="line">		array(4,5,6)</span><br><span class="line">);</span><br><span class="line">echo count($arr1);</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+<p>这样只会输出第一层的数组，数量为2。</p>
+<p>如果我们要输出这个数组的全部的个数，应该怎样？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$arr1&#x3D;array(</span><br><span class="line">		array(1,2,3),</span><br><span class="line">		array(4,5,6)</span><br><span class="line">);</span><br><span class="line">echo count($arr1,1);&#x2F;&#x2F;2+6&#x3D;8</span><br></pre></td></tr></table></figure>
+<p>这样就可以输出第一层有2个元素，第二层有6个元素，所以总共有8种元素。</p>
+<p>for循环的缺点：<code>只适合索引数组，不适合关联数组，但是关联数组在php语言中应用非常广泛，所以for循环用的比较少</code></p>
+<p>②foreach语句遍历数据</p>
+<p>1）foreach(数组变量 as 变量1){<br>            //每次循环执行的语句<br>            变量1代表当前正在经历（访问）的数据<br>        }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">$arr1&#x3D;array(</span><br><span class="line">		&#39;name&#39;&#x3D;&gt;&#39;你好&#39;,</span><br><span class="line">		&#39;num&#39;&#x3D;&gt;10</span><br><span class="line">);</span><br><span class="line">foreach($arr1 as $value)&#123;</span><br><span class="line">	echo $value.&#39;&lt;br &#x2F;&gt;&#39;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>2）foreach(数组变量 as 变量1=&gt;变量2){<br>            //每次循环执行的语句<br>            变量1代表当前正在经历（访问）的数据的索引值<br>            变量1代表当前正在经历（访问）的数据<br>        }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line"></span><br><span class="line">$arr1&#x3D;array(</span><br><span class="line">		&#39;name&#39;&#x3D;&gt;&#39;孙胜利&#39;,</span><br><span class="line">		&#39;num&#39;&#x3D;&gt;10</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">foreach($arr1 as $key&#x3D;&gt;$value)&#123;</span><br><span class="line">	echo $key.&#39;&#x3D;&gt;&#39;.$value.&#39;&lt;br &#x2F;&gt;&#39;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>如何遍历多维数组？<br>递归怎么样？  foreach里面再套一个foreach!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$arr&#x3D;array(</span><br><span class="line">		&#39;a&#39;,</span><br><span class="line">		&#39;b&#39;,</span><br><span class="line">		&#39;c&#39;,</span><br><span class="line">		&#39;d&#39;,</span><br><span class="line">		array(</span><br><span class="line">			1,2,3,4,5</span><br><span class="line">		)</span><br><span class="line">);</span><br><span class="line">foreach ($arr as $val)&#123;</span><br><span class="line">	var_dump($val);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这个就可以。<br>但是，我们应该怎样访问<code>array(
+            1,2,3,4,5
+        )</code>       这个数组？？？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$arr&#x3D;array(</span><br><span class="line">		&#39;a&#39;,</span><br><span class="line">		&#39;b&#39;,</span><br><span class="line">		&#39;c&#39;,</span><br><span class="line">		&#39;d&#39;,</span><br><span class="line">		array(</span><br><span class="line">			1,2,3,4,5</span><br><span class="line">		)</span><br><span class="line">);</span><br><span class="line">foreach ($arr as $val1)&#123;</span><br><span class="line">	foreach ($val1 as $val2)&#123;</span><br><span class="line">		echo $val2.&#39;&lt;br &#x2F;&gt;&#39;;</span><br><span class="line">		&#x2F;&#x2F;var_dump($val2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这样应该就行了。</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">&#x2F;*</span><br><span class="line"> * 总结的案例</span><br><span class="line"> * *&#x2F;</span><br><span class="line">$students&#x3D;array(</span><br><span class="line">	array(&#39;你&#39;,1,true,60.5),</span><br><span class="line">	array(&#39;我&#39;,2,true,80.5),</span><br><span class="line">	array(&#39;他&#39;,3,false,85.5)</span><br><span class="line">);</span><br><span class="line">echo &#39;&lt;table border&#x3D;1&gt;&#39;;</span><br><span class="line">foreach ($students as $val)&#123;</span><br><span class="line">	if($val[2]&#x3D;&#x3D;&#x3D;true)&#123;</span><br><span class="line">		$val[2]&#x3D;&#39;男&#39;;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		$val[2]&#x3D;&#39;女&#39;;</span><br><span class="line">	&#125;</span><br><span class="line">	echo &quot;&lt;tr&gt;&lt;td&gt;&#123;$val[0]&#125;&lt;&#x2F;td&gt;&lt;td&gt;&#123;$val[1]&#125;&lt;&#x2F;td&gt;&lt;td&gt;&#123;$val[2]&#125;&lt;&#x2F;td&gt;&lt;td&gt;&#123;$val[3]&#125;&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">echo &#39;&lt;&#x2F;table&gt;&#39;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>0×04 预定义超全局数组</strong></p>
+<p>已经定义好了（存在）的变量(存放的数据的类型是数组)。<br>    超全局：超级全局变量，作用域（有效区域）！就类似于c语言里头文件包含的函数可以让我们在全局任意位置使用！</p>
+<p>超全局变量一是有全局变量的特性，而是无须声明直接使用。（系统创建及维护）</p>
+<p>预定义超全局变量共有九个：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$_GET</span><br><span class="line">$_POST</span><br><span class="line">$_REQUEST</span><br><span class="line">$_SERVER</span><br><span class="line">$_ENV</span><br><span class="line">$_FILES</span><br><span class="line">$_COOKIE</span><br><span class="line">$_SESSION</span><br><span class="line">$GLOBALS</span><br></pre></td></tr></table></figure>
+<p>①<br>get方式<br>比如<br>        ?参数名=参数值&amp;参数名=参数值……<br>        <a href="http://127.0.0.1/demo5_3/index.php?参数名=参数值" target="_blank" rel="noopener">http://127.0.0.1/demo5_3/index.php?参数名=参数值</a><br>        在服务器端（请求的php文件这边）可以通过$_GET来获取到<br>        $_GET索引值为参数名，索引值对应的数据就是参数值<br>        但是GET的内容会出现在URL框里，所以不是很安全</p>
+<p>②<br>post方式<br>比如<br>表单 post发送过来的！<br>        可以通过$_POST来获取到!</p>
+<p>POST方式和GET方式的区别：</p>
+<p>POST方式安全性好<br>数据传输大小（POST方式大）<br>保存到收藏夹（GET方式）</p>
+<p>③<br>$_REQUEST<br>作用:<br>         $_REQUEST 主要包含包含  $ _GET  、$_POST、  $_COOKIE数组的信息。<br>注意不要经常使用 $ _REQUEST（因为将多个信息混合）。<br>通过$_SERVER[‘REQUEST_METHOD’]区分GET和POST<br>④<br> $ _SERVER主要包含了http请求行和消息头的信息，同时还有服务器的一些信息（DOCUMENT_ROOT，SCRIPT_FILENAME…）。<br>⑤<br>获取服务器端的环境变量，通过修改php.ini的variables_order=”EGPCS”启动。<br>⑥<br>包含了全部变量的全局组合数组。<br>当定义一个全局变量，也会被$GLOBALS管理。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200722120851485.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>11111！！！！！</p>
 
         </div>
         <!-- .entry-content -->
@@ -385,15 +418,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/07/10/%E6%9A%91%E5%81%87%E7%AC%AC%E4%B8%80%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)%20Misc/" rel="prev">
+            <a href="/2020/07/21/%E6%9A%91%E5%81%87%E7%AC%AC%E4%B8%89%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)PHP%E5%AD%A6%E4%B9%A0(%E5%85%AD)--%E6%95%B0%E7%BB%84%E5%9F%BA%E7%A1%80/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(7).jpg.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(7).jpg.webp">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://pics.images.ac.cn/image/5ec7b398888d6.html" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pics.images.ac.cn/image/5ec7b398888d6.html">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                暑假第一周练习(一)</h3>
+                PHP学习(六)--数组基础</h3>
                 <hr>
               </div>
             </a>
@@ -403,15 +436,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2020/05/20/C++%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E8%BD%BD/" rel="next">
+            <a href="/2020/07/17/%E6%9A%91%E5%81%87%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%BA%8C)web%E5%AD%A6%E4%B9%A0(%E4%B8%80)/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://pics.images.ac.cn/image/5ece063c787c7.html" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pics.images.ac.cn/image/5ece063c787c7.html">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://pics.images.ac.cn/image/5ec7b373ef137.html" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pics.images.ac.cn/image/5ec7b373ef137.html">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                C++复习--函数的模板和重载</h3>
+                暑假第二周练习(二)web学习(一)</h3>
                 <hr>
               </div>
             </a>

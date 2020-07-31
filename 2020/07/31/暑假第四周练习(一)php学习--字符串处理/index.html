@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">鸡汤 | 奇点的小屋！</title>
+  <title itemprop="name">暑假第四周练习(一)php学习--字符串处理(一) | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -298,11 +298,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://ae01.alicdn.com/kf/H3343d675d24a4340b9c1360c4cf861422.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ae01.alicdn.com/kf/H3343d675d24a4340b9c1360c4cf861422.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://pics.images.ac.cn/image/5eba90da21485.html);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://pics.images.ac.cn/image/5eba90da21485.html">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      鸡汤</h1>
+      暑假第四周练习(一)php学习--字符串处理(一)</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -314,7 +314,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-6-3<span class="bull">
+        2020-7-31<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -328,32 +328,131 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>﻿## 星辰和大海都需要门票，诗和远方的路费也都很贵。 </p>
-<p><img src="https://img-blog.csdnimg.cn/2020060316583458.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>星辰大海需要门票，</p>
-<p>诗和远方路费很贵。</p>
-<p>就像我们不努力的话，</p>
-<p>情怀都养不起。</p>
-<p>大海星辰皆不得，</p>
-<p>梦想远方不可及。</p>
-<p>人生有时候很苦逼，</p>
-<p>如果不努力，</p>
-<p>你拥有的一切，</p>
-<p>都有可能失去；</p>
-<p>即使努力了，</p>
-<p>也会有很多东西得不到。</p>
-<p>世间万物皆有属，</p>
-<p>有付出才有可能收获。</p>
-<p>世界上所有的美好都是给配得上的人，</p>
-<p>所有的东西，都是很贵，</p>
-<p>所以，我们有的时候只能努力。</p>
-<p>因为所谓的大海星辰，</p>
-<p>都是要靠我们自己来得到。</p>
-<p>诗和远方都是我们所追求的，</p>
-<p>但是，所谓的追求，只不过是我们的努力罢了。</p>
-<p>我们总要追求我们的未来，</p>
-<p>所以，我们现在一定要努力，</p>
-<p>尽力配得上我们的情怀。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200603165908493.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+          <p>﻿ ####  由于处理字符串的函数比较多，在这里只讲一部分！</p>
+<p>目录：<br>        <strong>0×01 去除空白或其他字符函数</strong><br>        <strong>0×02 大小写转换函数</strong><br>        <strong>0×03 字符串替换函数</strong><br>        <strong>0×04 字符串查找函数</strong><br>       <strong>0×05 与html标签相关的函数</strong></p>
+<p>​      </p>
+<p><strong>0×01 去除空白或其他字符函数</strong></p>
+<p>trim()函数是PHP中的一个内置函数，可以用于删除字符串左右两边的空格以及预定义字符。</p>
+<p>用法：</p>
+<blockquote>
+<p>trim($string, $charlist)</p>
+</blockquote>
+<p>trim() 函数接受一个必需参数和一个可选参数</p>
+<p>$string是必须参数，不可省略；  $charlist参数为可选参数，可以省略不写，如果省略了，则会删除以下字符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;\0&quot; - NULL</span><br><span class="line">&quot;\t&quot; - 制表符</span><br><span class="line">&quot;\n&quot; - 换行</span><br><span class="line">&quot;\x0B&quot; - 垂直制表符</span><br><span class="line">&quot;\r&quot; - 回车</span><br><span class="line">&quot; &quot; - 空格</span><br></pre></td></tr></table></figure>
+<p>实列：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$str &#x3D; &quot;Hello World!&quot;;</span><br><span class="line"></span><br><span class="line">echo trim($str, &quot;Hell!&quot;);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<blockquote>
+<p>o World</p>
+</blockquote>
+<p>与其相关的函数：</p>
+<p>ltrim()函数：移除字符串左侧的空白字符或其他预定义字符。</p>
+<p>rtrim()函数：除字符串右侧的空白字符或其他预定义字符。</p>
+<p> <strong>0×02 大小写转换函数</strong></p>
+<p>strtolower() //将字符串转换为小写形式。<br>strtoupper() //将字符串转换为大写形式。</p>
+<p>看起来还挺像。</p>
+<p>①strtolower(): 该函数将传入的字符串参数所有的字符都转换成小写</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  $str &#x3D; &quot;I want To FLY&quot;;</span><br><span class="line">  $str &#x3D; strtolower($str);</span><br><span class="line">  echo $str;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i want to fly</span><br></pre></td></tr></table></figure>
+
+
+<p>②strtoupper(): 该函数的作用同strtolower函数相反,是将传入的字符参数的字符全部转换成大写。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  $str &#x3D; &quot;i want to fly&quot;;</span><br><span class="line">  $str &#x3D; strtolower($str);</span><br><span class="line">  echo $str;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I want To FLY</span><br></pre></td></tr></table></figure>
+
+<p>③将字符串首字符转换成大写<br>ucfirst(): 该函数的作用是将字符串的第一个字符改成大写,该函数返回首字符大写的字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$str &#x3D; &#39;hello world!&#39;;</span><br><span class="line">$str&#x3D; ucwords($foo); &#x2F;&#x2F; Hello World!</span><br></pre></td></tr></table></figure>
+<p>④将字符串每个单词的首字符转换成大写</p>
+<p>ucwords(): 该函数将传入的字符串的每个单词的首字符变成大写.如”hello world”,经过该函数处理后,将返回”Hello Word”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$str &#x3D; &#39;hello world!&#39;;</span><br><span class="line">$str &#x3D; ucfirst($foo); &#x2F;&#x2F; Hello world!</span><br></pre></td></tr></table></figure>
+
+<p><strong>0×03 字符串替换函数</strong></p>
+<p>定义：<br>str_replace() 函数以其他字符替换字符串中的一些字符（区分大小写）。<br>            str_ireplace() 函数执行不区分大小写的搜索。</p>
+<p>语法：</p>
+<blockquote>
+<p>str_replace(find,replace,string,count)</p>
+</blockquote>
+<p>find    必需。规定要查找的值。<br>replace    必需。规定替换 find 中的值的值。<br>string    必需。规定被搜索的字符串。<br>count    可选。对替换数进行计数的变量。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo str_replace(&quot;world&quot;,&quot;Shanghai&quot;,&quot;Hello world!&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>Hello world!就变成了Hello Shanghai！</p>
+<p>示例2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$find &#x3D; array(&quot;Hello&quot;,&quot;world&quot;);</span><br><span class="line">$replace &#x3D; array(&quot;B&quot;);</span><br><span class="line">$arr &#x3D; array(&quot;Hello&quot;,&quot;world&quot;,&quot;!&quot;);</span><br><span class="line">print_r(str_replace($find,$replace,$arr));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>字符串被替换成了B</p>
+<blockquote>
+<p>Array ( [0] =&gt; B [1] =&gt; [2] =&gt; ! )</p>
+</blockquote>
+<p><strong>0×04 字符串查找函数</strong></p>
+<p>①substr_count函数<br>substr_count() 函数计算子串在字符串中出现的次数(区分大小写)。</p>
+<p>语法：</p>
+<blockquote>
+<p>substr_count(string,substring,start,length)</p>
+</blockquote>
+<p>string    必需。规定被检查的字符串。<br>substring    必需。规定要搜索的字符串。<br>start    可选。规定在字符串中何处开始搜索。<br>length    可选。规定搜索的长度。</p>
+<p>示例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$str &#x3D; &quot;This is nice&quot;;</span><br><span class="line">echo strlen($str).&quot;&lt;br&gt;&quot;; &#x2F;&#x2F; 使用 strlen() 来返回字符串长度</span><br><span class="line">echo substr_count($str,&quot;is&quot;).&quot;&lt;br&gt;&quot;; &#x2F;&#x2F; 字符串中 &quot;is&quot; 出现的次数</span><br><span class="line">echo substr_count($str,&quot;is&quot;,2).&quot;&lt;br&gt;&quot;; &#x2F;&#x2F; 字符串缩减为 &quot;is is nice&quot;</span><br><span class="line">echo substr_count($str,&quot;is&quot;,3).&quot;&lt;br&gt;&quot;; &#x2F;&#x2F; 字符串缩减为 &quot;s is nice&quot;</span><br><span class="line">echo substr_count($str,&quot;is&quot;,3,3).&quot;&lt;br&gt;&quot;; &#x2F;&#x2F; 字符串缩减为 &quot;s i&quot;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">12</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+<p>示例2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$str &#x3D; &quot;abcabcab&quot;;</span><br><span class="line">echo substr_count($str,&quot;abcab&quot;); </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p> 这个函数不会对重叠的子字符串计数</p>
+<p>②strpos() 函数<br>定义：<br>strpos() 函数查找字符串在另一字符串中第一次出现的位置。<br>语法：</p>
+<blockquote>
+<p>strpos(string,find,start)</p>
+</blockquote>
+<p>string    必需。规定要搜索的字符串。<br>find    必需。规定要查找的字符串。<br>start    可选。规定在何处开始搜索。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$str&#x3D;&#39;testteste&#39;;</span><br><span class="line">		var_dump(strpos($str, &#39;t1&#39;));</span><br><span class="line">		if(strpos($str, &#39;t&#39;)&#x3D;&#x3D;&#x3D;false)&#123;</span><br><span class="line">			echo &#39;没找到！&#39;;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			echo &#39;找到啦!&#39;;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		$str&#x3D;&#39;testteste&#39;;</span><br><span class="line">		var_dump(strpos($str, &#39;t&#39;,1));</span><br></pre></td></tr></table></figure>
+
+<p>③strstr函数<br>定义：<br>strstr() 函数搜索字符串在另一字符串中的第一次出现。<br>语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strstr(string,search,before_search)</span><br></pre></td></tr></table></figure>
+
+
+<p>string    必需。规定被搜索的字符串。</p>
+<p>search    必需。规定所搜索的字符串。如果此参数是数字，则搜索匹配此数字对应的 ASCII 值的字符。</p>
+<p>before_search    可选。默认值为 “false” 的布尔值。<br>如果设置为 “true”，它将返回 search 参数第一次出现之前的字符串部分。</p>
+<p>示例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo strstr(&quot;Hello world!&quot;,111);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>111ASCII码表对应 o ,搜索  o  并且返回字符串的剩余部分：</p>
+<p>示例2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo strstr(&quot;Hello world!&quot;,&quot;world&quot;,true);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>返回world之前的字符。Hello   !</p>
+<p><strong>0×05 字符串截取函数</strong></p>
+<p>定义：<br>substr() 函数返回字符串的一部分。<br>语法：</p>
+<blockquote>
+<p>substr(string,start,length)</p>
+</blockquote>
+<p>注意：如果 start 参数是负数且 length 小于或等于 start，则 length 为 0。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">string	必需。规定要返回其中一部分的字符串。</span><br><span class="line">start	 必需。规定在字符串的何处开始。</span><br><span class="line"></span><br><span class="line">正数 - 在字符串的指定位置开始</span><br><span class="line">负数 - 在从字符串结尾开始的指定位置开始</span><br><span class="line">0 - 在字符串中的第一个字符处开始</span><br><span class="line">length	可选。规定被返回字符串的长度。默认是直到字符串的结尾。</span><br><span class="line"></span><br><span class="line">正数 - 从 start 参数所在的位置返回的长度</span><br><span class="line">负数 - 从字符串末端返回的长度</span><br></pre></td></tr></table></figure>
+<p>示例1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo substr(&quot;Hello world&quot;,10).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,1).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,3).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,7).&quot;&lt;br&gt;&quot;;</span><br><span class="line"></span><br><span class="line">echo substr(&quot;Hello world&quot;,-1).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,-10).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,-8).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,-4).&quot;&lt;br&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">d</span><br><span class="line">ello world</span><br><span class="line">lo world</span><br><span class="line">orld</span><br><span class="line">d</span><br><span class="line">ello world</span><br><span class="line">lo world</span><br><span class="line">orld</span><br></pre></td></tr></table></figure>
+
+
+<p>示例2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo substr(&quot;Hello world&quot;,0,10).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,1,8).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,0,5).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,6,6).&quot;&lt;br&gt;&quot;;</span><br><span class="line"></span><br><span class="line">echo substr(&quot;Hello world&quot;,0,-1).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,-10,-2).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,0,-6).&quot;&lt;br&gt;&quot;;</span><br><span class="line">echo substr(&quot;Hello world&quot;,-2-3).&quot;&lt;br&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Hello worl</span><br><span class="line">ello wor</span><br><span class="line">Hello</span><br><span class="line">world</span><br><span class="line">Hello worl</span><br><span class="line">ello wor</span><br><span class="line">Hello</span><br><span class="line">world</span><br></pre></td></tr></table></figure>
+
+<p>0×06 字符串分割函数</p>
+<p>explode() 函数</p>
+<p>定义：<br>explode() 函数把字符串打散为数组。</p>
+<p>语法：</p>
+<blockquote>
+<p>explode(separator,string,limit)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">separator	必需。规定在哪里分割字符串。</span><br><span class="line">string	必需。要分割的字符串。</span><br><span class="line">limit	可选。规定所返回的数组元素的数目。</span><br><span class="line"></span><br><span class="line">可能的值：</span><br><span class="line"></span><br><span class="line">大于 0 - 返回包含最多 limit 个元素的数组</span><br><span class="line">小于 0 - 返回包含除了最后的 -limit 个元素以外的所有元素的数组</span><br><span class="line">0 - 返回包含一个元素的数组</span><br></pre></td></tr></table></figure>
+
 
         </div>
         <!-- .entry-content -->
@@ -382,36 +481,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/07/10/%E6%9A%91%E5%81%87%E7%AC%AC%E4%B8%80%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)%20Misc/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(7).jpg.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(7).jpg.webp">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                暑假第一周练习(一)</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/05/20/C++%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E8%BD%BD/" rel="next">
+            <a href="/2020/07/25/%E6%9A%91%E5%81%87%E7%AC%AC%E4%B8%89%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%BA%8C)Crypto%20%E7%BB%83%E4%B9%A0(%E4%B8%80)/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://pics.images.ac.cn/image/5ece063c787c7.html" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pics.images.ac.cn/image/5ece063c787c7.html">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://pics.images.ac.cn/image/5ec7b364b1572.html" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://pics.images.ac.cn/image/5ec7b364b1572.html">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                C++复习--函数的模板和重载</h3>
+                暑假第三周练习(二)Crypto练习(一)</h3>
                 <hr>
               </div>
             </a>

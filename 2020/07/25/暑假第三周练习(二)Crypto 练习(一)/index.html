@@ -328,35 +328,34 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>﻿肝！</p>
+          <p>肝！</p>
 <p>题目来源：BUUCTF</p>
-<p>目录：</p>
-<p>0×01 MD5<br>0×02 url编码<br>0×03 看我回旋踢<br>0×04 一眼就解密<br>0×05 摩丝<br>0×06 [BJDCTF 2nd]签到<br>0×07 password<br>0×08 变异凯撒</p>
-<p>0×01 MD5</p>
+<p><strong>目录：<br>0×01 MD5<br>0×02 url编码<br>0×03 看我回旋踢<br>0×04 一眼就解密<br>0×05 摩丝<br>0×06 [BJDCTF 2nd]签到<br>0×07 password<br>0×08 变异凯撒<br>0×09 Quoted-printable<br>0×10 Rabbit<br>0×11 篱笆墙的影子<br>0×12 RSA</strong></p>
+<p><strong>0×01 MD5</strong></p>
 <p>下载附件，打开是一串字符<code>e00cf25ad42683b3df678c61f42c6bda</code>，根据题目提示MD5提示，可以猜是MD5函数加密。</p>
 <p><img src="https://img-blog.csdnimg.cn/20200724120245629.png" alt="在这里插入图片描述"><br>提交的时候加上flag就是答案。</p>
-<p>0×02 url编码</p>
+<p><strong>0×02 url编码</strong></p>
 <p>下载附件得到一串符号<code>%66%6c%61%67%7b%61%6e%64%20%31%3d%31%7d</code>,一看是URL加密，打开火狐浏览器，里面有url加密解密。</p>
 <p><img src="https://img-blog.csdnimg.cn/20200724120728894.png" alt="在这里插入图片描述"><br>这样会得到flag。</p>
-<p>0×03 看我回旋踢</p>
+<p><strong>0×03 看我回旋踢</strong></p>
 <p>下载附件仍是遗传字符<code>synt{5pq1004q-86n5-46q8-o720-oro5on0417r1}</code>，觉得应该是凯撒密码但是偏移量不知道，只能一个一个试，到偏移量为13时就找到了flag。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200724121659374.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>0×04 一眼就解密</p>
+<p><img src="https://img-blog.csdnimg.cn/20200724121659374.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>0×04 一眼就解密</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20200724121827436.png" alt="在这里插入图片描述"><br>既有大写又有小写，还有=，看一眼就知道是base64。果然是一眼就解密！</p>
-<p><img src="https://img-blog.csdnimg.cn/20200724121938445.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>0×05 摩丝</p>
+<p><img src="https://img-blog.csdnimg.cn/20200724121938445.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>0×05 摩丝</strong></p>
 <p>拿到附件一脸懵逼，看了内容，笑了<code>.. .-.. --- ...- . -.-- --- ..-</code>，摩斯密码。<br>flag{ILOVEYOU}</p>
 <p>0×06 [BJDCTF 2nd]签到</p>
 <p><img src="https://img-blog.csdnimg.cn/20200724122739230.png" alt=""><br>下面是base64，上面的数字没搞懂，然后直接解密，就得到flag。上面的数字没有用。</p>
-<p>0×07 password</p>
+<p><strong>0×07 password</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20200725105411696.png" alt="在这里插入图片描述"><br>弱口令猜测：zs19900315</p>
-<p>0×08 变异凯撒</p>
+<p><strong>0×08 变异凯撒</strong></p>
 <p><img src="https://img-blog.csdnimg.cn/20200725105904392.png" alt="在这里插入图片描述"><br>因为有下划线就不能是字母的变换了，可能是ascll码表。<br>由<strong>afZ_   ===&gt;&gt;&gt;  flag</strong><br><img src="https://img-blog.csdnimg.cn/20200725110218837.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>偏移量就是n+4,从而就能得到flag。</p>
-<p>0×09 Quoted-printable</p>
-<p> Quoted-printable是一种编码方式，文件内容<code>=E9=82=A3=E4=BD=A0=E4=B9=9F=E5=BE=88=E6=A3=92=E5=93=A6</code><br> 找个解密网站就行了，字符格式utf8编码。<br><img src="https://img-blog.csdnimg.cn/20200725110736360.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>0×10 Rabbit</p>
+<p><strong>0×09 Quoted-printable</strong></p>
+<p> Quoted-printable是一种编码方式，文件内容<code>=E9=82=A3=E4=BD=A0=E4=B9=9F=E5=BE=88=E6=A3=92=E5=93=A6</code><br> 找个解密网站就行了，字符格式utf8编码。<br><img src="https://img-blog.csdnimg.cn/20200725110736360.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><strong>0×10 Rabbit</strong></p>
 <p>  也是一种编码方式，网上找在线解密。<br><img src="https://img-blog.csdnimg.cn/20200725111349300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>flag到手。</p>
-<p>0×11 篱笆墙的影子</p>
+<p><strong>0×11 篱笆墙的影子</strong></p>
 <p>栅栏密码？</p>
 <p><img src="https://img-blog.csdnimg.cn/20200725111849118.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>试了好大一会，才得到flag，笨方法。</p>
-<p>0×12 RSA</p>
+<p><strong>0×12 RSA</strong></p>
 <p>以前就听说过RSA，这也是第一次见。</p>
 <p><img src="https://img-blog.csdnimg.cn/20200725113301522.png" alt="在这里插入图片描述"><br>这就需要用的我们的神器 RSA-Tool 2 </p>
 <p>e在十进制17，工具里十六进制为11。<br><img src="https://img-blog.csdnimg.cn/202007251144451.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>得到的数，加上noxCTF{}，应该就是答案，但是提交了还是不对。</p>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">奇点的小屋！</title>
+  <title itemprop="name">暑假第五周练习(二)php学习--正则表达式 | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -292,456 +292,176 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzNZV.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      暑假第五周练习(二)php学习--正则表达式</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href=""></a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-8-5<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">Network security only</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>Sakura</h3>
-          <p>本站 hexo 主题</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="http://space.bilibili.com/271849279" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站视频</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>奇点的万事屋</h3>
-          <p>技术服务</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>@<a href="目录">TOC</a></p>
+<h3 id="0×00-正则表达式语法规则"><a href="#0×00-正则表达式语法规则" class="headerlink" title="0×00 正则表达式语法规则"></a>0×00 正则表达式语法规则</h3><p>定义：正则表达式描述了一类字符串的特征，通过这个特征与特定的函数配合，对其它的字符串进行匹配、查找、替换及分割操作！ 这类字符串的特征是由一个或多个。</p>
+<h3 id="0×01-定界符"><a href="#0×01-定界符" class="headerlink" title="0×01 定界符"></a>0×01 定界符</h3><p>我们一般习惯使用正斜线”/“作为定界的字符<br>     当然除了字母、数字、和反斜线以外的字符都可以作为定界符，比如<br>     #<br>     !<br>     {}<br>     |<br>     都是可以的！<br>     定界符放在正则表达式的起始位置，前后一致！</p>
+<h3 id="0×02-普通字符"><a href="#0×02-普通字符" class="headerlink" title="0×02 普通字符"></a>0×02 普通字符</h3><p>字符串的一些字符，比如：a-z、A-Z、0-9、双引号、单引号，它们没有特殊的含义。</p>
+<h3 id="0×03-元字符"><a href="#0×03-元字符" class="headerlink" title="0×03 元字符"></a>0×03 元字符</h3><p>记住一些常用的就行了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">   \d	匹配任意一个十进制数字，等价于[0-9]</span><br><span class="line">\D	匹配任意一个除十进制数字以外字符,等价于[^0-9]</span><br><span class="line">\s	匹配任意一个空白字符,比如换页符、换行符、回车符、制表符、垂直制表符</span><br><span class="line">\S	匹配除空白字符以外的任何一个字符</span><br><span class="line">\w	匹配任意一个数字或字母或下划线</span><br><span class="line">\W	匹配除数字、字母、下划线以外的任意一个字符</span><br><span class="line">.	匹配除换行符以外的任意一个字符</span><br><span class="line"></span><br><span class="line">*	匹配0次、或1次、或多次其前面的字符</span><br><span class="line">+	匹配1次或多次其前面的字符</span><br><span class="line">?	匹配0次或1次其前面的字符</span><br><span class="line">&#123;n&#125;	表示其前面字符恰好出现n次</span><br><span class="line">&#123;n,&#125;	表示其前面字符出现不少于n次</span><br><span class="line">&#123;n,m&#125;	表示其前面的字符至少出现n次，最多出现m次</span><br><span class="line"></span><br><span class="line">^或\A	匹配字符串开始位置</span><br><span class="line">$或者\Z	匹配字符串的结束位置</span><br><span class="line"></span><br><span class="line">|	匹配两个或多个模式</span><br><span class="line"></span><br><span class="line">[]	匹配方括号中的任意一个字符</span><br><span class="line">[^]	匹配除方括号中字符以外的任意一个字符</span><br><span class="line">()	将括号中作为一个整体以便将其中的内容获取到</span><br><span class="line">	在我们的正则表达式中 可以使用圆括号来将某一段括起来，在圆括号的后面部分，我们可以使用</span><br><span class="line">\\  数字 来代表圆括号部分所匹配到的内容！</span><br></pre></td></tr></table></figure>
+<p>如果要匹配<code>.</code>我们可以使用<code>\</code>来转义。</p>
+<h3 id="0×04-模式修正符"><a href="#0×04-模式修正符" class="headerlink" title="0×04 模式修正符"></a>0×04 模式修正符</h3><p>常见模式修正符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">i	在和模式进行匹配时不区分大小写</span><br><span class="line">m	多行匹配，如果目标字符串 中没有&quot;\n&quot;字符, 或者模式中没有出现^或$, 设置这个修饰符不产生任何影响</span><br><span class="line">s	如果设定了此修正符，那么.将匹配所有的字符包括换行符</span><br><span class="line">U	禁止贪婪匹配</span><br><span class="line">e(已经被弃用)</span><br></pre></td></tr></table></figure>
+
+<h3 id="0×05-与正则表达式配合的函数"><a href="#0×05-与正则表达式配合的函数" class="headerlink" title="0×05 与正则表达式配合的函数"></a>0×05 与正则表达式配合的函数</h3><p>主要有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.preg_match()</span><br><span class="line">2.preg_match_all()</span><br><span class="line">3.preg_replace()</span><br></pre></td></tr></table></figure>
+<p>①1.preg_match()</p>
+<pre><code>preg_match — 执行匹配正则表达式</code></pre><p>语法：<br>int preg_match ( string $pattern , string $ subject [, array &amp;$matches [, int $flags = 0 [, int $offset = 0 ]]] )</p>
+<p>各参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$pattern: 要搜索的模式，字符串形式。</span><br><span class="line"></span><br><span class="line">$subject: 输入字符串。</span><br><span class="line"></span><br><span class="line">$matches: 如果提供了参数matches，它将被填充为搜索结果。 $matches[0]将包含完整模式匹配到的文本， $matches[1] 将包含第一个捕获子组匹配到的文本，以此类推。</span><br><span class="line"></span><br><span class="line">$flags：flags 可以被设置为以下标记值：</span><br><span class="line"></span><br><span class="line">PREG_OFFSET_CAPTURE: 如果传递了这个标记，对于每一个出现的匹配返回时会附加字符串偏移量(相对于目标字符串的)。 注意：这会改变填充到matches参数的数组，使其每个元素成为一个由 第0个元素是匹配到的字符串，第1个元素是该匹配字符串 在目标字符串subject中的偏移量。</span><br><span class="line"></span><br><span class="line">offset: 通常，搜索从目标字符串的开始位置开始。可选参数 offset 用于 指定从目标字符串的某个未知开始搜索(单位是字节)。</span><br></pre></td></tr></table></figure>
+
+<p>②preg_match_all()</p>
+<pre><code>preg_match_all 函数用于执行一个全局正则表达式匹配。</code></pre><p>语法：<br>int preg_match_all ( string $pattern , string $subject [, array &amp;$matches [, int $flags = PREG_PATTERN_ORDER [, int $offset = 0 ]]] )</p>
+<p>两者区别：返回 pattern 的匹配次数。 它的值将是 0 次（不匹配）或 1 次，因为 preg_match() 在第一次匹配后 将会停止搜索。preg_match_all() 不同于此，它会一直搜索subject 直到到达结尾。 如果发生错误preg_match()返回 FALSE。</p>
+<p>③preg_replace()</p>
+<blockquote>
+<p>preg_replace 函数执行一个正则表达式的搜索和替换。</p>
+</blockquote>
+<p>语法：</p>
+<blockquote>
+<p>mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int $limit = -1 [, int &amp;$count ]] )</p>
+</blockquote>
+<p>搜索 string 中字符串并且匹配 pattern 的部分， 以 replacement 进行替换。</p>
+<p>参数释义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">参数说明：</span><br><span class="line"></span><br><span class="line">$pattern: 要搜索的模式，可以是字符串或一个字符串数组。</span><br><span class="line"></span><br><span class="line">$replacement: 用于替换的字符串或字符串数组。</span><br><span class="line"></span><br><span class="line">$string: 要搜索替换的目标字符串或字符串数组。</span><br><span class="line"></span><br><span class="line">$limit: 可选，对于每个模式用于每个 subject 字符串的最大可替换次数。 默认是-1（无限制）。</span><br><span class="line"></span><br><span class="line">$count: 可选，为替换执行的次数。</span><br></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$string &#x3D; &#39;google 123, 456&#39;;</span><br><span class="line">$pattern &#x3D; &#39;&#x2F;(\w+) (\d+), (\d+)&#x2F;i&#39;;</span><br><span class="line">$replacement &#x3D; &#39;runoob $&#123;2&#125;,$3&#39;;</span><br><span class="line">echo preg_replace($pattern, $replacement, $string);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runoob 123,456</span><br></pre></td></tr></table></figure>
+<p>如果 string 是一个数组， preg_replace() 返回一个数组， 其他情况下返回一个字符串。<br>如果匹配被查找到，替换后的 subject 被返回，其他情况下 返回没有改变的 subject。如果发生错误，返回 NULL。</p>
+<p>正则表达式的初次见面结束了！！！</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="< /images/donate/AliPayQR.jpg>"></li>
+              <li class="wechat-code"><img src="</images/donate/WeChanQR.jpg>"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/08/05/%E6%9A%91%E5%81%87%E7%AC%AC%E4%BA%94%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)Crypto%E7%BB%83%E4%B9%A0/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                暑假第五周练习(一)Cypto练习</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/08/01/%E6%9A%91%E5%81%87%E7%AC%AC%E5%9B%9B%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%BA%8C)web%E7%BB%83%E4%B9%A0/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzYq0.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzYq0.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                暑假第四周练习(二)web练习</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2020/04/08/kail%E5%81%9ACTF%E6%9D%82%E9%A1%B9%E9%A2%98%E7%9A%84%E5%B7%A5%E5%85%B7%E5%AE%89%E5%88%A9%E4%B8%80%E6%B3%A2%EF%BC%81/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(2).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-8 15:04</div>
-      <a href="/2020/04/08/kail%E5%81%9ACTF%E6%9D%82%E9%A1%B9%E9%A2%98%E7%9A%84%E5%B7%A5%E5%85%B7%E5%AE%89%E5%88%A9%E4%B8%80%E6%B3%A2%EF%BC%81/" class="post-title">
-        <h3>kail做CTF杂项题的工具安利一波！</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/kail/">kail<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/08/kail%E5%81%9ACTF%E6%9D%82%E9%A1%B9%E9%A2%98%E7%9A%84%E5%B7%A5%E5%85%B7%E5%AE%89%E5%88%A9%E4%B8%80%E6%B3%A2%EF%BC%81/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/08/zip%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93%EF%BC%81/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(4).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-8 15:04</div>
-      <a href="/2020/04/08/zip%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93%EF%BC%81/" class="post-title">
-        <h3>zip知识点的部分总结！</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/zip%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/">zip知识学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/08/zip%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93%EF%BC%81/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/08/%E6%90%AD%E5%BB%BADVWA%20web%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(3).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-8 15:04</div>
-      <a href="/2020/04/08/%E6%90%AD%E5%BB%BADVWA%20web%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/" class="post-title">
-        <h3>搭建DVWA web渗透靶场</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E9%9D%B6%E5%9C%BA/">靶场<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/08/%E6%90%AD%E5%BB%BADVWA%20web%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/07/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%95%B4%E6%95%B0%E6%B3%A8%E5%85%A5/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(2).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-7 15:04</div>
-      <a href="/2020/04/07/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%95%B4%E6%95%B0%E6%B3%A8%E5%85%A5/" class="post-title">
-        <h3>SQL注入--整数注入</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/07/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%95%B4%E6%95%B0%E6%B3%A8%E5%85%A5/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/06/%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%BF%98%E6%98%AF%E6%95%B4%E5%BD%A2%EF%BC%81%EF%BC%81%EF%BC%81/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(8).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-6 15:04</div>
-      <a href="/2020/04/06/%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%BF%98%E6%98%AF%E6%95%B4%E5%BD%A2%EF%BC%81%EF%BC%81%EF%BC%81/" class="post-title">
-        <h3>判断注入类型</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/06/%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%BF%98%E6%98%AF%E6%95%B4%E5%BD%A2%EF%BC%81%EF%BC%81%EF%BC%81/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/03/php%E5%AD%A6%E4%B9%A0--%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%8F%98%E9%87%8F%EF%BC%88%E4%B8%80%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-3 15:04</div>
-      <a href="/2020/04/03/php%E5%AD%A6%E4%B9%A0--%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%8F%98%E9%87%8F%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title">
-        <h3>php学习--基础知识及变量（一）</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/php%E5%AD%A6%E4%B9%A0/">php学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/03/php%E5%AD%A6%E4%B9%A0--%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%8F%98%E9%87%8F%EF%BC%88%E4%B8%80%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/03/05/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-3-5 15:03</div>
-      <a href="/2020/03/05/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/" class="post-title">
-        <h3>SQL注入--布尔盲注</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/03/05/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/03/03/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%EF%BC%88%E5%AF%B9%E4%BA%8E%E9%82%A3%E4%BA%9B%E5%9B%A0%E4%B8%BA%E7%89%88%E6%9D%83%E5%8E%9F%E5%9B%A0%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%E7%9A%84%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(1).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-3-3 15:03</div>
-      <a href="/2020/03/03/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%EF%BC%88%E5%AF%B9%E4%BA%8E%E9%82%A3%E4%BA%9B%E5%9B%A0%E4%B8%BA%E7%89%88%E6%9D%83%E5%8E%9F%E5%9B%A0%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%E7%9A%84%EF%BC%89/" class="post-title">
-        <h3>博客美化</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E5%85%B6%E4%BB%96/">其他<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/03/03/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%EF%BC%88%E5%AF%B9%E4%BA%8E%E9%82%A3%E4%BA%9B%E5%9B%A0%E4%B8%BA%E7%89%88%E6%9D%83%E5%8E%9F%E5%9B%A0%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%E7%9A%84%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/03/03/%E7%94%A8sql%20libs%20%E7%BB%83%E4%B9%A0sql%E6%B3%A8%E5%85%A5%EF%BC%88%E2%80%94%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(7).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-3-3 15:03</div>
-      <a href="/2020/03/03/%E7%94%A8sql%20libs%20%E7%BB%83%E4%B9%A0sql%E6%B3%A8%E5%85%A5%EF%BC%88%E2%80%94%EF%BC%89/" class="post-title">
-        <h3>sql注入练习</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/03/03/%E7%94%A8sql%20libs%20%E7%BB%83%E4%B9%A0sql%E6%B3%A8%E5%85%A5%EF%BC%88%E2%80%94%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!-- 
-      <nav class="navigator">
-        
-        <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next</a>
-      </nav>
-     -->
-  </div>
-  
-    <div id="pagination"><a href="/page/4/" class="">Previous</a></div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

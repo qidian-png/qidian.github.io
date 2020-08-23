@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">奇点的小屋！</title>
+  <title itemprop="name">暑假第五周练习(一)Cypto练习 | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -292,456 +292,172 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzwiF.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      暑假第五周练习(一)Cypto练习</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href=""></a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-8-5<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">Network security only</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>Sakura</h3>
-          <p>本站 hexo 主题</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="http://space.bilibili.com/271849279" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站视频</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>奇点的万事屋</h3>
-          <p>技术服务</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>﻿题目来源<code>https://buuoj.cn/challenges</code></p>
+<p><strong>目录：</strong></p>
+<p><strong>0×00 丢失的MD5<br>0×01 老文盲<br>0×02 Alice与Bob<br>0×03 大帝的密码武器<br>0×04 Windows系统密码<br>0×05 cat_flag<br>0×06 传统知识+古典密码</strong></p>
+<p><strong>0×00 丢失的MD5</strong></p>
+<p>附件是一段python代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">for i in range(32,127):</span><br><span class="line">    for j in range(32,127):</span><br><span class="line">        for k in range(32,127):</span><br><span class="line">            m&#x3D;hashlib.md5()</span><br><span class="line">            m.update(&#39;TASC&#39;.encode(&#39;utf-8&#39;)+chr(i).encode(&#39;utf-8&#39;)+&#39;O3RJMV&#39;.encode(&#39;utf-8&#39;)+chr(j).encode(&#39;utf-8&#39;)+&#39;WDJKX&#39;.encode(&#39;utf-8&#39;)+chr(k).encode(&#39;utf-8&#39;)+&#39;ZM&#39;.encode(&#39;utf-8&#39;))</span><br><span class="line">            des&#x3D;m.hexdigest()</span><br><span class="line">            if &#39;e9032&#39; in des and &#39;da&#39; in des and &#39;911513&#39; in des:</span><br><span class="line">                print (des)</span><br></pre></td></tr></table></figure>
+<p>放进pycharm,运行不了，直接复制到了python3的IDLE运行得到一串数字。<br><img src="https://img-blog.csdnimg.cn/20200802113816451.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>提交得到flag。</p>
+<p><strong>0×01 老文盲</strong></p>
+<p>拿到题目是txt文件<br><img src="https://img-blog.csdnimg.cn/20200802114913347.png" alt="在这里插入图片描述"><br>看了那么复杂，就想到了新约佛论禅那个加密，试了一下更麻烦了。就换种方法，在线汉语拼音转换<br><img src="https://img-blog.csdnimg.cn/20200802115412909.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>bjd{这就是flag直接交了吧}，丧心病狂的出题人，这样还不对。<br>经过多次尝试flag{淛匶襫黼瀬鎶軄鶛驕鳓哵}，这样才对。</p>
+<p><strong>0×02 Alice与Bob</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200802120916913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>第一步先将98554799767分为两个素数，<a href="http://www.factordb.com/index.php" target="_blank" rel="noopener">点这</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20200802121057383.png" alt="在这里插入图片描述"><br>小的在前，大的在后，进行MD5加密<br><img src="https://img-blog.csdnimg.cn/20200802121159113.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>找到符合要求的，就是flag</p>
+<p><strong>0×03 大帝的密码武器</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200802165525619.png" alt="在这里插入图片描述"><br>凯撒密码，一个一个试。。。。<br><img src="https://img-blog.csdnimg.cn/20200802165612944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>安全这个词应该很有意义吧！而且凯撒密码偏移量为13 这不是我第一次见了。</p>
+<p>得到了偏移量为13</p>
+<p><img src="https://img-blog.csdnimg.cn/20200802165816911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="
+"><br>得到flag。</p>
+<p><strong>0×04 Windows系统密码</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200804180156106.png" alt="在这里插入图片描述"><br>看着毫无思路，就从ctf那一行，试着对一串符号进行MD5解密，一个一个试吧</p>
+<p><img src="https://img-blog.csdnimg.cn/20200804180421582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这个应该就是flag，交一下就🆗了。</p>
+<p><strong>0×05 cat_flag</strong><br><img src="https://img-blog.csdnimg.cn/20200804183813832.gif" alt="在这里插入图片描述"><br>你能想到什么？？？</p>
+<p>只有两种猫，意味0，1</p>
+<p>那么图片就变成了<br>01000010<br>01001010<br>01000100<br>01111011<br>01001101<br>00100001<br>01100001<br>00110000<br>01111110<br>01111101</p>
+<p><a href="https://baike.sogou.com/v57727847.htm?fromTitle=%E4%BA%8C%E8%BF%9B%E5%88%B6ASCII%E7%A0%81" target="_blank" rel="noopener">二进制ASCII码</a>对照一下，就能得到flag。</p>
+<p><strong>0×06 传统知识+古典密码</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200804191045157.png" alt="在这里插入图片描述"><br>天干地支</p>
+<p><img src="https://img-blog.csdnimg.cn/20200804191204938.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>辛卯–28   癸巳–30  丙戌–23  辛未–08  庚辰–17  癸酉–10  己卯–16  癸巳–30</p>
+<p>+甲子？应该怎样理解是理解为+1，还是60一甲子,+60呢。</p>
+<p>根据直觉先尝试+60就变成了：<code>88,90,83,68,77,70,76,90</code></p>
+<p>对照一下ASCII码表：<code>XZSDMFLZ</code></p>
+<p>先栅栏<br><img src="https://img-blog.csdnimg.cn/20200804193918426.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200804193852816.png" alt="在这里插入图片描述"><br>然后试一下XMZFSLDZ，进行凯撒密码解密。</p>
+<p>拿上面两个解密<br><img src="https://img-blog.csdnimg.cn/20200805165030255.png" alt="在这里插入图片描述"><br>人家都选了SHUANGYU这个，说是题目作者的网名就是这个。</p>
+<p>(ˉ▽ˉ；)…</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="< /images/donate/AliPayQR.jpg>"></li>
+              <li class="wechat-code"><img src="</images/donate/WeChanQR.jpg>"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/08/15/%E6%9A%91%E5%81%87%E7%BB%83%E4%B9%A0%E7%AC%AC%E5%85%AD%E5%91%A8(%E4%BA%8C)SQL%E6%B3%A8%E5%85%A5-%E5%8F%8C%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                sql注入-双查询注入</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/08/05/%E6%9A%91%E5%81%87%E7%AC%AC%E4%BA%94%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%BA%8C)php%E5%AD%A6%E4%B9%A0--%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                暑假第五周练习(二)php学习--正则表达式</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2020/04/08/kail%E5%81%9ACTF%E6%9D%82%E9%A1%B9%E9%A2%98%E7%9A%84%E5%B7%A5%E5%85%B7%E5%AE%89%E5%88%A9%E4%B8%80%E6%B3%A2%EF%BC%81/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(2).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-8 15:04</div>
-      <a href="/2020/04/08/kail%E5%81%9ACTF%E6%9D%82%E9%A1%B9%E9%A2%98%E7%9A%84%E5%B7%A5%E5%85%B7%E5%AE%89%E5%88%A9%E4%B8%80%E6%B3%A2%EF%BC%81/" class="post-title">
-        <h3>kail做CTF杂项题的工具安利一波！</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/kail/">kail<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/08/kail%E5%81%9ACTF%E6%9D%82%E9%A1%B9%E9%A2%98%E7%9A%84%E5%B7%A5%E5%85%B7%E5%AE%89%E5%88%A9%E4%B8%80%E6%B3%A2%EF%BC%81/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/08/zip%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93%EF%BC%81/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(4).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-8 15:04</div>
-      <a href="/2020/04/08/zip%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93%EF%BC%81/" class="post-title">
-        <h3>zip知识点的部分总结！</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/zip%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/">zip知识学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/08/zip%E7%9F%A5%E8%AF%86%E7%82%B9%E7%9A%84%E9%83%A8%E5%88%86%E6%80%BB%E7%BB%93%EF%BC%81/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/08/%E6%90%AD%E5%BB%BADVWA%20web%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(3).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-8 15:04</div>
-      <a href="/2020/04/08/%E6%90%AD%E5%BB%BADVWA%20web%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/" class="post-title">
-        <h3>搭建DVWA web渗透靶场</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E9%9D%B6%E5%9C%BA/">靶场<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/08/%E6%90%AD%E5%BB%BADVWA%20web%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/07/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%95%B4%E6%95%B0%E6%B3%A8%E5%85%A5/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(2).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-7 15:04</div>
-      <a href="/2020/04/07/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%95%B4%E6%95%B0%E6%B3%A8%E5%85%A5/" class="post-title">
-        <h3>SQL注入--整数注入</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/07/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E6%95%B4%E6%95%B0%E6%B3%A8%E5%85%A5/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/06/%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%BF%98%E6%98%AF%E6%95%B4%E5%BD%A2%EF%BC%81%EF%BC%81%EF%BC%81/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(8).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-6 15:04</div>
-      <a href="/2020/04/06/%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%BF%98%E6%98%AF%E6%95%B4%E5%BD%A2%EF%BC%81%EF%BC%81%EF%BC%81/" class="post-title">
-        <h3>判断注入类型</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/06/%E5%88%A4%E6%96%AD%E6%B3%A8%E5%85%A5%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%BF%98%E6%98%AF%E6%95%B4%E5%BD%A2%EF%BC%81%EF%BC%81%EF%BC%81/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/04/03/php%E5%AD%A6%E4%B9%A0--%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%8F%98%E9%87%8F%EF%BC%88%E4%B8%80%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-4-3 15:04</div>
-      <a href="/2020/04/03/php%E5%AD%A6%E4%B9%A0--%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%8F%98%E9%87%8F%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-title">
-        <h3>php学习--基础知识及变量（一）</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/php%E5%AD%A6%E4%B9%A0/">php学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/04/03/php%E5%AD%A6%E4%B9%A0--%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%8F%8A%E5%8F%98%E9%87%8F%EF%BC%88%E4%B8%80%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/03/05/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-3-5 15:03</div>
-      <a href="/2020/03/05/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/" class="post-title">
-        <h3>SQL注入--布尔盲注</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/03/05/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E2%80%94%E5%B8%83%E5%B0%94%E7%9B%B2%E6%B3%A8/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/03/03/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%EF%BC%88%E5%AF%B9%E4%BA%8E%E9%82%A3%E4%BA%9B%E5%9B%A0%E4%B8%BA%E7%89%88%E6%9D%83%E5%8E%9F%E5%9B%A0%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%E7%9A%84%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(1).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-3-3 15:03</div>
-      <a href="/2020/03/03/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%EF%BC%88%E5%AF%B9%E4%BA%8E%E9%82%A3%E4%BA%9B%E5%9B%A0%E4%B8%BA%E7%89%88%E6%9D%83%E5%8E%9F%E5%9B%A0%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%E7%9A%84%EF%BC%89/" class="post-title">
-        <h3>博客美化</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E5%85%B6%E4%BB%96/">其他<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/03/03/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%EF%BC%88%E5%AF%B9%E4%BA%8E%E9%82%A3%E4%BA%9B%E5%9B%A0%E4%B8%BA%E7%89%88%E6%9D%83%E5%8E%9F%E5%9B%A0%E6%97%A0%E6%B3%95%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE%E7%9A%84%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/03/03/%E7%94%A8sql%20libs%20%E7%BB%83%E4%B9%A0sql%E6%B3%A8%E5%85%A5%EF%BC%88%E2%80%94%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(7).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-3-3 15:03</div>
-      <a href="/2020/03/03/%E7%94%A8sql%20libs%20%E7%BB%83%E4%B9%A0sql%E6%B3%A8%E5%85%A5%EF%BC%88%E2%80%94%EF%BC%89/" class="post-title">
-        <h3>sql注入练习</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/SQL%E6%B3%A8%E5%85%A5/">SQL注入<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/03/03/%E7%94%A8sql%20libs%20%E7%BB%83%E4%B9%A0sql%E6%B3%A8%E5%85%A5%EF%BC%88%E2%80%94%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!-- 
-      <nav class="navigator">
-        
-        <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next</a>
-      </nav>
-     -->
-  </div>
-  
-    <div id="pagination"><a href="/page/4/" class="">Previous</a></div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">

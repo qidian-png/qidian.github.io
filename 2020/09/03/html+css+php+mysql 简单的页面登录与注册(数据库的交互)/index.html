@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">html+css+php+mysql简单的页面登陆与注册(数据库的交互) | 奇点的小屋！</title>
+  
+    <link rel="shortcut icon" href="/images/favicon.png">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!-- 球形标签 -->
+<link rel="stylesheet" href="/css/tag-bubble.css">
+
+<!-- 心形分类页面 -->
+<link rel="stylesheet" href="/css/categories-love.css">
+
+
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "奇点的小屋！小白";
+  mashiro_option.author_name = "小白";
+  mashiro_option.site_url = "https://qidian-png.github.io";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "/images/cover/(1).jpg.webp,/images/cover/(2).jpg.webp,/images/cover/(3).jpg.webp,/images/cover/(4).jpg.webp,/images/cover/(5).jpg.webp,/images/cover/(6).jpg.webp,/images/cover/(7).jpg.webp,/images/cover/(8).jpg.webp".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+
+<!-- 点击出现社会主义彩色文字 --><script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js"></script>
+
+
+
+
+
+<!-- 点击出现爱心 --><script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/love.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop ">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="">
+          <img src="images/logo2.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>温山软水万千，不及你眉眼半分！</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="http://github.com/qidian-png" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/github.png">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="https://www.zhihu.com/people/76eb8fed95d35934d392515210b0c353" target="_blank" class="social-github" title="zhihu">
+                    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/social/zhihu.png">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">奇点的小屋！</span>
+            <span class="shironeko">小白</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          转载
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/lab/">
+                          <i class="fa fa-cogs" aria-hidden="true"></i>
+                          Lab
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/client/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+                    客户端
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzNZV.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      html+css+php+mysql简单的页面登陆与注册(数据库的交互)</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href=""></a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-9-3<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>这是一个简单的小项目，但对于我这小白来说，也是写了好几天才完成，中间心态炸裂n次，但最后还是  搞定了！！！</p>
+<p>说了那麽多，还是分享一下吧！</p>
+<p>@<a href="目录">TOC</a></p>
+<p>实验环境是phpstudy2018。</p>
+<p>在phpstudy的www目录里，创建一个新文件夹test。</p>
+<p>文件里有：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200903131953803.png#pic_center" alt="在这里插入图片描述"><br>index.php 主页面(登陆页面)<br>login.php 登录页面的后台操作<br>register.html 注册页面<br>register.php 注册页面的后台操作</p>
+<h3 id="主页面-登录页面"><a href="#主页面-登录页面" class="headerlink" title="主页面(登录页面)"></a>主页面(登录页面)</h3><p>先上图<br><img src="https://img-blog.csdnimg.cn/20200903132416862.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>有点简单了。</p>
+<p>下面是源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;zh-CN&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">&lt;meta name&#x3D;&quot;keywords&quot; content&#x3D;&quot;&quot; &#x2F;&gt;</span><br><span class="line">&lt;meta name&#x3D;&quot;description&quot; content&#x3D;&quot;&quot; &#x2F;&gt;</span><br><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">body &#123;</span><br><span class="line">	 background-size: cover;</span><br><span class="line"></span><br><span class="line">                min-width: 1000px;</span><br><span class="line"></span><br><span class="line">	background-image:url(https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;08&#x2F;23&#x2F;d0t8ln.jpg);</span><br><span class="line"></span><br><span class="line">	font-size:14px;</span><br><span class="line">&#125;</span><br><span class="line">#main &#123;</span><br><span class="line">	width:360px;</span><br><span class="line">	height:320px;</span><br><span class="line">	background:#fff;</span><br><span class="line">	border:1px solid #ddd;</span><br><span class="line">	position:absolute;</span><br><span class="line">	top:50%;</span><br><span class="line">	left:50%;</span><br><span class="line">	margin-left:-180px;</span><br><span class="line">	margin-top:-160px;</span><br><span class="line">	background-size: cover;</span><br><span class="line">	background-image:url(https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;07&#x2F;31&#x2F;alzGMn.jpg);</span><br><span class="line">&#125;</span><br><span class="line">#main .title &#123;</span><br><span class="line">	height: 48px;</span><br><span class="line">	line-height: 48px;</span><br><span class="line">	color:#333;</span><br><span class="line">	font-size:16px;</span><br><span class="line">	font-weight:bold;</span><br><span class="line">	text-indent:30px;</span><br><span class="line">	border-bottom:1px dashed #eee;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">#main form &#123;</span><br><span class="line">	width:300px;</span><br><span class="line">	margin:20px 0 0 40px;</span><br><span class="line">&#125;</span><br><span class="line">#main form label &#123;</span><br><span class="line">	margin:20px 0 0 40px;</span><br><span class="line">	display:block;</span><br><span class="line">&#125;</span><br><span class="line">#main form label input.text &#123;</span><br><span class="line">	width:200px;</span><br><span class="line">	height:25px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#main form label input.submit &#123;</span><br><span class="line">	width:200px;</span><br><span class="line">	display:block;</span><br><span class="line">	height:35px;</span><br><span class="line">	cursor:pointer;</span><br><span class="line">	margin:20px 0 0 2px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div id&#x3D;&quot;main&quot;&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;title&quot;&gt;欢迎使用，请登录&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;form  action&#x3D;&quot;login.php&quot; method&#x3D;&quot;post&quot; onsubmit&#x3D;&quot;return enter()&quot;&gt;</span><br><span class="line">			&lt;label&gt;&lt;input class&#x3D;&quot;text&quot; type&#x3D;&quot;text&quot;  placeholder&#x3D;&quot;用户名&quot; name&#x3D;&quot;username&quot; &#x2F;&gt;&lt;&#x2F;label&gt;</span><br><span class="line">			&lt;label&gt;&lt;input class&#x3D;&quot;text&quot; type&#x3D;&quot;password&quot;  placeholder&#x3D;&quot;密码&quot; name&#x3D;&quot;password&quot; &#x2F;&gt;&lt;&#x2F;label&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;label&gt;&lt;input class&#x3D;&quot;submit&quot; type&#x3D;&quot;submit&quot; name&#x3D;&quot;submit&quot; value&#x3D;&quot;登录&quot; &#x2F;&gt;&lt;&#x2F;label&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;a href&#x3D;&quot;register.html&quot; target&#x3D;&quot;_self&quot;  style&#x3D;&quot;position: absolute; bottom: 10px; right: 10px;&quot;&gt;没有账号，先注册&lt;&#x2F;a&gt;</span><br><span class="line">		</span><br><span class="line">		&lt;&#x2F;form&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>主要就是对登录页面的背景，颜色，登录框背景，颜色，字体大小等等的设置，这也没啥技术含量，都是html知识的简单运用，我就不多说了。</p>
+<h3 id="登录页面的后台操作"><a href="#登录页面的后台操作" class="headerlink" title="登录页面的后台操作"></a>登录页面的后台操作</h3><p>直接上源码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">&#x2F;&#x2F;第一次登陆的时候，通过用户输入的信息来确认用户</span><br><span class="line"> if ( (($_POST[&#39;username&#39;]))!&#x3D;NULL &amp;&amp; (($_POST[&#39;password&#39;])!&#x3D;NULL)) &#123;</span><br><span class="line">    $userName &#x3D; $_POST[&#39;username&#39;];</span><br><span class="line">    $password &#x3D; $_POST[&#39;password&#39;];</span><br><span class="line">    &#x2F;&#x2F;从db获取用户信息</span><br><span class="line">    &#x2F;&#x2F;PS：数据库连接信息改成自己的 分别为主机 数据库用户名 密码</span><br><span class="line">    $conn &#x3D; mysqli_connect(&#39;localhost:3306&#39;,&#39;root&#39;,&#39;root&#39;);</span><br><span class="line"></span><br><span class="line">    mysqli_select_db($conn,&#39;test&#39;);</span><br><span class="line"></span><br><span class="line">    $sql &#x3D; &quot;select username,password from user where username &#x3D; &#39;$userName&#39; and password&#x3D;&#39;$password&#39;&quot;;</span><br><span class="line">    $res &#x3D; mysqli_query($conn,$sql);</span><br><span class="line">    $row &#x3D; mysqli_fetch_array($res);</span><br><span class="line">    if	($row[&#39;username&#39;]!&#x3D;$userName) &#123;</span><br><span class="line">        echo &#39;不能登陆!&#39;;</span><br><span class="line">        header(&#39;Location:index.html&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if($row[&#39;username&#39;]&#x3D;&#x3D;$userName&amp;&amp;$row[&#39;password&#39;]!&#x3D;$password)</span><br><span class="line">    &#123;</span><br><span class="line">        echo &#39;不能登陆!!&#39;;</span><br><span class="line">        header(&#39;Location:index.html&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    else if($row[&#39;username&#39;]!&#x3D;$userName&amp;&amp;$row[&#39;password&#39;]!&#x3D;$password) &#123;</span><br><span class="line">        echo &#39;不能登陆!!!&#39;;</span><br><span class="line">        header(&#39;Location:index.html&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    else if($row[&#39;username&#39;]&#x3D;&#x3D;$userName&amp;&amp;$row[&#39;password&#39;] &#x3D;&#x3D;$password) &#123;</span><br><span class="line">        &#x2F;&#x2F;如果密码验证通过，设置一个cookies，把用户名保存在客户端</span><br><span class="line">        setcookie(&#39;username&#39;,$userName,time()+3600);&#x2F;&#x2F;设置一个小时</span><br><span class="line">        &#x2F;&#x2F;最后跳转到登录后的欢迎页面</span><br><span class="line">        &#x2F;*echo &#39;登陆成功!&#39;;</span><br><span class="line">        header(&#39;Location:https:&#x2F;&#x2F;y.qq.com&#x2F;n&#x2F;yqq&#x2F;mv&#x2F;v&#x2F;o0013f4q6uz.html&#39;);&#x2F;&#x2F;跳转到最后的欢迎页面*&#x2F;</span><br><span class="line">        echo &quot;&lt;script&gt;alert(&#39;登陆成功！！&#39;);location.href&#x3D;&#39;https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1qK_KopZzMZIKfT7jkZ1FVQ&#39;;&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        echo &#39;登陆失败&#39;;</span><br><span class="line">        header(&#39;Location:index.html&#39;);&#x2F;&#x2F;跳转到失败页面</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">if ( (($_COOKIE[&#39;username&#39;]) !&#x3D; null)  &amp;&amp; (($_COOKIE[&#39;password&#39;]) !&#x3D; null) ) &#123;</span><br><span class="line">    $userName &#x3D; $_COOKIE[&#39;username&#39;];</span><br><span class="line">    $password &#x3D; $_COOKIE[&#39;password&#39;];</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;从db获取用户信息</span><br><span class="line">    &#x2F;&#x2F;PS：数据库连接信息改成自己的 分别为主机 数据库用户名 密码</span><br><span class="line">    $conn &#x3D; mysqli_connect(&#39;localhost&#39;,&#39;root&#39;,&#39;password&#39;,&#39;test&#39;);</span><br><span class="line">    $res &#x3D; mysqli_query($conn,&quot;select * from user where username &#x3D;  &#39;$userName&#39; &quot;);</span><br><span class="line">    $row &#x3D; mysqli_fetch_assoc($res);</span><br><span class="line">    if ($row[&#39;password&#39;] &#x3D;&#x3D; $password) &#123;</span><br><span class="line">        &#x2F;&#x2F;验证通过后跳转到登录后的欢迎页面</span><br><span class="line">        header(&#39;Location: https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1qK_KopZzMZIKfT7jkZ1FVQ&#39; . &quot;?username&#x3D;$userName&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">    echo &quot;&lt;script&gt;alert(&#39;用户名或密码错误&#39;);location.href&#x3D;&#39;index.html&#39;;&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>代码开头的<code>error_reporting(0);</code>是为了关闭错误报告，如果没有error_reporting(0)  那么<code>$userName = $_POST[&#39;username&#39;];</code>会报错。</p>
+<p>还有就是sql语句的构造，我构造了n次才正常运行，到这个才能与数据库的账号，密码比对。</p>
+<p>然后就是你输入账号，密码与数据库里已有比对，来判断你是否可以登录。</p>
+<p>如果比对正确，那么就会先存一个时间为一小时的cookie，然后跳转到登录成功页面，我在这放了一个百度云盘链接，登陆成功可以直接访问。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cookie就是将你的信息存储在本地，下次登录到同样的页面，直接读取cookie里的信息，方便下次访问。</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200903151630423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>登录成功是一段哲理视频。</p>
+<h3 id="注册页面"><a href="#注册页面" class="headerlink" title="注册页面"></a>注册页面</h3><p>从登录页面里，选择注册跳转到注册页面。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200903150423901.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200903150441294.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>注册页面太简单了，本来想弄个二次密码验证和验证码注册验证，但因为是本地搭建，也没有人恶意攻击我们，就不需要了。</p>
+<p>源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;zh-CN&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">&lt;title&gt;&lt;&#x2F;title&gt;</span><br><span class="line">&lt;meta name&#x3D;&quot;keywords&quot; content&#x3D;&quot;&quot; &#x2F;&gt;</span><br><span class="line">&lt;meta name&#x3D;&quot;description&quot; content&#x3D;&quot;&quot; &#x2F;&gt;</span><br><span class="line">&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;</span><br><span class="line">body &#123;</span><br><span class="line">	 </span><br><span class="line"></span><br><span class="line">                min-width: 500px;</span><br><span class="line"></span><br><span class="line">	background-image:url(https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;07&#x2F;31&#x2F;alz3xs.jpg);</span><br><span class="line"></span><br><span class="line">	font-size:14px;</span><br><span class="line">&#125;</span><br><span class="line">#main &#123;</span><br><span class="line">	width:360px;</span><br><span class="line">	height:320px;</span><br><span class="line">	background:#fff;</span><br><span class="line">	border:1px solid #ddd;</span><br><span class="line">	position:absolute;</span><br><span class="line">	top:50%;</span><br><span class="line">	left:50%;</span><br><span class="line">	margin-left:-180px;</span><br><span class="line">	margin-top:-160px;</span><br><span class="line">	background-size: cover;</span><br><span class="line">	background-image:url(https:&#x2F;&#x2F;s1.ax1x.com&#x2F;2020&#x2F;07&#x2F;31&#x2F;alzGMn.jpg);</span><br><span class="line">&#125;</span><br><span class="line">#main .title &#123;</span><br><span class="line">	height: 48px;</span><br><span class="line">	line-height: 48px;</span><br><span class="line">	color:#333;</span><br><span class="line">	font-size:16px;</span><br><span class="line">	font-weight:bold;</span><br><span class="line">	text-indent:30px;</span><br><span class="line">	border-bottom:1px dashed #eee;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line">#main form &#123;</span><br><span class="line">	width:300px;</span><br><span class="line">	margin:20px 0 0 40px;</span><br><span class="line">&#125;</span><br><span class="line">#main form label &#123;</span><br><span class="line">	margin:20px 0 0 40px;</span><br><span class="line">	display:block;</span><br><span class="line">&#125;</span><br><span class="line">#main form label input.text &#123;</span><br><span class="line">	width:200px;</span><br><span class="line">	height:25px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#main form label input.submit &#123;</span><br><span class="line">	width:200px;</span><br><span class="line">	display:block;</span><br><span class="line">	height:35px;</span><br><span class="line">	cursor:pointer;</span><br><span class="line">	margin:20px 0 0 2px;</span><br><span class="line">&#125;</span><br><span class="line">error_reporting(0);</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div id&#x3D;&quot;main&quot;&gt;</span><br><span class="line">		&lt;div class&#x3D;&quot;title&quot;&gt;注册&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;form  action&#x3D;&quot;register.php&quot; method&#x3D;&quot;post&quot; onsubmit&#x3D;&quot;return enter()&quot;&gt;</span><br><span class="line">			&lt;label&gt;&lt;input class&#x3D;&quot;text&quot; type&#x3D;&quot;text&quot;  placeholder&#x3D;&quot;用户名&quot; name&#x3D;&quot;username&quot; &#x2F;&gt;&lt;&#x2F;label&gt;</span><br><span class="line">			&lt;label&gt;&lt;input class&#x3D;&quot;text&quot; type&#x3D;&quot;password&quot;  placeholder&#x3D;&quot;密码&quot; name&#x3D;&quot;password&quot; &#x2F;&gt;&lt;&#x2F;label&gt;</span><br><span class="line">			</span><br><span class="line">			&lt;label&gt;&lt;input class&#x3D;&quot;submit&quot; type&#x3D;&quot;submit&quot; name&#x3D;&quot;submit&quot; value&#x3D;&quot;注册&quot; &#x2F;&gt;&lt;&#x2F;label&gt;</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">		</span><br><span class="line">		&lt;&#x2F;form&gt;</span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<p>注册页面与登录页面相比，没有做出太大的更改。换了个图片也就没啥了。</p>
+<h3 id="注册页面的后台操作"><a href="#注册页面的后台操作" class="headerlink" title="注册页面的后台操作"></a>注册页面的后台操作</h3><p>源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">$username &#x3D; ($_POST[&#39;username&#39;]);</span><br><span class="line"></span><br><span class="line">$password &#x3D; trim($_POST[&#39;password&#39;]);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$conn &#x3D; mysqli_connect(&#39;localhost&#39;, &#39;root&#39;, &#39;root&#39;);      </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;如果有错误，存在错误号</span><br><span class="line">if (mysqli_errno($conn)) &#123;</span><br><span class="line"></span><br><span class="line">    echo mysqli_error($conn);</span><br><span class="line"></span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mysqli_select_db($conn, &#39;test&#39;);   &#x2F;&#x2F;选择数据库</span><br><span class="line"></span><br><span class="line">mysqli_set_charset($conn, &#39;utf8&#39;);   &#x2F;&#x2F;选择字符集</span><br><span class="line"></span><br><span class="line">$sql &#x3D; &quot;insert into user ( username,password)  values (&#39;$username&#39;,&#39;$password&#39; )&quot;;</span><br><span class="line"></span><br><span class="line">$result &#x3D; mysqli_query($conn,$sql);&#x2F;&#x2F;针对user这个数据库进行查询, 查询是否存在有这个用户</span><br><span class="line"></span><br><span class="line">$row &#x3D; mysqli_num_rows($result);&#x2F;&#x2F;输出查询结果，传给$row</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if($_POST[&#39;username&#39;]&#x3D;&#x3D;NULL)&#123;</span><br><span class="line">    echo &quot;&lt;script&gt;alert(&#39;用户名不能为空&#39;);location.href&#x3D;&#39;register.html&#39;;&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">else if($_POST[&#39;password&#39;]&#x3D;&#x3D; NULL)&#123;</span><br><span class="line">    echo &quot;&lt;script&gt;alert(&#39;密码不能为空&#39;);location.href&#x3D;&#39;register.html&#39;;&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    if($row)&#123;</span><br><span class="line">        echo &quot;&lt;script&gt;alert(&#39;用户名已存在&#39;);location.href&#x3D;&#39;register.html&#39;;&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        $sql1 &#x3D;&quot;insert into user(username,password) values(&#39;&quot;.$username.&quot;&#39;,&#39;&quot; .$password.&quot;&#39;)&quot;;&#x2F;&#x2F;PHP MySQL 插入数据</span><br><span class="line">        $result &#x3D; mysqli_query($sql1);&#x2F;&#x2F;判断插入数据是否成功</span><br><span class="line">        if($row)&#123;</span><br><span class="line">          </span><br><span class="line">            echo &quot;&lt;script&gt;alert(&#39;注册失败！&#39;);location.href&#x3D;&#39;register.html&#39;;&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">            	</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            </span><br><span class="line">            echo &quot;&lt;script&gt;alert(&#39;注册成功！&#39;);location.href&#x3D;&#39;index.html&#39;;&lt;&#x2F;script&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysqli_close($conn);</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>按照流程，先连接数据库，将你的输入的信息传到后台，判断用户名，密码不能为空，再将用户名与数据库对比，若不存在，注册成功，跳转到登陆页面；若已经存在，会报错:  用户名已经存在。</p>
+<p>再将你的信息插入到数据库。</p>
+<p>最难的也是sql语句的构造，起初是用户名为空，密码却可以正常传入；但是将$usename改为自己的用户名，却可以正常传入。就猜想为用户名传入过程出现了错误，就检查了注册页面的用户名提交方式，发现也没错误。</p>
+<p>最终还是回到了register.php页面检查，修修改改才写成现在的语句。</p>
+<p>想想太不容易了，心态炸了n次。</p>
+<p>与团队内的其他大佬比，我可能写的太简单了，但还是要记录一下！</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="< /images/donate/AliPayQR.jpg>"></li>
+              <li class="wechat-code"><img src="</images/donate/WeChanQR.jpg>"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/09/06/XSS%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%AE%9E%E6%88%98(XSS%E6%8F%90%E5%8F%96cookie%E5%B9%B6%E7%99%BB%E5%BD%95%E7%9A%84)/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alz0G4.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alz0G4.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                XSS基础及实战(XSS提取cookie并登录)</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/08/15/%E6%9A%91%E5%81%87%E7%BB%83%E4%B9%A0%E7%AC%AC%E5%85%AD%E5%91%A8(%E4%BA%8C)SQL%E6%B3%A8%E5%85%A5-%E5%8F%8C%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                暑假练习第六周(二)sql注入-双查询注入</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
+
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 奇点<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2018</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, Powered by Hexo, Hosted by Coding Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+</script>
+<!--浏览器搞笑标题-->
+	<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+<!-- // 文字 -->
+	<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+ 
+//我的修改版
+//修改内容：调整大小，去除了纸飞机游戏和info按钮
+ 
+<script src="https://cdn.jsdelivr.net/gh/Natsuki-Kaede/Blog-Resources@master/live2d/autoload.js"></script>
+
+});
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/images/logo2.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">奇点的小屋！小白</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="http://github.com/honjun" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+        <a href="https://wpa.qq.com/msgrd?v=3&uin=954655431&site=qq&menu=yes" class="fa fa-qq" target="_blank" style="color: #25c6fe; margin-left:20px"></a>
+      
+        <a href="" class="fa " target="_blank" style="color: #; margin-left:20px"></a>
+      
+        <a href="" class="fa " target="_blank" style="color: #; margin-left:20px"></a>
+      
+        <a href="" class="fa " target="_blank" style="color: #; margin-left:20px"></a>
+      
+        <a href="" class="fa " target="_blank" style="color: #; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E8%BD%AC%E8%BD%BD/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  转载
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/lab/">
+                  <i class="fa fa-cogs" aria-hidden="true"></i>
+                  Lab
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/client/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-android faa-vertical" aria-hidden="true"></i>
+            客户端
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="3054186002"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
+
+<!--单击显示文字-->
+<script type="text/javascript" src="/js/shehuizhuyi.js"></script>

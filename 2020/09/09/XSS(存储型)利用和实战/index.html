@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">暑假第五周练习(一)Cypto练习 | 奇点的小屋！</title>
+  <title itemprop="name">XSS(存储型)利用与实战 | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -298,11 +298,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzwiF.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzaIU.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzaIU.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      暑假第五周练习(一)Cypto练习</h1>
+      XSS(存储型)利用与实战</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -314,7 +314,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-8-5<span class="bull">
+        2020-9-9<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -328,39 +328,42 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>﻿题目来源<code>https://buuoj.cn/challenges</code></p>
-<p><strong>目录：</strong></p>
-<p><strong>0×00 丢失的MD5<br>0×01 老文盲<br>0×02 Alice与Bob<br>0×03 大帝的密码武器<br>0×04 Windows系统密码<br>0×05 cat_flag<br>0×06 传统知识+古典密码</strong></p>
-<p><strong>0×00 丢失的MD5</strong></p>
-<p>附件是一段python代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">for i in range(32,127):</span><br><span class="line">    for j in range(32,127):</span><br><span class="line">        for k in range(32,127):</span><br><span class="line">            m&#x3D;hashlib.md5()</span><br><span class="line">            m.update(&#39;TASC&#39;.encode(&#39;utf-8&#39;)+chr(i).encode(&#39;utf-8&#39;)+&#39;O3RJMV&#39;.encode(&#39;utf-8&#39;)+chr(j).encode(&#39;utf-8&#39;)+&#39;WDJKX&#39;.encode(&#39;utf-8&#39;)+chr(k).encode(&#39;utf-8&#39;)+&#39;ZM&#39;.encode(&#39;utf-8&#39;))</span><br><span class="line">            des&#x3D;m.hexdigest()</span><br><span class="line">            if &#39;e9032&#39; in des and &#39;da&#39; in des and &#39;911513&#39; in des:</span><br><span class="line">                print (des)</span><br></pre></td></tr></table></figure>
-<p>放进pycharm,运行不了，直接复制到了python3的IDLE运行得到一串数字。<br><img src="https://img-blog.csdnimg.cn/20200802113816451.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>提交得到flag。</p>
-<p><strong>0×01 老文盲</strong></p>
-<p>拿到题目是txt文件<br><img src="https://img-blog.csdnimg.cn/20200802114913347.png" alt="在这里插入图片描述"><br>看了那么复杂，就想到了新约佛论禅那个加密，试了一下更麻烦了。就换种方法，在线汉语拼音转换<br><img src="https://img-blog.csdnimg.cn/20200802115412909.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>bjd{这就是flag直接交了吧}，丧心病狂的出题人，这样还不对。<br>经过多次尝试flag{淛匶襫黼瀬鎶軄鶛驕鳓哵}，这样才对。</p>
-<p><strong>0×02 Alice与Bob</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20200802120916913.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>第一步先将98554799767分为两个素数，<a href="http://www.factordb.com/index.php" target="_blank" rel="noopener">点这</a></p>
-<p><img src="https://img-blog.csdnimg.cn/20200802121057383.png" alt="在这里插入图片描述"><br>小的在前，大的在后，进行MD5加密<br><img src="https://img-blog.csdnimg.cn/20200802121159113.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>找到符合要求的，就是flag</p>
-<p><strong>0×03 大帝的密码武器</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20200802165525619.png" alt="在这里插入图片描述"><br>凯撒密码，一个一个试。。。。<br><img src="https://img-blog.csdnimg.cn/20200802165612944.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>安全这个词应该很有意义吧！而且凯撒密码偏移量为13 这不是我第一次见了。</p>
-<p>得到了偏移量为13</p>
-<p><img src="https://img-blog.csdnimg.cn/20200802165816911.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="
-"><br>得到flag。</p>
-<p><strong>0×04 Windows系统密码</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20200804180156106.png" alt="在这里插入图片描述"><br>看着毫无思路，就从ctf那一行，试着对一串符号进行MD5解密，一个一个试吧</p>
-<p><img src="https://img-blog.csdnimg.cn/20200804180421582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这个应该就是flag，交一下就🆗了。</p>
-<p><strong>0×05 cat_flag</strong><br><img src="https://img-blog.csdnimg.cn/20200804183813832.gif" alt="在这里插入图片描述"><br>你能想到什么？？？</p>
-<p>只有两种猫，意味0，1</p>
-<p>那么图片就变成了<br>01000010<br>01001010<br>01000100<br>01111011<br>01001101<br>00100001<br>01100001<br>00110000<br>01111110<br>01111101</p>
-<p><a href="https://baike.sogou.com/v57727847.htm?fromTitle=%E4%BA%8C%E8%BF%9B%E5%88%B6ASCII%E7%A0%81" target="_blank" rel="noopener">二进制ASCII码</a>对照一下，就能得到flag。</p>
-<p><strong>0×06 传统知识+古典密码</strong></p>
-<p><img src="https://img-blog.csdnimg.cn/20200804191045157.png" alt="在这里插入图片描述"><br>天干地支</p>
-<p><img src="https://img-blog.csdnimg.cn/20200804191204938.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>辛卯–28   癸巳–30  丙戌–23  辛未–08  庚辰–17  癸酉–10  己卯–16  癸巳–30</p>
-<p>+甲子？应该怎样理解是理解为+1，还是60一甲子,+60呢。</p>
-<p>根据直觉先尝试+60就变成了：<code>88,90,83,68,77,70,76,90</code></p>
-<p>对照一下ASCII码表：<code>XZSDMFLZ</code></p>
-<p>先栅栏<br><img src="https://img-blog.csdnimg.cn/20200804193918426.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200804193852816.png" alt="在这里插入图片描述"><br>然后试一下XMZFSLDZ，进行凯撒密码解密。</p>
-<p>拿上面两个解密<br><img src="https://img-blog.csdnimg.cn/20200805165030255.png" alt="在这里插入图片描述"><br>人家都选了SHUANGYU这个，说是题目作者的网名就是这个。</p>
-<p>(ˉ▽ˉ；)…</p>
+          <p>接着上篇的继续更！！！</p>
+<h4 id="等级为：low"><a href="#等级为：low" class="headerlink" title="等级为：low"></a>等级为：low</h4><p><img src="https://img-blog.csdnimg.cn/20200908215559465.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>正常填写，emmmmm !!!</p>
+<p>构造payload：<code>&lt;script&gt;alert(/XSS/)&lt;/script&gt;</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200908220048760.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>查看源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#39;btnSign&#39; ] ) ) &#123;</span><br><span class="line">    &#x2F;&#x2F; Get input</span><br><span class="line">    $message &#x3D; trim( $_POST[ &#39;mtxMessage&#39; ] );</span><br><span class="line">    $name    &#x3D; trim( $_POST[ &#39;txtName&#39; ] );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Sanitize message input</span><br><span class="line">    $message &#x3D; stripslashes( $message );</span><br><span class="line">    $message &#x3D; ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Sanitize name input</span><br><span class="line">    $name &#x3D; ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Update database</span><br><span class="line">    $query  &#x3D; &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;</span><br><span class="line">    $result &#x3D; mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res &#x3D; mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;&#x2F;pre&gt;&#39; );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;mysql_close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>发现了一些函数：</p>
+<p><strong>trim(string,charlist)</strong></p>
+<p>函数移除字符串两侧的空白字符或其他预定义字符，预定义字符包括、\t、\n、\x0B、\r以及空格，可选参数charlist支持添加额外需要删除的字符。 </p>
+<p><strong>mysql_real_escape_string(string,connection)</strong></p>
+<p>函数会对字符串中的特殊符号（\x00，\n，\r，\，‘，“，\x1a）进行转义。</p>
+<p><strong>stripslashes(string)</strong></p>
+<p>函数删除字符串中的反斜杠。</p>
+<p>可以看到，对输入并没有做XSS方面的过滤与检查，且存储在数据库中，因此这里存在我们可以利用的存储型XSS漏洞。</p>
+<p>想做一波进一步的利用，但是发现message对字符值有限制。</p>
+<p>想通过burp试一下，<br><img src="https://img-blog.csdnimg.cn/20200908221842498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>将message里的内容改为我们的恶意XSS代码<br><img src="https://img-blog.csdnimg.cn/20200908222050944.png#pic_center" alt="在这里插入图片描述"></p>
+<p> 发包！！！<br>现在我们的代码已经存储在数据库里了！</p>
+<p><img src="https://img-blog.csdnimg.cn/2020090822223336.png#pic_center" alt="在这里插入图片描述"><br>我们按正常信息输入，去我文件夹里的cookie查看，<br><img src="https://img-blog.csdnimg.cn/20200908222331604.png#pic_center" alt="在这里插入图片描述"><br>刚刚的cookie已经成功传入到我的文件里了(可以干啥上篇文章已经说类)！！！</p>
+<p>实战总比理论有意思！</p>
+<h4 id="等级为：medium"><a href="#等级为：medium" class="headerlink" title="等级为：medium"></a>等级为：medium</h4><p>还是原始的payload<br><img src="https://img-blog.csdnimg.cn/20200908223026490.png#pic_center" alt="在这里插入图片描述"><br>少了<code>&lt;script&gt;</code>应该<code>&lt;script&gt;</code>还是被过滤掉了！！</p>
+<p>大小写绕过,双写绕过也不行。</p>
+<p>那就尝试下burp改一下试试。</p>
+<p>Name和Message里只有Name可以通过双写绕过，Message却不行。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200909084951823.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20200909085009914.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>查看源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#39;btnSign&#39; ] ) ) &#123;</span><br><span class="line">    &#x2F;&#x2F; Get input</span><br><span class="line">    $message &#x3D; trim( $_POST[ &#39;mtxMessage&#39; ] );</span><br><span class="line">    $name    &#x3D; trim( $_POST[ &#39;txtName&#39; ] );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Sanitize message input</span><br><span class="line">    $message &#x3D; strip_tags( addslashes( $message ) );</span><br><span class="line">    $message &#x3D; ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">    $message &#x3D; htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Sanitize name input</span><br><span class="line">    $name &#x3D; str_replace( &#39;&lt;script&gt;&#39;, &#39;&#39;, $name );</span><br><span class="line">    $name &#x3D; ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Update database</span><br><span class="line">    $query  &#x3D; &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;</span><br><span class="line">    $result &#x3D; mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res &#x3D; mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;&#x2F;pre&gt;&#39; );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;mysql_close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>从源码里可以可以看到，message一栏经过严格的过滤，而且还经过htmlspecialchars()函数的处理，很难从message下手。</p>
+<p>但是name一栏只是简单的用trim()函数,str_place()函数处理，可以通过双写绕过。</p>
+<h4 id="等级为：high"><a href="#等级为：high" class="headerlink" title="等级为：high"></a>等级为：high</h4><p><img src="https://img-blog.csdnimg.cn/20200909091934938.png#pic_center" alt="在这里插入图片描述"><br>结果：<br><img src="https://img-blog.csdnimg.cn/20200909091949254.png#pic_center" alt="在这里插入图片描述"><br>message，name一栏可能经过严格的过滤，但是我们可以使用img、iframe等其它的标签！！！</p>
+<p>payload：<code>&lt;img src=1 onerror=alert(/XSS/)&gt;</code></p>
+<p>我们通过抓包更改name试一下。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200909093600512.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200909093402543.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>也成功了！</p>
+<p>看一下源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#39;btnSign&#39; ] ) ) &#123;</span><br><span class="line">    &#x2F;&#x2F; Get input</span><br><span class="line">    $message &#x3D; trim( $_POST[ &#39;mtxMessage&#39; ] );</span><br><span class="line">    $name    &#x3D; trim( $_POST[ &#39;txtName&#39; ] );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Sanitize message input</span><br><span class="line">    $message &#x3D; strip_tags( addslashes( $message ) );</span><br><span class="line">    $message &#x3D; ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $message ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">    $message &#x3D; htmlspecialchars( $message );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Sanitize name input</span><br><span class="line">    $name &#x3D; preg_replace( &#39;&#x2F;&lt;(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t&#x2F;i&#39;, &#39;&#39;, $name );</span><br><span class="line">    $name &#x3D; ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $name ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Update database</span><br><span class="line">    $query  &#x3D; &quot;INSERT INTO guestbook ( comment, name ) VALUES ( &#39;$message&#39;, &#39;$name&#39; );&quot;;</span><br><span class="line">    $result &#x3D; mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $query ) or die( &#39;&lt;pre&gt;&#39; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res &#x3D; mysqli_connect_error()) ? $___mysqli_res : false)) . &#39;&lt;&#x2F;pre&gt;&#39; );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;mysql_close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>name栏的正则匹配，message栏的htmlspecialchars( )函数，俩栏都使用了很多的过滤方法！</p>
+<p>XSS(存储型)结束了,下一篇DOM型XSS</p>
 
         </div>
         <!-- .entry-content -->
@@ -392,15 +395,15 @@
           
             <div class="post-nepre half previous">
           
-            <a href="/2020/08/15/%E6%9A%91%E5%81%87%E7%BB%83%E4%B9%A0%E7%AC%AC%E5%85%AD%E5%91%A8(%E4%BA%8C)SQL%E6%B3%A8%E5%85%A5-%E5%8F%8C%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5/" rel="prev">
+            <a href="/2020/09/10/XSS(DOM%E5%9E%8B)%E5%88%A9%E7%94%A8%E4%B8%8E%E5%AE%9E%E6%88%98/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzUaT.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzUaT.jpg">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                sql注入-双查询注入</h3>
+                XSS(DOM型)利用与实战</h3>
                 <hr>
               </div>
             </a>
@@ -410,15 +413,15 @@
           
             <div class="post-nepre half next">
           
-            <a href="/2020/08/05/%E6%9A%91%E5%81%87%E7%AC%AC%E4%BA%94%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%BA%8C)php%E5%AD%A6%E4%B9%A0--%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="next">
+            <a href="/2020/09/06/XSS%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%AE%9E%E6%88%98(XSS%E6%8F%90%E5%8F%96cookie%E5%B9%B6%E7%99%BB%E5%BD%95%E7%9A%84)/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alz0G4.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alz0G4.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                暑假第五周练习(二)php学习--正则表达式</h3>
+                XSS基础及实战(XSS提取cookie并登录)</h3>
                 <hr>
               </div>
             </a>

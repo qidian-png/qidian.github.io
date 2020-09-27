@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">奇点的小屋！</title>
+  <title itemprop="name">每周刷题(二) | 奇点的小屋！</title>
   
     <link rel="shortcut icon" href="/images/favicon.png">
   
@@ -292,456 +292,214 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 0px;"></div>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2020/07/31/alz6qx.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alz6qx.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      每周刷题(二)</h1>
+      <p class="entry-census">
+        <span>
+          <a href="">
+            <img src="">
+          </a>
+        </span>
+        <span>
+          <a href=""></a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2020-9-26<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
 <div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">Network security only</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/theme-sakura/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/sakura.md.png">
-        </div>
-        <div class="info">
-          <h3>Sakura</h3>
-          <p>本站 hexo 主题</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="http://space.bilibili.com/271849279" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/bilibili.jpg">
-        </div>
-        <div class="info">
-          <h3>Bilibili</h3>
-          <p>博主的b站视频</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/startdash/wangshiwu.jpg">
-        </div>
-        <div class="info">
-          <h3>奇点的万事屋</h3>
-          <p>技术服务</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <p>题目来源:<code>BUUCTF</code><br>@<a href="目录">TOC</a></p>
+<h3 id="web-1-强网杯-2019-随便注"><a href="#web-1-强网杯-2019-随便注" class="headerlink" title="web 1[强网杯 2019]随便注"></a>web 1[强网杯 2019]随便注</h3><p><img src="https://img-blog.csdnimg.cn/20200922201627411.png#pic_center" alt="在这里插入图片描述"><br>先判断是否有注入点，试一下<code>1&#39;</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200922201735467.png#pic_center" alt="在这里插入图片描述"><br>注入点找到了</p>
+<p>然后判断出列数<br><img src="https://img-blog.csdnimg.cn/20200922201837168.png#pic_center" alt="在这里插入图片描述"><br>222222</p>
+<p>再用<code>1&#39; union select  1,database(); #</code>出现了报错<br><img src="https://img-blog.csdnimg.cn/20200922202257889.png#pic_center" alt="在这里插入图片描述"><br>select等字符被过滤了,正常注入不能用，报错注入也不行!</p>
+<p>看了下大师傅的WP尝试用堆叠注入。</p>
+<p>我们先构造payload：<code>1&#39; ;show database; #</code><br><img src="https://img-blog.csdnimg.cn/20200922204110628.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>再次构造payload<code>1&#39; ;show tables; #</code>查看有几个表<br><img src="https://img-blog.csdnimg.cn/20200922204305709.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>只有两个表<br>从两个表里，我们再查询列<br>构造payload：<code>0&#39;; show columns from words ;#</code><br><img src="https://img-blog.csdnimg.cn/20200922204931856.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>再构造payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0&#39;;show columns from &#96;1919810931114514&#96;;#</span><br></pre></td></tr></table></figure>
+<p>先前忘了给字符加单引号，试了n次也没成功！到最后加字符才知道自己的无知太可怕，浪费了很多时间！！！</p>
+<p><img src="https://img-blog.csdnimg.cn/20200923152437608.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>找到了flag的的列，下一步就是如何让他回显出来</p>
+<p>上图，我们知道正则匹配过滤了很多字符，但是没有过滤<code>alert</code>和<code>rename</code>，这就可以来波骚姿势了</p>
+<p>①先把words表改为word1</p>
+<p>②再利用rename将1919810931114514这个表修改为word</p>
+<p>③再将flag字段修改成id</p>
+<p>构造payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0&#39;;RENAME TABLE &#96;words&#96; TO &#96;words1&#96;;RENAME TABLE &#96;1919810931114514&#96; TO &#96;words&#96;;ALTER TABLE &#96;words&#96; CHANGE &#96;flag&#96; &#96;id&#96; VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;show columns from words;#</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200923154255558.png#pic_center" alt="在这里插入图片描述"><br>emmmmm,用<code>1&#39;;show tables;#</code><br><img src="https://img-blog.csdnimg.cn/20200923154645720.png#pic_center" alt="在这里插入图片描述"></p>
+<p>修改成功了</p>
+<p>访问<code>0&#39; or &#39;1&#39;=&#39;1</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200923154441935.png#pic_center" alt="在这里插入图片描述"><br>得到flag</p>
+<p>这波有点小细节浪费了点时间。这道题对于我来说新知识太多了，待好好消化。</p>
+<h3 id="web-2-EasySQL"><a href="#web-2-EasySQL" class="headerlink" title="web 2 EasySQL"></a>web 2 EasySQL</h3><p><img src="https://img-blog.csdnimg.cn/20200926094109784.png#pic_center" alt="在这里插入图片描述"></p>
+<p>刚刚学会堆叠注入，这又来了一道</p>
+<p>先构造payload：<code>1 ；show databases ;</code><br><img src="https://img-blog.csdnimg.cn/20200926094638827.png#pic_center" alt="在这里插入图片描述"></p>
+<p>得到数据库</p>
+<p>再看表<code>1 ；show tables;</code><br><img src="https://img-blog.csdnimg.cn/20200926094755535.png#pic_center" alt="在这里插入图片描述"><br>有个flag表</p>
+<p>show columns from Flag????</p>
+<p>不行的</p>
+<p>看大师傅wp神之payload，根据报错写出了查询语句<code>select $_GET[&#39;query&#39;] || flag from flag</code></p>
+<p>||意思是或，前面的语句为真，后面的语句便不再执行。</p>
+<p>第一种思路</p>
+<p>payload：<code>*，1</code></p>
+<p>那为什么payload能得到flag了</p>
+<blockquote>
+<p>sql=select.post[‘query’].”||flag from Flag”;<br>如果$post[‘query’]的数据为*,1，sql语句就变成了select *,1||flag from Flag，<br>就是select *,1 from Flag，这样就直接查询出了Flag表中的所有内容。</p>
+</blockquote>
+<p>第二种思路</p>
+<p>就是把||作为拼接符，再Oracle是支持的，但在MySQL里需要更改<code>sql-mode</code></p>
+<p>然后构造payload:<code>1;set sql_mode=PIPES_AS_CONCAT;select 1</code></p>
+<p><img src="https://img-blog.csdnimg.cn/20200926191111216.png#pic_center" alt="在这里插入图片描述"></p>
+<p>web题是真的难啊<br>！！！</p>
+<h3 id="Cyrto-1信息化时代的步伐"><a href="#Cyrto-1信息化时代的步伐" class="headerlink" title="Cyrto 1信息化时代的步伐"></a>Cyrto 1信息化时代的步伐</h3><p>这是伟人说的一句话</p>
+<p>打开附件得到<code>606046152623600817831216121621196386</code></p>
+<p>这种加密方式是：<strong>中文电码</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20200924163744786.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>哈哈哈哈哈，笑死我了</p>
+<h3 id="Cypto-2-凯撒？替换？呵呵"><a href="#Cypto-2-凯撒？替换？呵呵" class="headerlink" title="Cypto 2 凯撒？替换？呵呵!"></a>Cypto 2 凯撒？替换？呵呵!</h3><p>拿到一串字符：<code>MTHJ{CUBCGXGUGXWREXIPOYAOEYFIGXWRXCHTKHFCOHCFDUCGTXZOHIXOEOWMEHZO}</code></p>
+<p>我以为是变异凯撒，但找了n遍也没有找到规律。</p>
+<p>看大师傅 wp，用了<a href="https://quipqiup.com/" target="_blank" rel="noopener">暴力破解</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20200925205635357.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>直接solve</p>
+<p><img src="https://img-blog.csdnimg.cn/20200925205753607.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>第一个flag转小写，切记去掉所有空格，要不然会出错</p>
+<h3 id="Cypto-3-old-fashion"><a href="#Cypto-3-old-fashion" class="headerlink" title="Cypto 3 old-fashion"></a>Cypto 3 old-fashion</h3><p>得到一串字符</p>
+<blockquote>
+<p>Os drnuzearyuwn, y jtkjzoztzoes douwlr oj y ilzwex eq lsdexosa kn pwodw tsozj eq ufyoszlbz yrl rlufydlx pozw douwlrzlbz, ydderxosa ze y rlatfyr jnjzli; mjy gfbmw vla xy wbfnsy symmyew (mjy vrwm qrvvrf), hlbew rd symmyew, mebhsymw rd symmyew, vbomgeyw rd mjy lxrzy, lfk wr dremj. Mjy eyqybzye kyqbhjyew mjy myom xa hyedrevbfn lf bfzyewy wgxwmbmgmbrf. Wr mjy dsln bw f1_2jyf-k3_jg1-vb-vl_l</p>
+</blockquote>
+<p>没得感觉，按照上题就试了暴力破解</p>
+<p>这句话总感觉怪怪的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Wr mjy dsln bw f1_2jyf-k3_jg1-vb-vl_l</span><br></pre></td></tr></table></figure>
+<p><img src="https://img-blog.csdnimg.cn/20200925211841786.png#pic_center" alt="在这里插入图片描述"><br>hhhhh</p>
+<h3 id="Misc-1-zip伪加密"><a href="#Misc-1-zip伪加密" class="headerlink" title="Misc 1 zip伪加密"></a>Misc 1 zip伪加密</h3><p>伪加密，我解决方法有两种</p>
+<p>使用工具</p>
+<p><img src="https://img-blog.csdnimg.cn/20200925214636645.png#pic_center" alt="在这里插入图片描述"><br>直接破解</p>
+<p>第二种，拉进winhex</p>
+<p><img src="https://img-blog.csdnimg.cn/20200925220326606.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>原本的00 00改为09 00就会提示有密码了，换为00 00伪加密就没了</p>
+<h3 id="Misc-2-ningen"><a href="#Misc-2-ningen" class="headerlink" title="Misc 2 ningen"></a>Misc 2 ningen</h3><p>得到一张图片</p>
+<p><img src="https://img-blog.csdnimg.cn/2020092522055420.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>试着用Binwalk分析</p>
+<p>分离出一个zip压缩包</p>
+<p>但是有密码，直接去爆破</p>
+<p><img src="https://img-blog.csdnimg.cn/20200925222144275.png#pic_center" alt="在这里插入图片描述"><br>得到flag</p>
+<h3 id="Misc-3-镜子里面的世界"><a href="#Misc-3-镜子里面的世界" class="headerlink" title="Misc 3 镜子里面的世界"></a>Misc 3 镜子里面的世界</h3><p><img src="https://img-blog.csdnimg.cn/20200925222356839.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ1ODY5MDM5,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>文件名字就带有steg,我们直接就用隐写工具，仔细看几遍</p>
+<p>red 0,green 0,blue 0最上方都有一串东西</p>
+<p>我们data extract找到这三个通道</p>
+<p><img src="https://img-blog.csdnimg.cn/20200925223309636.png#pic_center" alt="在这里插入图片描述"></p>
+<p>最后一行，就是flag了，以文本形式保存下来</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="< /images/donate/AliPayQR.jpg>"></li>
+              <li class="wechat-code"><img src="</images/donate/WeChanQR.jpg>"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+        <footer class="post-footer">
+          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
+          <div class="post-tags">
+          </div>
+          <div class="post-share">
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+            <div class="post-nepre half previous">
+          
+            <a href="/2020/09/27/%E6%B5%85%E8%B0%88CTF%E5%AF%86%E7%A0%81%E5%AD%A6RSA%E5%8A%A0%E5%AF%86%E7%9F%A5%E8%AF%86/" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzys1.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzys1.jpg">
+              </div>
+              <span class="label">
+              Previous Post</span>
+              <div class="info">
+                <h3>
+                浅谈CTF密码学RSA加密知识</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+        
+          
+            <div class="post-nepre half next">
+          
+            <a href="/2020/09/23/SQL%E6%B3%A8%E5%85%A5%E2%80%94%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzsMR.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://s1.ax1x.com/2020/07/31/alzsMR.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                SQL注入-堆叠注入</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
       
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+<div id="vcomments"></div>
+<script>
+  window.onload = function(){
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz",
+        appKey: "mgOpfzbkHYqU92CV4IDlAUHQ",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+  }
+</script>
 
-  <div class="post-thumb">
-    <a href="/2020/07/16/%E6%9A%91%E5%81%87%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E(%E4%BA%8C)/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alz12j.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-16 09:07</div>
-      <a href="/2020/07/16/%E6%9A%91%E5%81%87%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E(%E4%BA%8C)/" class="post-title">
-        <h3>暑假第二周练习(一)文件上传漏洞(二)</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/07/16/%E6%9A%91%E5%81%87%E7%AC%AC%E4%BA%8C%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E(%E4%BA%8C)/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+            <a href="" itemprop="url" rel="author"></a>
+            </h3>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/11/%E6%9A%91%E5%81%87%E7%AC%AC%E4%B8%80%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%BA%8C)%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E(%E4%B8%80)/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(1).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-11 14:07</div>
-      <a href="/2020/07/11/%E6%9A%91%E5%81%87%E7%AC%AC%E4%B8%80%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%BA%8C)%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E(%E4%B8%80)/" class="post-title">
-        <h3>暑假第一周练习(二)文件上传漏洞(一)</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/07/11/%E6%9A%91%E5%81%87%E7%AC%AC%E4%B8%80%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%BA%8C)%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E(%E4%B8%80)/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/07/10/%E6%9A%91%E5%81%87%E7%AC%AC%E4%B8%80%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)%20Misc/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(7).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-7-10 12:07</div>
-      <a href="/2020/07/10/%E6%9A%91%E5%81%87%E7%AC%AC%E4%B8%80%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)%20Misc/" class="post-title">
-        <h3>暑假第一周练习(一)</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/Misc%E5%AD%A6%E4%B9%A0/">Misc学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/07/10/%E6%9A%91%E5%81%87%E7%AC%AC%E4%B8%80%E5%91%A8%E7%BB%83%E4%B9%A0(%E4%B8%80)%20Misc/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/06/03/%E9%B8%A1%E6%B1%A4%20%20%E2%80%94%E2%80%94%E8%87%B4%E5%90%9B/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://ae01.alicdn.com/kf/H3343d675d24a4340b9c1360c4cf861422.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-6-3 17:06</div>
-      <a href="/2020/06/03/%E9%B8%A1%E6%B1%A4%20%20%E2%80%94%E2%80%94%E8%87%B4%E5%90%9B/" class="post-title">
-        <h3>鸡汤</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E7%90%90%E4%BA%8B/">琐事<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/06/03/%E9%B8%A1%E6%B1%A4%20%20%E2%80%94%E2%80%94%E8%87%B4%E5%90%9B/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/05/20/C++%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E8%BD%BD/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzNZV.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-5-20 15:05</div>
-      <a href="/2020/05/20/C++%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E8%BD%BD/" class="post-title">
-        <h3>C++复习--函数的模板和重载</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/c-%E5%AD%A6%E4%B9%A0/">c++学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/05/20/C++%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E5%87%BD%E6%95%B0%E7%9A%84%E9%87%8D%E8%BD%BD/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/05/15/php%E5%AD%A6%E4%B9%A0--%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%94%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2020/07/31/alzYq0.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-5-15 15:05</div>
-      <a href="/2020/05/15/php%E5%AD%A6%E4%B9%A0--%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%94%EF%BC%89/" class="post-title">
-        <h3>php学习--函数（五）</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/php%E5%AD%A6%E4%B9%A0/">php学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/05/15/php%E5%AD%A6%E4%B9%A0--%E5%87%BD%E6%95%B0%EF%BC%88%E4%BA%94%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/05/10/php%E5%AD%A6%E4%B9%A0--%E5%90%84%E7%A7%8D%E8%AF%AD%E5%8F%A5%EF%BC%88%E5%9B%9B%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(7).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-5-10 15:05</div>
-      <a href="/2020/05/10/php%E5%AD%A6%E4%B9%A0--%E5%90%84%E7%A7%8D%E8%AF%AD%E5%8F%A5%EF%BC%88%E5%9B%9B%EF%BC%89/" class="post-title">
-        <h3>php学习--各种语句（四）</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/php%E5%AD%A6%E4%B9%A0/">php学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/05/10/php%E5%AD%A6%E4%B9%A0--%E5%90%84%E7%A7%8D%E8%AF%AD%E5%8F%A5%EF%BC%88%E5%9B%9B%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/05/06/php%E5%AD%A6%E4%B9%A0--%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88%E4%B8%89%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(8).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-5-6 15:05</div>
-      <a href="/2020/05/06/php%E5%AD%A6%E4%B9%A0--%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88%E4%B8%89%EF%BC%89/" class="post-title">
-        <h3>php学习--运算符（三）</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/php%E5%AD%A6%E4%B9%A0/">php学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/05/06/php%E5%AD%A6%E4%B9%A0--%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88%E4%B8%89%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2020/05/05/php%E5%AD%A6%E4%B9%A0--%E5%B8%B8%E9%87%8F%EF%BC%88%E4%BA%8C%EF%BC%89/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/yremp/cdn@2.1.5/img/cover/(6).jpg.webp">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2020-5-5 15:05</div>
-      <a href="/2020/05/05/php%E5%AD%A6%E4%B9%A0--%E5%B8%B8%E9%87%8F%EF%BC%88%E4%BA%8C%EF%BC%89/" class="post-title">
-        <h3>php学习--常量（二）</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/php%E5%AD%A6%E4%B9%A0/">php学习<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p></p>
-        <div class="post-bottom">
-          <a href="/2020/05/05/php%E5%AD%A6%E4%B9%A0--%E5%B8%B8%E9%87%8F%EF%BC%88%E4%BA%8C%EF%BC%89/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!-- 
-      <nav class="navigator">
-        
-        <a class="extend prev" rel="prev" href="/page/2/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next</a>
-      </nav>
-     -->
-  </div>
-  
-    <div id="pagination"><a href="/page/4/" class="">Previous</a></div>
-  
+        <hr>
+        <p><i class="iconfont icon-write"></i></p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
